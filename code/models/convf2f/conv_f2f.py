@@ -1,28 +1,29 @@
 from torch import nn
+import numpy as np
 
-class ConvF2F(nn.Module):
-	
+class ConvF2F(nn.Module):	
+
 	def __init__(self, channels=128):
-
+		super(ConvF2F, self).__init__()
 		# input (512, 16, 32)
 
-		self.layers = []
+		self.layers = nn.ModuleList()
 
 		self.layers.append(nn.Conv2d(in_channels = 4 * channels, out_channels = 2 * channels, kernel_size = 1, padding = 0))
-		self.layers.append(nn.ReLU)
+		self.layers.append(nn.ReLU())
 		# (256, 16, 32)
-
-		self.layers.append(nn.Conv2d(in_channels = 2 * channels, out_channels = channels/2, kernel_size = 3,padding = 1))
-		self.layers.append(nn.ReLU)
+		
+		self.layers.append(nn.Conv2d(in_channels = 2 * channels, out_channels = int(channels/2), kernel_size = 3, padding = 1))
+		self.layers.append(nn.ReLU())
 		# (64, 16, 32)
 
 		for i in range(2):		
-			self.layers.append(nn.Conv2d(in_channels = channels/2, out_channels = channels/2, kernel_size = 3,padding = 1))
-			self.layers.append(nn.ReLU)
+			self.layers.append(nn.Conv2d(in_channels = int(channels/2), out_channels = int(channels/2), kernel_size = 3, padding = 1))
+			self.layers.append(nn.ReLU())
 			# (64, 16, 32)
 
-		self.layers.append(nn.Conv2d(in_channels = channels/2, out_channels = channels, kernel_size = 3,padding = 1))
-		self.layers.append(nn.ReLU)
+		self.layers.append(nn.Conv2d(in_channels = int(channels/2), out_channels = channels, kernel_size = 3, padding = 1))
+		self.layers.append(nn.ReLU())
 
 		self.reset_parameters()
 
@@ -33,7 +34,6 @@ class ConvF2F(nn.Module):
 				nn.init.constant_(m.bias, 0)
 
 	def forward(self, x):
-		h = x
 		for layer in self.layers:
-			h = layer.forward(h)
-		return h
+			x = layer.forward(x)
+		return x

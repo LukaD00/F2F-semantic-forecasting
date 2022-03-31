@@ -30,6 +30,7 @@ class CityscapesHalfresFeaturesDataset(Dataset):
 		"""
 		super().__init__()
 		
+		self.num_past = num_past
 		self.transform = transform
 		self.target_transform = target_transform
 
@@ -74,7 +75,7 @@ class CityscapesHalfresFeaturesDataset(Dataset):
 		feature_group = self.feature_groups[idx]
 		past_features = torch.from_numpy(np.vstack([np.load(os.path.join(self.file_dir, img)) for img in feature_group[0:self.num_past]]))
 		future_features = torch.from_numpy(np.load(os.path.join(self.file_dir, feature_group[-1])))
-		
+
 		if self.transform: 
 			past_features = self.transform(past_features)
 
