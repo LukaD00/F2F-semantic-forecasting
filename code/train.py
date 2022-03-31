@@ -45,7 +45,6 @@ if __name__=="__main__":
 		net.train()
 		train_loss = 0
 		for batch_idx, (inputs, targets) in enumerate(trainloader):
-			print(np.shape(inputs))
 			inputs, targets = inputs.to(device), targets.to(device)
 			optimizer.zero_grad()
 			outputs = net(inputs)
