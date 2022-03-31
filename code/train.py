@@ -24,8 +24,8 @@ if __name__=="__main__":
 	trainset = CityscapesHalfresFeaturesDataset(train=True)
 	valset = CityscapesHalfresFeaturesDataset(train=False)
 
-	trainloader = torch.utils.data.DataLoader(trainset, batch_size=24, shuffle=True, num_workers=4)
-	valloader = torch.utils.data.DataLoader(trainset, batch_size=20, shuffle=True, num_workers=4)
+	trainloader = torch.utils.data.DataLoader(trainset, batch_size=24, shuffle=True, num_workers=2)
+	valloader = torch.utils.data.DataLoader(trainset, batch_size=20, shuffle=True, num_workers=2)
 
 
 	print('==> Building model...')
