@@ -68,4 +68,4 @@ if __name__=="__main__":
 	
 		scheduler.step()
 
-	torch.save(net, "Conv-F2F.pth")
+	torch.save(net, "../weights/Conv-F2F.pt")
