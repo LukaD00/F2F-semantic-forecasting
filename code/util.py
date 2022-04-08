@@ -18,7 +18,10 @@ def IoU(nparray1, nparray2, class_number):
 			intersection += 1
 		if pixel1 == class_number or pixel2 == class_number:
 			union += 1
-	return 1.0*intersection/union
+	if (union == 0):
+		return 0
+	else:
+		return 1.0*intersection/union
 
 def mIoU(nparray1, nparray2, classes):
 	"""

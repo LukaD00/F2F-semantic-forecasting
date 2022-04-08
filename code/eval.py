@@ -22,10 +22,11 @@ class Model():
 		resnet = resnet18(pretrained=False, efficient=False)
 		self.segm_model = ScaleInvariantModel(resnet, self.num_classes)
 		self.segm_model.load_state_dict(torch.load("../weights/r18_halfres_semseg.pt"))
+		self.segm_model.to("cuda")
 
 		input_features = 128
-		self.mean = torch.tensor(np.load("../cityscapes_halfres_features_r18/mean.npy"), requires_grad=False).view(1, input_features, 1, 1)
-		self.std = torch.tensor(np.load("../cityscapes_halfres_features_r18/std.npy"), requires_grad=False).view(1, input_features, 1, 1)
+		self.mean = torch.tensor(np.load("../cityscapes_halfres_features_r18/mean.npy"), requires_grad=False).view(1, input_features, 1, 1).to("cuda")
+		self.std = torch.tensor(np.load("../cityscapes_halfres_features_r18/std.npy"), requires_grad=False).view(1, input_features, 1, 1).to("cuda")
 	
 	@abstractmethod
 	def name(self) -> str:
@@ -46,7 +47,7 @@ class Oracle(Model):
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
 		future_features_normalized = future_features  * self.std + self.mean
 		logits, additional_dict = self.segm_model.forward_up(future_features_normalized, self.output_features_res, self.output_preds_res)
-		preds = torch.argmax(logits, 1).squeeze().numpy()
+		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
 		return preds
 
 class F2F(Model):
@@ -64,7 +65,7 @@ class F2F(Model):
 		f2f_model = self.F2Fmodel()
 		predicted_future_features = f2f_model.forward(past_features).unsqueeze(0)
 		logits, additional_dict = self.segm_model.forward_up(predicted_future_features, self.output_features_res, self.output_preds_res)
-		preds = torch.argmax(logits, 1).squeeze().numpy()
+		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
 		return preds
 
 class ConvF2F(F2F):
@@ -75,7 +76,7 @@ class ConvF2F(F2F):
 		return "Conv-F2F"
 
 	def F2Fmodel() -> torch.nn.Module:
-		return torch.load("../weights/Conv-F2F.pt").to("cpu")
+		return torch.load("../weights/Conv-F2F.pt").to("cuda")
 		
 
 if __name__ == '__main__':
@@ -94,7 +95,8 @@ if __name__ == '__main__':
 		total_miou = 0
 		count = 0
 		for past_features, future_features, ground_truth in dataset:
-			print(count, end=" ")
+			if count % 50 == 0: print(count, end=" ")
+			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
 			prediction = model.forecast(past_features, future_features)
 			total_miou += mIoU(prediction, ground_truth, moving_objects_classes)
 			count += 1
