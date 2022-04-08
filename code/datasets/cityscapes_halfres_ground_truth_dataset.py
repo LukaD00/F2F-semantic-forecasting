@@ -35,7 +35,7 @@ class CityscapesHalfresGroundTruthDataset(Dataset):
 		
 		self.items = [] # array that stores groups of (past tensors, future tensor, ground truth labels)
 		tensor_files = os.listdir(CityscapesHalfresGroundTruthDataset.TENSOR_DIR)
-		truth_files = os.listdir(CityscapesHalfresGroundTruthDataset.TRUTH_DIR)    
+		truth_files = os.listdir(CityscapesHalfresGroundTruthDataset.TRUTH_DIR)   
 		for ground_truth in truth_files:
 			item = [ground_truth]
 			ground_truth_split = ground_truth.split("_") # file name should be in the format "city_sequence_time_gtFine_labelTrainIds.png"
@@ -45,11 +45,11 @@ class CityscapesHalfresGroundTruthDataset(Dataset):
 				# i = 0 for future tensor, otherwise past
 				expected_past_features_split = ground_truth_split[:]
 				expected_past_features_split.pop() # remove "labelTrainIds.png"
-				expected_past_features_split[3] = "leftImg8Bit.npy" # replace "gtFine" with "leftImg8Bit.npy"
+				expected_past_features_split[3] = "leftImg8bit.npy" # replace "gtFine" with "leftImg8Bit.npy"
 				expected_past_features_split[2] = str(int(expected_past_features_split[2]) - 3 * i).zfill(6) # replace "time" with "time-3*i"
 				expected_past_features = "_".join(expected_past_features_split)
 				if expected_past_features not in tensor_files:
-					found_all = False # only group if all 4 past tensors are present
+					found_all = False # only group if all 4 past tensors and future tensor are present
 				item.append(expected_past_features)
 			if not found_all:
 				continue
@@ -76,7 +76,7 @@ class CityscapesHalfresGroundTruthDataset(Dataset):
 		"""
 		item = self.items[idx]
 		past_features = torch.from_numpy(np.vstack([np.load(os.path.join(CityscapesHalfresGroundTruthDataset.TENSOR_DIR, img)) for img in item[0:self.num_past]]))
-		future_features = future_features = torch.from_numpy(np.load(os.path.join(CityscapesHalfresGroundTruthDataset.TENSOR_DIR, item[-1])))
+		future_features = future_features = torch.from_numpy(np.load(os.path.join(CityscapesHalfresGroundTruthDataset.TENSOR_DIR, item[-2])))
 		ground_truth = np.array(Image.open(os.path.join(CityscapesHalfresGroundTruthDataset.TRUTH_DIR, item[-1])).resize((1024, 512), Image.NEAREST))
 
 		if self.transform: 
