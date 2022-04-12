@@ -58,7 +58,7 @@ class F2F(Model):
 	Implementations of this model should just define which F2F model it uses.
 	"""
 	@abstractmethod
-	def F2Fmodel() -> torch.nn.Module:
+	def F2Fmodel(self) -> torch.nn.Module:
 		pass
 
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
@@ -75,7 +75,7 @@ class ConvF2F(F2F):
 	def name(self) -> str:
 		return "Conv-F2F"
 
-	def F2Fmodel() -> torch.nn.Module:
+	def F2Fmodel(self) -> torch.nn.Module:
 		return torch.load("../weights/Conv-F2F.pt").to("cuda")
 		
 
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 	print(f"Dataset contains {len(dataset)} items")
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
-	models = [Oracle(), ConvF2F()]
+	models = [ConvF2F()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	
@@ -95,7 +95,7 @@ if __name__ == '__main__':
 		total_miou = 0
 		count = 0
 		for past_features, future_features, ground_truth in dataset:
-			if count % 50 == 0: print(count, end=" ")
+			print(count)
 			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
 			prediction = model.forecast(past_features, future_features)
 			total_miou += mIoU(prediction, ground_truth, moving_objects_classes)
