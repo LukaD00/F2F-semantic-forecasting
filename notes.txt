@@ -1,0 +1,2 @@
+Oracle mIoU-MO: 0.51277
+Conv-F2F mIoU-MO: 0.46049
