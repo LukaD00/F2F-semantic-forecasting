@@ -79,7 +79,7 @@ class Conv_F2F(F2F):
 	def F2Fmodel(self) -> torch.nn.Module:
 		model = ConvF2F().to("cuda")
 		model.eval()
-		model.load_state_dict(torch.load("../weights/Conv-F2F.pt"))
+		model.load_state_dict(torch.load("../weights/conv-f2f.pt"))
 		return model
 
 if __name__ == '__main__':
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 	models: list[Model] = [Oracle(), Conv_F2F()]
 	sys.stdout = sys.__stdout__ # enable printing
 
-	#all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
 	moving_objects_classes = [0,1,2,4,5,7,8,10,11,13]
 
 	for model in models:
@@ -101,9 +101,19 @@ if __name__ == '__main__':
 		for past_features, future_features, ground_truth in dataset:
 			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
 			prediction = model.forecast(past_features, future_features)
+			total_miou += mIoU(prediction, ground_truth, all_classes)
+			count += 1
+		miou = total_miou / count
+		print("\tmIoU: %.3f" % miou) 
+
+		total_miou = 0
+		count = 0
+		for past_features, future_features, ground_truth in dataset:
+			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
+			prediction = model.forecast(past_features, future_features)
 			total_miou += mIoU(prediction, ground_truth, moving_objects_classes)
 			count += 1
 		miou = total_miou / count
-		print("\tmIoU-MO: %.3f" % miou)
+		print("\tmIoU-MO: %.3f" % miou) 
 
 	

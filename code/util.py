@@ -23,7 +23,7 @@ def IoU(nparray1, nparray2, class_number):
 	else:
 		return 1.0*intersection/union
 
-def mIoU(nparray1, nparray2, classes):
+def mIoU(nparray1, nparray2, classes, void_class = None):
 	"""
 	Args:
 		nparray1 (np.ndarray) - first array
@@ -43,6 +43,8 @@ def mIoU(nparray1, nparray2, classes):
 	for pixel1, pixel2 in np.nditer([nparray1, nparray2]):
 		c1 = pixel1.item()
 		c2 = pixel2.item()
+		if c1 == void_class or c2 == void_class:
+			continue
 		if c1 == c2: # intersection
 			if c1 in IUs:
 				IUs[c1][0] += 1
@@ -55,7 +57,7 @@ def mIoU(nparray1, nparray2, classes):
 	IoUs = []
 	for c in IUs:
 		if IUs[c][1] == 0: # no such pixels found, would be 0/0 but we declare 0
-			IoUs.append(0)
+			IoUs.append(1)
 		else:
 			IoUs.append(IUs[c][0] / IUs[c][1])
 

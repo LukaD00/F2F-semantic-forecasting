@@ -2,6 +2,7 @@ import torch
 import numpy as np
 from models.sci import ScaleInvariantModel
 from models.resnet.resnet_relu_noskip import resnet18
+from models.convf2f.conv_f2f import ConvF2F
 from util import mIoU
 from PIL import Image
 
@@ -40,7 +41,9 @@ if __name__ == '__main__':
 	resnet = resnet18(pretrained=False, efficient=False)
 	segm_model = ScaleInvariantModel(resnet, num_classes)
 	segm_model.load_state_dict(torch.load("../weights/r18_halfres_semseg.pt"))
-	f2f_model = torch.load("../weights/Conv-F2F.pt").to("cpu")
+	f2f_model = ConvF2F().to("cuda")
+	f2f_model.eval()
+	f2f_model.load_state_dict(torch.load("../weights/conv-f2f.pt"))
 	colormap = create_cityscapes_label_colormap()
 
 	mean = torch.tensor(np.load("../cityscapes_halfres_features_r18/mean.npy"), requires_grad=False).view(1, input_features, 1, 1)
