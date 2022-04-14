@@ -22,16 +22,16 @@ if __name__=="__main__":
 	#valset = CityscapesHalfresFeaturesDataset(train=False, transform=normalize, target_transform=normalize)
 
 	trainset = CityscapesHalfresFeaturesDataset(train=True)
-	valset = CityscapesHalfresFeaturesDataset(train=False)
+	testset = CityscapesHalfresFeaturesDataset(train=False)
 
 	trainloader = torch.utils.data.DataLoader(trainset, batch_size=24, shuffle=True, num_workers=2)
-	valloader = torch.utils.data.DataLoader(trainset, batch_size=20, shuffle=True, num_workers=2)
+	testloader = torch.utils.data.DataLoader(testset, batch_size=20, shuffle=True, num_workers=2)
 
 
 	print('==> Building model...')
 	device = "cuda"
-	#net = torch.nn.DataParallel(ConvF2F().to(device))
-	net = ConvF2F().to(device)
+	net = torch.nn.DataParallel(ConvF2F().to(device))
+	#net = ConvF2F().to(device)
 
 	criterion = nn.MSELoss()
 	optimizer = optim.Adam(net.parameters(), lr=5e-4)
@@ -59,12 +59,12 @@ if __name__=="__main__":
 		net.eval()
 		test_loss = 0
 		with torch.no_grad():
-			for batch_idx, (inputs, targets) in enumerate(valloader):
+			for batch_idx, (inputs, targets) in enumerate(testloader):
 				inputs, targets = inputs.to(device), targets.to(device)
 				outputs = net(inputs)
 				loss = criterion(outputs, targets)
 				test_loss += loss.item()
-		print("Validate -> Loss: %.3f" % (test_loss/(len(valloader))))
+		print("Test -> Loss: %.3f" % (test_loss/(len(testloader))))
 	
 		scheduler.step()
 
