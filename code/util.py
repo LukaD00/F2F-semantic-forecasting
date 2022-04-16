@@ -56,7 +56,7 @@ def mIoU(nparray1, nparray2, classes, void_class = None):
 	# calculate intersection/union for each class
 	IoUs = []
 	for c in IUs:
-		if IUs[c][1] == 0: # no such pixels found, would be 0/0 but we declare 0
+		if IUs[c][1] == 0: # no such pixels found, would be 0/0 but we declare 1
 			IoUs.append(1)
 		else:
 			IoUs.append(IUs[c][0] / IUs[c][1])

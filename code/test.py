@@ -94,7 +94,7 @@ if __name__ == '__main__':
 	moving_objects_classes = [0,1,2,4,5,7,8,10,11,13]
 
 	for model in models:
-		print(f"Evaluating {model.name()}...")
+		print(f"Testing {model.name()}...")
 
 		total_miou = 0
 		count = 0

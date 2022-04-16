@@ -9,20 +9,20 @@ class ConvF2F(nn.Module):
 
 		self.layers = nn.ModuleList()
 
-		self.layers.append(nn.Conv2d(in_channels = 4 * channels, out_channels = 2 * channels, kernel_size = 1, padding = 0))
+		self.layers.append(nn.Conv2d(in_channels = 4 * channels, out_channels = 256, kernel_size = 1, padding = 0))
 		self.layers.append(nn.ReLU())
 		# (256, 16, 32)
 		
-		self.layers.append(nn.Conv2d(in_channels = 2 * channels, out_channels = int(channels/2), kernel_size = 3, padding = 1))
+		self.layers.append(nn.Conv2d(in_channels = 256, out_channels = 128, kernel_size = 3, padding = 1))
 		self.layers.append(nn.ReLU())
-		# (64, 16, 32)
+		# (128, 16, 32)
 
-		for i in range(2):		
-			self.layers.append(nn.Conv2d(in_channels = int(channels/2), out_channels = int(channels/2), kernel_size = 3, padding = 1))
+		for i in range(5):		
+			self.layers.append(nn.Conv2d(in_channels = 128, out_channels = 128, kernel_size = 3, padding = 1))
 			self.layers.append(nn.ReLU())
-			# (64, 16, 32)
+			# (128, 16, 32)
 
-		self.layers.append(nn.Conv2d(in_channels = int(channels/2), out_channels = channels, kernel_size = 3, padding = 1))
+		self.layers.append(nn.Conv2d(in_channels = 128, out_channels = channels, kernel_size = 3, padding = 1))
 		self.layers.append(nn.ReLU())
 
 		self.reset_parameters()
