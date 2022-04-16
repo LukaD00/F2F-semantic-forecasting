@@ -30,8 +30,8 @@ if __name__=="__main__":
 
 	print('==> Building model...')
 	device = "cuda"
-	net = torch.nn.DataParallel(ConvF2F().to(device))
-	#net = ConvF2F().to(device)
+	#net = torch.nn.DataParallel(ConvF2F().to(device))
+	net = ConvF2F().to(device)
 
 	criterion = nn.MSELoss()
 	optimizer = optim.Adam(net.parameters(), lr=5e-4)
