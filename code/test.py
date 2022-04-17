@@ -41,6 +41,7 @@ class Oracle(Model):
 	"""
 	An oracle model - it will take future_features and 
 	simply do the upsampling path of a ResNet-18 network.
+	This model should provide the upper bound for F2F mIoU.
 	"""
 	def name(self):
 		return "Oracle"
@@ -48,6 +49,21 @@ class Oracle(Model):
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
 		future_features_normalized = future_features  * self.std + self.mean
 		logits, additional_dict = self.segm_model.forward_up(future_features_normalized, self.output_features_res, self.output_preds_res)
+		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
+		return preds
+
+class CopyLast(Model):
+	"""
+	A model which just copies the most recent past image's tensors.
+	This model should provide the lower bound for F2F mIoU.
+	"""
+	def name(self):
+		return "Copy-Last"
+
+	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
+		last = past_features[(512-128):512] # TODO: potentially look into not hardcoding these values?
+		last_normalized = last  * self.std + self.mean
+		logits, additional_dict = self.segm_model.forward_up(last_normalized, self.output_features_res, self.output_preds_res)
 		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
 		return preds
 
@@ -87,7 +103,7 @@ if __name__ == '__main__':
 	print(f"Dataset contains {len(dataset)} items")
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
-	models: list[Model] = [Oracle(), Conv_F2F()]
+	models: list[Model] = [Oracle(), CopyLast(), Conv_F2F()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
@@ -101,7 +117,7 @@ if __name__ == '__main__':
 		for past_features, future_features, ground_truth in dataset:
 			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
 			prediction = model.forecast(past_features, future_features)
-			total_miou += mIoU(prediction, ground_truth, all_classes)
+			total_miou += mIoU(prediction, ground_truth, all_classes, 255)
 			count += 1
 		miou = total_miou / count
 		print("\tmIoU: %.3f" % miou) 
@@ -111,7 +127,7 @@ if __name__ == '__main__':
 		for past_features, future_features, ground_truth in dataset:
 			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
 			prediction = model.forecast(past_features, future_features)
-			total_miou += mIoU(prediction, ground_truth, moving_objects_classes)
+			total_miou += mIoU(prediction, ground_truth, moving_objects_classes, 255)
 			count += 1
 		miou = total_miou / count
 		print("\tmIoU-MO: %.3f" % miou) 

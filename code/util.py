@@ -1,29 +1,6 @@
 import numpy as np
 
-def IoU(nparray1, nparray2, class_number):
-	"""
-	Args:
-		nparray1 (np.ndarray) - first array
-		nparray2 (np.ndarray) - second array
-		class_number (int) - class label to calculate IoU for
-
-	Returns:
-		Intersection over Union between two arrays for given class
-	"""
-
-	intersection = 0
-	union = 0
-	for pixel1, pixel2 in np.nditer([nparray1, nparray2]):
-		if pixel1 == class_number and pixel2 == class_number:
-			intersection += 1
-		if pixel1 == class_number or pixel2 == class_number:
-			union += 1
-	if (union == 0):
-		return 0
-	else:
-		return 1.0*intersection/union
-
-def mIoU(nparray1, nparray2, classes, void_class = None):
+def mIoU(nparray1, nparray2, classes, void_class = 255):
 	"""
 	Args:
 		nparray1 (np.ndarray) - first array

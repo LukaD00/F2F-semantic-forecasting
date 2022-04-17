@@ -34,6 +34,14 @@ def create_cityscapes_label_colormap():
 	return colormap 
 
 if __name__ == '__main__':
+
+	future_img_features = "../cityscapes_halfres_features_r18/val/frankfurt_000001_027325_leftImg8bit.npy"
+	past0_features = "../cityscapes_halfres_features_r18/val/frankfurt_000001_027313_leftImg8bit.npy"
+	past1_features = "../cityscapes_halfres_features_r18/val/frankfurt_000001_027316_leftImg8bit.npy"
+	past2_features = "../cityscapes_halfres_features_r18/val/frankfurt_000001_027319_leftImg8bit.npy"
+	past3_features = "../cityscapes_halfres_features_r18/val/frankfurt_000001_027322_leftImg8bit.npy"
+	future_img_gt = "../cityscapes-gt/val/frankfurt_000001_027325_gtFine_labelTrainIds.png"
+
 	input_features = 128
 	num_classes = 19
 	output_features_res = (128, 256)
@@ -41,7 +49,7 @@ if __name__ == '__main__':
 	resnet = resnet18(pretrained=False, efficient=False)
 	segm_model = ScaleInvariantModel(resnet, num_classes)
 	segm_model.load_state_dict(torch.load("../weights/r18_halfres_semseg.pt"))
-	f2f_model = ConvF2F().to("cuda")
+	f2f_model = ConvF2F()
 	f2f_model.eval()
 	f2f_model.load_state_dict(torch.load("../weights/conv-f2f.pt"))
 	colormap = create_cityscapes_label_colormap()
@@ -49,7 +57,7 @@ if __name__ == '__main__':
 	mean = torch.tensor(np.load("../cityscapes_halfres_features_r18/mean.npy"), requires_grad=False).view(1, input_features, 1, 1)
 	std = torch.tensor(np.load("../cityscapes_halfres_features_r18/std.npy"), requires_grad=False).view(1, input_features, 1, 1)
 
-	oracle = torch.from_numpy(np.load("../cityscapes_halfres_features_r18/val/frankfurt_000000_000294_leftImg8bit.npy")).unsqueeze(0)
+	oracle = torch.from_numpy(np.load(future_img_features)).unsqueeze(0)
 	oracle = oracle * std + mean
 	oracle_logits, oracle_additional_dict = segm_model.forward_up(oracle, output_features_res, output_preds_res)
 	oracle_preds = torch.argmax(oracle_logits, 1).squeeze().numpy()
@@ -57,10 +65,10 @@ if __name__ == '__main__':
 	Image.fromarray(preds_colored).save("../demo_out_oracle.png")
 	print("Oracle prediction saved to ../demo_out_oracle.png")
 
-	past0 = np.load("../cityscapes_halfres_features_r18/val/frankfurt_000000_000282_leftImg8bit.npy")
-	past1 = np.load("../cityscapes_halfres_features_r18/val/frankfurt_000000_000285_leftImg8bit.npy")
-	past2 = np.load("../cityscapes_halfres_features_r18/val/frankfurt_000000_000288_leftImg8bit.npy")
-	past3 = np.load("../cityscapes_halfres_features_r18/val/frankfurt_000000_000291_leftImg8bit.npy")
+	past0 = np.load(past0_features)
+	past1 = np.load(past1_features)
+	past2 = np.load(past2_features)
+	past3 = np.load(past3_features)
 	past_tensor = torch.from_numpy(np.vstack([past0, past1, past2, past3]))
 	predicted_features = f2f_model.forward(past_tensor).unsqueeze(0)
 	logits, additional_dict = segm_model.forward_up(predicted_features, output_features_res, output_preds_res)
@@ -69,7 +77,7 @@ if __name__ == '__main__':
 	Image.fromarray(preds_colored).save("../demo_out_predicted.png")
 	print("F2F prediction saved to ../demo_out_predicted.png")
 
-	real_img_semantics = np.array(Image.open("../cityscapes-gt/val/frankfurt_000000_000294_gtFine_labelTrainIds.png").resize((1024, 512), Image.NEAREST))
+	real_img_semantics = np.array(Image.open(future_img_gt).resize((1024, 512), Image.NEAREST))
 	real_img_semantics_colored = colormap[real_img_semantics]
 	Image.fromarray(real_img_semantics_colored).save("../demo_out_real.png")
 	print("Real semantics saved to ../demo_out_real.png")
