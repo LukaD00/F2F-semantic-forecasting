@@ -16,10 +16,6 @@ if __name__=="__main__":
 
 	mean = np.load("../cityscapes_halfres_features_r18/mean.npy")
 	std = np.load("../cityscapes_halfres_features_r18/std.npy")
-	#normalize = transforms.Normalize(mean, std)
-
-	#trainset = CityscapesHalfresFeaturesDataset(train=True, transform=normalize, target_transform=normalize)
-	#valset = CityscapesHalfresFeaturesDataset(train=False, transform=normalize, target_transform=normalize)
 
 	trainset = CityscapesHalfresFeaturesDataset(train=True)
 	valset = CityscapesHalfresFeaturesDataset(train=False)
@@ -30,7 +26,6 @@ if __name__=="__main__":
 
 	print('==> Building model...')
 	device = "cuda"
-	#net = torch.nn.DataParallel(ConvF2F().to(device))
 	net = ConvF2F().to(device)
 
 	criterion = nn.MSELoss()

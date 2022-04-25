@@ -1,28 +1,27 @@
 from torch import nn
-import numpy as np
 
 class ConvF2F(nn.Module):	
 
-	def __init__(self, channels=128):
+	def __init__(self, output_channels=128, num_past=4, layers=5, dilation=1):
 		super(ConvF2F, self).__init__()
 		# input (512, 16, 32)
 
 		self.layers = nn.ModuleList()
 
-		self.layers.append(nn.Conv2d(in_channels = 4 * channels, out_channels = 256, kernel_size = 1, padding = 0))
+		self.layers.append(nn.Conv2d(in_channels = num_past * output_channels, out_channels=256, kernel_size=1, padding=0, dilation=dilation))
 		self.layers.append(nn.ReLU())
 		# (256, 16, 32)
 		
-		self.layers.append(nn.Conv2d(in_channels = 256, out_channels = 128, kernel_size = 3, padding = 1))
+		self.layers.append(nn.Conv2d(in_channels=256, out_channels=128, kernel_size=3, padding=1, dilation=dilation))
 		self.layers.append(nn.ReLU())
 		# (128, 16, 32)
 
-		for i in range(5):		
-			self.layers.append(nn.Conv2d(in_channels = 128, out_channels = 128, kernel_size = 3, padding = 1))
+		for i in range(layers-3):		
+			self.layers.append(nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1, dilation=dilation))
 			self.layers.append(nn.ReLU())
 			# (128, 16, 32)
 
-		self.layers.append(nn.Conv2d(in_channels = 128, out_channels = channels, kernel_size = 3, padding = 1))
+		self.layers.append(nn.Conv2d(in_channels=128, out_channels = output_channels, kernel_size=3, padding=1, dilation=dilation))
 		self.layers.append(nn.ReLU())
 
 		self.reset_parameters()
