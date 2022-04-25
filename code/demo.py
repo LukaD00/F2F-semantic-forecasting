@@ -6,6 +6,8 @@ from models.convf2f.conv_f2f import ConvF2F
 from util import mIoU
 from PIL import Image
 
+from torchmetrics import JaccardIndex
+
 def create_cityscapes_label_colormap():
 	"""Creates a label colormap used in CITYSCAPES segmentation benchmark.
 	Returns:
@@ -81,5 +83,5 @@ if __name__ == '__main__':
 	real_img_semantics_colored = colormap[real_img_semantics]
 	Image.fromarray(real_img_semantics_colored).save("../demo_out_real.png")
 	print("Real semantics saved to ../demo_out_real.png")
-
-	print(mIoU(preds, real_img_semantics, [0,1,2,4,5,7,8,10,11,13]))
+	
+	print(mIoU(preds, real_img_semantics))

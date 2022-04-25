@@ -22,6 +22,14 @@ def mIoU(nparray1, nparray2, classes, void_class = 255):
 		c2 = pixel2.item()
 		if c1 == void_class or c2 == void_class:
 			continue
+		""" if c1 == void_class:
+			if c2 in IUs:
+				IUs[c2][0] += 1
+				IUs[c2][1] += 1
+		elif c2 == void_class:
+			if c1 in IUs:
+				IUs[c1][0] += 1
+				IUs[c1][1] += 1 """
 		if c1 == c2: # intersection
 			if c1 in IUs:
 				IUs[c1][0] += 1
@@ -34,7 +42,7 @@ def mIoU(nparray1, nparray2, classes, void_class = 255):
 	IoUs = []
 	for c in IUs:
 		if IUs[c][1] == 0: # no such pixels found, would be 0/0 but we declare 1
-			IoUs.append(1)
+			IoUs.append(0)
 		else:
 			IoUs.append(IUs[c][0] / IUs[c][1])
 

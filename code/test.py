@@ -6,7 +6,7 @@ from models.sci import ScaleInvariantModel
 from models.resnet.resnet_relu_noskip import resnet18
 from models.convf2f.conv_f2f import ConvF2F
 from datasets.cityscapes_halfres_ground_truth_dataset import CityscapesHalfresGroundTruthDataset
-from util import mIoU
+from torchmetrics import JaccardIndex
 
 
 class Model():
@@ -34,7 +34,7 @@ class Model():
 		pass
 
 	@abstractmethod
-	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
+	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
 		pass
 
 class Oracle(Model):
@@ -46,10 +46,10 @@ class Oracle(Model):
 	def name(self):
 		return "Oracle"
 
-	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
+	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
 		future_features_normalized = future_features  * self.std + self.mean
 		logits, additional_dict = self.segm_model.forward_up(future_features_normalized, self.output_features_res, self.output_preds_res)
-		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
+		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
 class CopyLast(Model):
@@ -60,11 +60,11 @@ class CopyLast(Model):
 	def name(self):
 		return "Copy-Last"
 
-	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
+	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
 		last = past_features[(512-128):512] # TODO: potentially look into not hardcoding these values?
 		last_normalized = last  * self.std + self.mean
 		logits, additional_dict = self.segm_model.forward_up(last_normalized, self.output_features_res, self.output_preds_res)
-		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
+		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
 class F2F(Model):
@@ -78,12 +78,12 @@ class F2F(Model):
 	def F2Fmodel(self) -> torch.nn.Module:
 		pass
 
-	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
+	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
 		f2f_model = self.F2Fmodel()
 		predicted_future_features = f2f_model.forward(past_features).unsqueeze(0)
 		predicted_future_features_normalized = predicted_future_features  * self.std + self.mean
 		logits, additional_dict = self.segm_model.forward_up(predicted_future_features_normalized, self.output_features_res, self.output_preds_res)
-		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
+		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
 class Conv_F2F(F2F):
@@ -113,24 +113,17 @@ if __name__ == '__main__':
 	for model in models:
 		print(f"Testing {model.name()}...")
 
-		total_miou = 0
-		count = 0
+		miou = JaccardIndex(num_classes=20, ignore_index=19)
 		for past_features, future_features, ground_truth in dataset:
 			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
 			prediction = model.forecast(past_features, future_features)
-			total_miou += mIoU(prediction, ground_truth, all_classes, 255)
-			count += 1
-		miou = total_miou / count
-		print("\tmIoU: %.3f" % miou) 
+			ground_truth[ground_truth==255] = 19
+			miou.update(prediction, torch.from_numpy(ground_truth))
+		
+		print(f"\tmIoU: {miou.compute()}")
+		print()
 
-		total_miou = 0
-		count = 0
-		for past_features, future_features, ground_truth in dataset:
-			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
-			prediction = model.forecast(past_features, future_features)
-			total_miou += mIoU(prediction, ground_truth, moving_objects_classes, 255)
-			count += 1
-		miou = total_miou / count
-		print("\tmIoU-MO: %.3f" % miou) 
+
+
 
 	
