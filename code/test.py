@@ -81,7 +81,8 @@ class F2F(Model):
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> np.ndarray:
 		f2f_model = self.F2Fmodel()
 		predicted_future_features = f2f_model.forward(past_features).unsqueeze(0)
-		logits, additional_dict = self.segm_model.forward_up(predicted_future_features, self.output_features_res, self.output_preds_res)
+		predicted_future_features_normalized = predicted_future_features  * self.std + self.mean
+		logits, additional_dict = self.segm_model.forward_up(predicted_future_features_normalized, self.output_features_res, self.output_preds_res)
 		preds = torch.argmax(logits, 1).squeeze().cpu().numpy()
 		return preds
 
