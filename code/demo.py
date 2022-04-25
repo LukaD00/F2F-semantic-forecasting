@@ -46,7 +46,7 @@ if __name__ == '__main__':
 	num_classes = 19
 	output_features_res = (128, 256)
 	output_preds_res = (512, 1024)
-	resnet = resnet18(pretrained=False, efficient=False)
+	resnet = resnet18(pretrained=True, efficient=False)
 	segm_model = ScaleInvariantModel(resnet, num_classes)
 	segm_model.load_state_dict(torch.load("../weights/r18_halfres_semseg.pt"))
 	f2f_model = ConvF2F()

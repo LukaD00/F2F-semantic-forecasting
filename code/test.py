@@ -20,7 +20,7 @@ class Model():
 		self.num_classes = 19
 		self.output_features_res = (128, 256)
 		self.output_preds_res = (512, 1024)
-		resnet = resnet18(pretrained=False, efficient=False)
+		resnet = resnet18(pretrained=True, efficient=False)
 		self.segm_model = ScaleInvariantModel(resnet, self.num_classes)
 		self.segm_model.load_state_dict(torch.load("../weights/r18_halfres_semseg.pt"))
 		self.segm_model.to("cuda")
