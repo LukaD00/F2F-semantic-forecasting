@@ -5,6 +5,7 @@ import numpy as np
 from models.sci import ScaleInvariantModel
 from models.resnet.resnet_relu_noskip import resnet18
 from models.convf2f.conv_f2f import ConvF2F
+from models.dilatedconvf2f.dilated_conv_f2f import DilatedConvF2F
 from datasets.cityscapes_halfres_ground_truth_dataset import CityscapesHalfresGroundTruthDataset
 from torchmetrics import JaccardIndex
 
@@ -86,17 +87,30 @@ class F2F(Model):
 		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
-class Conv_F2F(F2F):
+class ConvF2F_8(F2F):
 	"""
 	A simple convolutional F2F model.
 	"""
 	def name(self) -> str:
-		return "Conv-F2F"
+		return "ConvF2F-8"
 
 	def F2Fmodel(self) -> torch.nn.Module:
 		model = ConvF2F().to("cuda")
 		model.eval()
-		model.load_state_dict(torch.load("../weights/conv-f2f.pt"))
+		model.load_state_dict(torch.load("../weights/ConvF2F-8.pt"))
+		return model
+
+class DilatedConvF2F_8(F2F):
+	"""
+	A simple convolutional F2F model.
+	"""
+	def name(self) -> str:
+		return "DilatedConvF2F-8"
+
+	def F2Fmodel(self) -> torch.nn.Module:
+		model = DilatedConvF2F().to("cuda")
+		model.eval()
+		model.load_state_dict(torch.load("../weights/DilatedConvF2F-8.pt"))
 		return model
 
 if __name__ == '__main__':
@@ -104,7 +118,8 @@ if __name__ == '__main__':
 	print(f"Dataset contains {len(dataset)} items")
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
-	models: list[Model] = [Oracle(), CopyLast(), Conv_F2F()]
+	#models: list[Model] = [Oracle(), CopyLast(), ConvF2F_8(), DilatedConvF2F_8()]
+	models: list[Model] = [ConvF2F_8()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]

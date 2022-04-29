@@ -1,8 +1,13 @@
-Testing Oracle...
-        mIoU: 0.5966874361038208
+Oracle:
+    mIoU: 0.5966874361038208
 
-Testing Copy-Last...
-        mIoU: 0.45875248312950134
+Copy-Last:
+    mIoU: 0.45875248312950134
 
-Testing Conv-F2F...
-        mIoU: 0.536495566368103
+Conv-F2F:
+	trainingTime: ~2h
+    mIoU: 0.536495566368103
+
+DilatedConvF2F-8 {first, very dilated version}
+    trainingTime: ~3.5h
+	mIoU: 0.4941616654396057
