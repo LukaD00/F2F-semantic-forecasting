@@ -7,7 +7,9 @@ import torch.nn as nn
 import torch.optim as optim
 
 from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeaturesDataset
+
 from models.convf2f.conv_f2f import ConvF2F
+from models.dilatedconvf2f.dilated_conv_f2f import DilatedConvF2F
 
 
 if __name__=="__main__":
@@ -26,7 +28,8 @@ if __name__=="__main__":
 
 	print('==> Building model...')
 	device = "cuda"
-	net = ConvF2F().to(device)
+	#net = ConvF2F().to(device)
+	net = DilatedConvF2F().to(device)
 
 	criterion = nn.MSELoss()
 	optimizer = optim.Adam(net.parameters(), lr=5e-4)
@@ -63,4 +66,4 @@ if __name__=="__main__":
 	
 		scheduler.step()
 
-	torch.save(net.state_dict(), "../weights/conv-f2f.pt")
+	torch.save(net.state_dict(), "../weights/DilatedConvF2F-8.pt")
