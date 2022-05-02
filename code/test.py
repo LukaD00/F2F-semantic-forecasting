@@ -119,7 +119,7 @@ if __name__ == '__main__':
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
 	#models: list[Model] = [Oracle(), CopyLast(), ConvF2F_8(), DilatedConvF2F_8()]
-	models: list[Model] = [ConvF2F_8()]
+	models: list[Model] = [DilatedConvF2F_8()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
