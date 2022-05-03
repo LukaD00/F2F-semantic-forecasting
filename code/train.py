@@ -10,6 +10,7 @@ from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeatur
 
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedconvf2f.dilated_conv_f2f import DilatedConvF2F
+from models.deformconvf2f.deform_conv_f2f import DeformConvF2F
 
 
 if __name__=="__main__":
@@ -29,6 +30,7 @@ if __name__=="__main__":
 	print('==> Building model...')
 	device = "cuda"
 	#net = ConvF2F().to(device)
+	#net = DilatedConvF2F().to(device)
 	net = DilatedConvF2F().to(device)
 
 	criterion = nn.MSELoss()

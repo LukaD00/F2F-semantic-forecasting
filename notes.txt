@@ -8,6 +8,10 @@ Conv-F2F:
 	trainingTime: ~2h
     mIoU: 0.536495566368103
 
+DilatedConvF2F-8 {third, even less dilated version}
+    trainingTime: ~2h
+	mIoU: 0.5196095108985901
+
 DilatedConvF2F-8 {second, less dilated version}
     trainingTime: ~2h
 	mIoU: 0.5096732974052429
