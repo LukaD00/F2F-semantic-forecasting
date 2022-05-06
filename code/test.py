@@ -48,8 +48,8 @@ class Oracle(Model):
 		return "Oracle"
 
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
-		future_features_normalized = future_features  * self.std + self.mean
-		logits, additional_dict = self.segm_model.forward_up(future_features_normalized, self.output_features_res, self.output_preds_res)
+		future_features_denormalized = future_features * self.std + self.mean
+		logits, additional_dict = self.segm_model.forward_up(future_features_denormalized, self.output_features_res, self.output_preds_res)
 		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
@@ -63,8 +63,8 @@ class CopyLast(Model):
 
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
 		last = past_features[(512-128):512] # TODO: potentially look into not hardcoding these values?
-		last_normalized = last  * self.std + self.mean
-		logits, additional_dict = self.segm_model.forward_up(last_normalized, self.output_features_res, self.output_preds_res)
+		last_denormalized = last  * self.std + self.mean
+		logits, additional_dict = self.segm_model.forward_up(last_denormalized, self.output_features_res, self.output_preds_res)
 		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
@@ -82,8 +82,8 @@ class F2F(Model):
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
 		f2f_model = self.F2Fmodel()
 		predicted_future_features = f2f_model.forward(past_features).unsqueeze(0)
-		predicted_future_features_normalized = predicted_future_features  * self.std + self.mean
-		logits, additional_dict = self.segm_model.forward_up(predicted_future_features_normalized, self.output_features_res, self.output_preds_res)
+		predicted_future_features_denormalized = predicted_future_features  * self.std + self.mean
+		logits, additional_dict = self.segm_model.forward_up(predicted_future_features_denormalized, self.output_features_res, self.output_preds_res)
 		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
@@ -119,7 +119,7 @@ if __name__ == '__main__':
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
 	#models: list[Model] = [Oracle(), CopyLast(), ConvF2F_8(), DilatedConvF2F_8()]
-	models: list[Model] = [DilatedConvF2F_8()]
+	models: list[Model] = [Oracle()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
