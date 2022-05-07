@@ -6,6 +6,7 @@ from models.sci import ScaleInvariantModel
 from models.resnet.resnet_relu_noskip import resnet18
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedconvf2f.dilated_conv_f2f import DilatedConvF2F
+from models.deformconvf2f.deform_conv_f2f import DeformConvF2F
 from datasets.cityscapes_halfres_ground_truth_dataset import CityscapesHalfresGroundTruthDataset
 from torchmetrics import JaccardIndex
 
@@ -81,7 +82,7 @@ class F2F(Model):
 
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
 		f2f_model = self.F2Fmodel()
-		predicted_future_features = f2f_model.forward(past_features).unsqueeze(0)
+		predicted_future_features = f2f_model.forward(past_features.unsqueeze(0))
 		predicted_future_features_denormalized = predicted_future_features  * self.std + self.mean
 		logits, additional_dict = self.segm_model.forward_up(predicted_future_features_denormalized, self.output_features_res, self.output_preds_res)
 		preds = torch.argmax(logits, 1).squeeze().cpu()
@@ -113,13 +114,26 @@ class DilatedConvF2F_8(F2F):
 		model.load_state_dict(torch.load("../weights/DilatedConvF2F-8.pt"))
 		return model
 
+class DeformConvF2F_8(F2F):
+	"""
+	A simple convolutional F2F model.
+	"""
+	def name(self) -> str:
+		return "DeformConvF2F-8"
+
+	def F2Fmodel(self) -> torch.nn.Module:
+		model = DeformConvF2F().to("cuda")
+		model.eval()
+		model.load_state_dict(torch.load("../weights/DeformConvF2F-8.pt"))
+		return model
+
 if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
 	print(f"Dataset contains {len(dataset)} items")
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
-	#models: list[Model] = [Oracle(), CopyLast(), ConvF2F_8(), DilatedConvF2F_8()]
-	models: list[Model] = [Oracle()]
+	#models: list[Model] = [Oracle(), CopyLast(), ConvF2F_8(), DilatedConvF2F_8(), DeformConvF2F_8()]
+	models: list[Model] = [DeformConvF2F_8()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
