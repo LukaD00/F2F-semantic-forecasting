@@ -31,7 +31,7 @@ if __name__=="__main__":
 	device = "cuda"
 	#net = ConvF2F().to(device)
 	#net = DilatedConvF2F().to(device)
-	net = DeformConvF2F().to(device)
+	net = DeformConvF2F(layers=5).to(device)
 
 	criterion = nn.MSELoss()
 	optimizer = optim.Adam(net.parameters(), lr=5e-4)
@@ -68,4 +68,4 @@ if __name__=="__main__":
 	
 		scheduler.step()
 
-	torch.save(net.state_dict(), "../weights/DeformConvF2F-8.pt")
+	torch.save(net.state_dict(), "../weights/DeformConvF2F-5.pt")

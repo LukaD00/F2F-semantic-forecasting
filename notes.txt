@@ -4,7 +4,7 @@ Oracle:
 Copy-Last:
     mIoU: 0.45875248312950134
 
-Conv-F2F:
+Conv-F2F-8:
 	trainingTime: ~2h
     mIoU: 0.536495566368103
 
