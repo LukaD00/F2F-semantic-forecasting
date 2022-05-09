@@ -8,6 +8,10 @@ Conv-F2F-8:
 	trainingTime: ~2h
     mIoU: 0.536495566368103
 
+Deform-F2F-5:
+	trainingTime: ~2h
+	mIoU: 0.5392488837242126
+
 Deform-F2F-8:
 	trainingTime: ~2h
 	mIoU: 0.5498101711273193

@@ -22,7 +22,7 @@ class Model():
 		self.num_classes = 19
 		self.output_features_res = (128, 256)
 		self.output_preds_res = (512, 1024)
-		resnet = resnet18(pretrained=True, efficient=False)
+		resnet = resnet18(pretrained=False, efficient=False)
 		self.segm_model = ScaleInvariantModel(resnet, self.num_classes)
 		self.segm_model.load_state_dict(torch.load("../weights/r18_halfres_semseg.pt"))
 		self.segm_model.to("cuda")
@@ -102,9 +102,6 @@ class ConvF2F_8(F2F):
 		return model
 
 class DilatedConvF2F_8(F2F):
-	"""
-	A simple convolutional F2F model.
-	"""
 	def name(self) -> str:
 		return "DilatedConvF2F-8"
 
@@ -115,9 +112,6 @@ class DilatedConvF2F_8(F2F):
 		return model
 
 class DeformConvF2F_8(F2F):
-	"""
-	A simple convolutional F2F model.
-	"""
 	def name(self) -> str:
 		return "DeformConvF2F-8"
 
@@ -127,13 +121,23 @@ class DeformConvF2F_8(F2F):
 		model.load_state_dict(torch.load("../weights/DeformConvF2F-8.pt"))
 		return model
 
+class DeformConvF2F_5(F2F):
+	def name(self) -> str:
+		return "DeformConvF2F-5"
+
+	def F2Fmodel(self) -> torch.nn.Module:
+		model = DeformConvF2F(layers=5).to("cuda")
+		model.eval()
+		model.load_state_dict(torch.load("../weights/DeformConvF2F-5.pt"))
+		return model
+
 if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
 	print(f"Dataset contains {len(dataset)} items")
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
 	#models: list[Model] = [Oracle(), CopyLast(), ConvF2F_8(), DilatedConvF2F_8(), DeformConvF2F_8()]
-	models: list[Model] = [DeformConvF2F_8()]
+	models: list[Model] = [Oracle()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
@@ -145,6 +149,7 @@ if __name__ == '__main__':
 		miou = JaccardIndex(num_classes=20, ignore_index=19)
 		for past_features, future_features, ground_truth in dataset:
 			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
+			print(past_features.shape)
 			prediction = model.forecast(past_features, future_features)
 			ground_truth[ground_truth==255] = 19
 			miou.update(prediction, torch.from_numpy(ground_truth))
