@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "train.py", line 26, in <module>
+    (DeformF2F(layers=8),	"DeformF2F-8")
+TypeError: 'type' object is not subscriptable
