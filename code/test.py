@@ -6,8 +6,8 @@ import numpy as np
 from models.sci import ScaleInvariantModel
 from models.resnet.resnet_relu_noskip import resnet18
 from models.convf2f.conv_f2f import ConvF2F
-from models.dilatedconvf2f.dilated_conv_f2f import DilatedConvF2F
-from models.deformconvf2f.deform_conv_f2f import DeformConvF2F
+from models.dilatedf2f.dilated_f2f import DilatedF2F
+from models.deformf2f.deform_f2f import DeformF2F
 from datasets.cityscapes_halfres_ground_truth_dataset import CityscapesHalfresGroundTruthDataset
 from torchmetrics import JaccardIndex
 
@@ -138,7 +138,6 @@ if __name__ == '__main__':
 	print(f"Dataset contains {len(dataset)} items")
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
-	#models: list[Model] = [Oracle(), CopyLast(), ConvF2F_8(), DilatedConvF2F_8(), DeformConvF2F_8()]
 	models: list[Model] = [Oracle()]
 	sys.stdout = sys.__stdout__ # enable printing
 

@@ -7,8 +7,8 @@ import torch.optim as optim
 from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeaturesDataset
 
 from models.convf2f.conv_f2f import ConvF2F
-from models.dilatedconvf2f.dilated_conv_f2f import DilatedConvF2F
-from models.deformconvf2f.deform_conv_f2f import DeformConvF2F
+from models.dilatedf2f.dilated_f2f import DilatedF2F
+from models.deformf2f.deform_f2f import DeformF2F
 from test import test
 
 
@@ -29,8 +29,8 @@ if __name__=="__main__":
 	nets: list[tuple[nn.Module, str]] = [
 		(ConvF2F(layers=5), "ConvF2F-5"),
 		(ConvF2F(), "ConvF2F-8"),
-		(DeformConvF2F(layers=5), "DeformF2F-5"),
-		(DeformConvF2F(), "DeformF2F-8")
+		(DeformF2F(layers=5), "DeformF2F-5"),
+		(DeformF2F(), "DeformF2F-8")
 	]
 
 	for net, name in nets:

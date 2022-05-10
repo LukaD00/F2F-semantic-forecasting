@@ -1,9 +1,9 @@
 from torch import nn
 
-class DilatedConvF2F(nn.Module):	
+class DilatedF2F(nn.Module):	
 
 	def __init__(self, output_channels=128, num_past=4, layers=8):
-		super(DilatedConvF2F, self).__init__()
+		super(DilatedF2F, self).__init__()
 
 		self.layers = nn.ModuleList()
 

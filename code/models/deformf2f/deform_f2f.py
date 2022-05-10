@@ -1,10 +1,10 @@
 from torch import nn
 from torchvision import ops
 
-class DeformConvF2F(nn.Module):	
+class DeformF2F(nn.Module):	
 
 	def __init__(self, output_channels=128, num_past=4, layers=8):
-		super(DeformConvF2F, self).__init__()
+		super(DeformF2F, self).__init__()
 		
 		self.conv1 = nn.Conv2d(in_channels = num_past*output_channels, out_channels=2*output_channels, kernel_size=1, padding=0)
 		self.relu1 = nn.ReLU()
