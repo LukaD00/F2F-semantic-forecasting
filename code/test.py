@@ -111,7 +111,7 @@ def test(net : nn.Module) -> float:
 		mIoU achieved by model on dataset
 	"""
 	sys.stdout = open(os.devnull, 'w') # disable printing
-	f2f = F2F(net)
+	f2f = F2F(net, None)
 	sys.stdout = sys.__stdout__ # enable printing
 	return testModel(f2f)
 
