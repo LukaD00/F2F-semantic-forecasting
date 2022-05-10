@@ -40,5 +40,6 @@ for _, future_features, ground_truth in dataset:
 
 	# Azuriranje matrice zabune
 	miou.update(preds, ground_truth)
+	print(f"mIoU: {miou.compute()}") # 0.596687376499176
 
-print(f"mIoU: {miou.compute()}") # 0.596687376499176
+print(f"mIoU: {miou.compute()}") 

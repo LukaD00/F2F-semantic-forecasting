@@ -1,6 +1,7 @@
 from abc import abstractmethod
 import sys, os
 import torch
+import torch.nn as nn
 import numpy as np
 from models.sci import ScaleInvariantModel
 from models.resnet.resnet_relu_noskip import resnet18
@@ -73,63 +74,64 @@ class F2F(Model):
 	"""
 	A general abstract ResNet-18 F2F model - it will take past_features,
 	make an F2F forecasting, and do the upsampling path of a ResNet-18 network.
-
-	Implementations of this model should just define which F2F model it uses.
 	"""
-	@abstractmethod
-	def F2Fmodel(self) -> torch.nn.Module:
-		pass
+
+	def __init__(self, f2f : nn.Module, name : str):
+		"""
+		Arguments:
+			f2f (nn.Module) - Initialized F2F net
+			name (str) - State dict will be loaded from "../weights/{name}.pt, this name will also be used in print statements. W
+							Won't try to load state dict if name is None.
+		"""
+		self.f2f = f2f.to("cuda")
+		self.f2f.eval()
+		if (name == None) :
+			self.f2f.load_state_dict(torch.load(f"../weights/{name}.pt"))
+
+		self.name = name
 
 	def forecast(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
-		f2f_model = self.F2Fmodel()
-		predicted_future_features = f2f_model.forward(past_features.unsqueeze(0))
+		predicted_future_features = self.f2f.forward(past_features.unsqueeze(0))
 		predicted_future_features_denormalized = predicted_future_features  * self.std + self.mean
 		logits, additional_dict = self.segm_model.forward_up(predicted_future_features_denormalized, self.output_features_res, self.output_preds_res)
 		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
-class ConvF2F_8(F2F):
+	def name(self) -> str:
+		return self.name
+
+def test(net : nn.Module) -> float:
 	"""
-	A simple convolutional F2F model.
+	Tests the given F2F net on Cityscapes Dataset with ResNet-18.
+
+	Arguments:
+		net (nn.Module) - pretrained model to test
+
+	Returns:
+		mIoU achieved by model on dataset
 	"""
-	def name(self) -> str:
-		return "ConvF2F-8"
+	sys.stdout = open(os.devnull, 'w') # disable printing
+	f2f = F2F(net)
+	sys.stdout = sys.__stdout__ # enable printing
+	return testModel(f2f)
 
-	def F2Fmodel(self) -> torch.nn.Module:
-		model = ConvF2F().to("cuda")
-		model.eval()
-		model.load_state_dict(torch.load("../weights/ConvF2F-8.pt"))
-		return model
+def testModel(model : Model) -> float:
+	"""
+	Tests the given Model on Cityscapes Dataset.
 
-class DilatedConvF2F_8(F2F):
-	def name(self) -> str:
-		return "DilatedConvF2F-8"
+	Arguments:
+		model (Model) - forecasting net wrapped in Model object
 
-	def F2Fmodel(self) -> torch.nn.Module:
-		model = DilatedConvF2F().to("cuda")
-		model.eval()
-		model.load_state_dict(torch.load("../weights/DilatedConvF2F-8.pt"))
-		return model
-
-class DeformConvF2F_8(F2F):
-	def name(self) -> str:
-		return "DeformConvF2F-8"
-
-	def F2Fmodel(self) -> torch.nn.Module:
-		model = DeformConvF2F().to("cuda")
-		model.eval()
-		model.load_state_dict(torch.load("../weights/DeformConvF2F-8.pt"))
-		return model
-
-class DeformConvF2F_5(F2F):
-	def name(self) -> str:
-		return "DeformConvF2F-5"
-
-	def F2Fmodel(self) -> torch.nn.Module:
-		model = DeformConvF2F(layers=5).to("cuda")
-		model.eval()
-		model.load_state_dict(torch.load("../weights/DeformConvF2F-5.pt"))
-		return model
+	Returns:
+		mIoU achieved by model on dataset
+	"""
+	miou = JaccardIndex(num_classes=20, ignore_index=19)
+	for past_features, future_features, ground_truth in CityscapesHalfresGroundTruthDataset():
+		past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
+		prediction = model.forecast(past_features, future_features)
+		ground_truth[ground_truth==255] = 19
+		miou.update(prediction, torch.from_numpy(ground_truth))
+	return miou.compute()
 
 if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
@@ -140,24 +142,10 @@ if __name__ == '__main__':
 	models: list[Model] = [Oracle()]
 	sys.stdout = sys.__stdout__ # enable printing
 
-	all_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
-	moving_objects_classes = [0,1,2,4,5,7,8,10,11,13]
-
 	for model in models:
 		print(f"Testing {model.name()}...")
-
-		miou = JaccardIndex(num_classes=20, ignore_index=19)
-		for past_features, future_features, ground_truth in dataset:
-			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
-			print(past_features.shape)
-			prediction = model.forecast(past_features, future_features)
-			ground_truth[ground_truth==255] = 19
-			miou.update(prediction, torch.from_numpy(ground_truth))
-		
-		print(f"\tmIoU: {miou.compute()}")
+		print(f"\tmIoU: {testModel(model)}")
 		print()
 
 
 
-
-	
