@@ -14,16 +14,7 @@ from test import test
 
 if __name__=="__main__":
 
-	trainset = CityscapesHalfresFeaturesDataset(train=True)
-	valset = CityscapesHalfresFeaturesDataset(train=False)
-
-	trainloader = torch.utils.data.DataLoader(trainset, batch_size=24, shuffle=True, num_workers=2)
-	valloader = torch.utils.data.DataLoader(valset, batch_size=20, shuffle=True, num_workers=2)
-
 	device = "cuda"
-	#net = ConvF2F().to(device)
-	#net = DilatedConvF2F().to(device)
-	#net = DeformConvF2F(layers=5).to(device)
 	
 	# list of nets to train in the format of (net, name) 	
 	nets: list[tuple[nn.Module, str]] = [
@@ -36,6 +27,12 @@ if __name__=="__main__":
 	]
 
 	for net, name in nets:
+
+		trainset = CityscapesHalfresFeaturesDataset(train=True)
+		valset = CityscapesHalfresFeaturesDataset(train=False)
+
+		trainloader = torch.utils.data.DataLoader(trainset, batch_size=24, shuffle=True, num_workers=2)
+		valloader = torch.utils.data.DataLoader(valset, batch_size=20, shuffle=True, num_workers=2)
 
 		net = net.to(device)
 		criterion = nn.MSELoss()
