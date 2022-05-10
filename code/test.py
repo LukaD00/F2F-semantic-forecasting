@@ -83,6 +83,8 @@ class F2F(Model):
 			name (str) - State dict will be loaded from "../weights/{name}.pt, this name will also be used in print statements. W
 							Won't try to load state dict if name is None.
 		"""
+		super(F2F, self).__init__()
+
 		self.f2f = f2f.to("cuda")
 		self.f2f.eval()
 		if (name != None) :

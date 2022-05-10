@@ -83,7 +83,7 @@ class CityscapesHalfresGroundTruthDataset(Dataset):
 		#print(f"Past features loaded from {item[0]}, {item[1]}, {item[2]}, {item[3]}")
 		#print(f"Future features loaded from {item[-2]}")
 		#print(f"Ground truth loaded from {item[-1]}")
-		print(f"Features: {item[-2]}, GT: {item[-1]}")
+		#print(f"Features: {item[-2]}, GT: {item[-1]}")
 
 		if self.transform: 
 			past_features = self.transform(past_features)
