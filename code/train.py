@@ -30,7 +30,7 @@ if __name__=="__main__":
 		(ConvF2F(layers=5), 	"ConvF2F-5"),
 		(ConvF2F(), 			"ConvF2F-8"),
 		(DilatedF2F(layers=5), 	"DilatedF2F-5"),
-		(DilatedF2F(), 			"DilatedF2F-8")
+		(DilatedF2F(), 			"DilatedF2F-8"),
 		(DeformF2F(layers=5), 	"DeformF2F-5"),
 		(DeformF2F(), 			"DeformF2F-8")
 	]
@@ -81,4 +81,5 @@ if __name__=="__main__":
 			scheduler.step()
 
 		torch.save(net.state_dict(), f"../weights/{name}.pt")
-		print(f"Model saved to ../weights/{name}.pt")
+		print(f"\tModel saved to ../weights/{name}.pt")
+		print("\tFinal mIoU: %.3f" % test(net))
