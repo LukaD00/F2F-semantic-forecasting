@@ -85,7 +85,7 @@ class F2F(Model):
 		"""
 		self.f2f = f2f.to("cuda")
 		self.f2f.eval()
-		if (name == None) :
+		if (name != None) :
 			self.f2f.load_state_dict(torch.load(f"../weights/{name}.pt"))
 
 		self.name = name

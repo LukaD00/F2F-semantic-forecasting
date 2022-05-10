@@ -43,8 +43,6 @@ if __name__=="__main__":
 		start_time = time.time()
 
 		for epoch in range(160):
-			print("\nEpoch: %d" % epoch)
-			print("Time elapsed: %.2f min" % ((time.time() - start_time)/60))  
 			
 			net.train()
 			train_loss = 0
@@ -62,7 +60,7 @@ if __name__=="__main__":
 				torch.save(net.state_dict(), f"../weights/{name}.pt")
 
 				print("\nEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
-				print("\tTrain -> Loss: %.3f" % (train_loss/len(trainloader)), ((time.time() - start_time)/60))
+				print("\tTrain -> Loss: %.3f" % (train_loss/len(trainloader)))
 
 				net.eval()
 				test_loss = 0
