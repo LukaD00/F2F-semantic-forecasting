@@ -3,7 +3,6 @@ import numpy as np
 from models.sci import ScaleInvariantModel
 from models.resnet.resnet_relu_noskip import resnet18
 from models.convf2f.conv_f2f import ConvF2F
-from util import mIoU
 from PIL import Image
 
 from torchmetrics import JaccardIndex
@@ -84,4 +83,3 @@ if __name__ == '__main__':
 	Image.fromarray(real_img_semantics_colored).save("../demo_out_real.png")
 	print("Real semantics saved to ../demo_out_real.png")
 	
-	print(mIoU(preds, real_img_semantics))

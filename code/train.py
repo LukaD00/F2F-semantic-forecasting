@@ -9,7 +9,7 @@ from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeatur
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedf2f.dilated_f2f import DilatedF2F
 from models.deformf2f.deform_f2f import DeformF2F
-from test import test
+from miou import miou
 
 
 if __name__=="__main__":
@@ -71,10 +71,10 @@ if __name__=="__main__":
 						loss = criterion(outputs, targets)
 						test_loss += loss.item()
 				print("\tEval -> Loss: %.3f" % (test_loss/(len(valloader))))
-				print("\t     -> mIoU: %.3f" % test(net))
+				print("\t     -> mIoU: %.3f" % miou(net))
 		
 			scheduler.step()
 
 		torch.save(net.state_dict(), f"../weights/{name}.pt")
 		print(f"\tModel saved to ../weights/{name}.pt")
-		print("\tFinal mIoU: %.3f" % test(net))
+		print("\tFinal mIoU: %.3f" % miou(net))
