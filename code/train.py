@@ -18,8 +18,8 @@ if __name__=="__main__":
 	
 	# list of nets to train in the format of (net, name) 	
 	nets = [
-		(ConvF2F(layers=5), 	"ConvF2F-5"),
-		(ConvF2F(layers=8),		"ConvF2F-8"),
+		#(ConvF2F(layers=5), 	"ConvF2F-5"),
+		#(ConvF2F(layers=8),		"ConvF2F-8"),
 		(DilatedF2F(layers=5), 	"DilatedF2F-5"),
 		(DilatedF2F(layers=8),	"DilatedF2F-8"),
 		(DeformF2F(layers=5), 	"DeformF2F-5"),
@@ -39,10 +39,12 @@ if __name__=="__main__":
 		optimizer = optim.Adam(net.parameters(), lr=5e-4)
 		scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
-		print(f"Started training {name}")
+		print(f"\n\nStarted training {name}")
 		start_time = time.time()
 
-		for epoch in range(160):
+		num_epochs = 160
+		bestMiou = 0
+		for epoch in range(num_epochs):
 			
 			net.train()
 			train_loss = 0
@@ -56,11 +58,10 @@ if __name__=="__main__":
 				
 				train_loss += loss.item()
 
-			if (epoch % 20 == 0):
-				torch.save(net.state_dict(), f"../weights/{name}.pt")
-
-				print("\nEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
-				print("\tTrain -> Loss: %.3f" % (train_loss/len(trainloader)))
+			if (epoch % 20 == 0 or epoch == num_epochs-1):
+				
+				print("\n\tEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
+				print("\t\tTrain -> Loss: %.3f" % (train_loss/len(trainloader)))
 
 				net.eval()
 				test_loss = 0
@@ -70,11 +71,16 @@ if __name__=="__main__":
 						outputs = net(inputs)
 						loss = criterion(outputs, targets)
 						test_loss += loss.item()
-				print("\tEval -> Loss: %.3f" % (test_loss/(len(valloader))))
-				print("\t     -> mIoU: %.3f" % miou(net))
+				print("\t\tEval -> Loss: %.3f" % (test_loss/(len(valloader))))
+				
+				currentMiou = miou(net)
+				if (currentMiou > bestMiou):
+					torch.save(net.state_dict(), f"../weights/{name}.pt")
+					print("\t\t     -> mIoU: %.3f (saved .pth)" % currentMiou)
+				else:
+					print("\t\t     -> mIoU: %.3f" % currentMiou)
 		
 			scheduler.step()
 
-		torch.save(net.state_dict(), f"../weights/{name}.pt")
-		print(f"\tModel saved to ../weights/{name}.pt")
-		print("\tFinal mIoU: %.3f" % miou(net))
+		print(f"\t\tModel saved to ../weights/{name}.pt")
+		print("\t\tFinal mIoU: %.3f" % bestMiou)

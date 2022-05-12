@@ -4,26 +4,17 @@ Oracle:
 Copy-Last:
     mIoU: 0.45875248312950134
 
+Conv-F2F-5:
+	mIoU: 0.538
+
 Conv-F2F-8:
-	trainingTime: ~2h
-    mIoU: 0.536495566368103
+    mIoU: 0.544
 
 Deform-F2F-5:
-	trainingTime: ~2h
 	mIoU: 0.5392488837242126
 
 Deform-F2F-8:
-	trainingTime: ~2h
 	mIoU: 0.5498101711273193
 
-DilatedConvF2F-8 {third, even less dilated version}
-    trainingTime: ~2h
+DilatedConvF2F-8:
 	mIoU: 0.5196095108985901
-
-DilatedConvF2F-8 {second, less dilated version}
-    trainingTime: ~2h
-	mIoU: 0.5096732974052429
-
-DilatedConvF2F-8 {first, very dilated version}
-    trainingTime: ~3.5h
-	mIoU: 0.4941616654396057
