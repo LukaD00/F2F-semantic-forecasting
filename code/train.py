@@ -20,10 +20,10 @@ if __name__=="__main__":
 	nets = [
 		#(ConvF2F(layers=5), 	"ConvF2F-5"),
 		#(ConvF2F(layers=8),		"ConvF2F-8"),
-		(DilatedF2F(layers=5), 	"DilatedF2F-5"),
-		(DilatedF2F(layers=8),	"DilatedF2F-8"),
 		(DeformF2F(layers=5), 	"DeformF2F-5"),
-		(DeformF2F(layers=8),	"DeformF2F-8")
+		(DeformF2F(layers=8),	"DeformF2F-8"),
+		(DilatedF2F(layers=5), 	"DilatedF2F-5"),
+		(DilatedF2F(layers=8),	"DilatedF2F-8")
 	]
 
 	for net, name in nets:
@@ -43,7 +43,7 @@ if __name__=="__main__":
 		start_time = time.time()
 
 		num_epochs = 160
-		bestMiou = 0
+		best_miou = 0
 		for epoch in range(num_epochs):
 			
 			net.train()
@@ -73,14 +73,15 @@ if __name__=="__main__":
 						test_loss += loss.item()
 				print("\t\tEval -> Loss: %.3f" % (test_loss/(len(valloader))))
 				
-				currentMiou = miou(net)
-				if (currentMiou > bestMiou):
+				current_miou = miou(net)
+				if (current_miou > best_miou):
+					best_miou = current_miou
 					torch.save(net.state_dict(), f"../weights/{name}.pt")
-					print("\t\t     -> mIoU: %.3f (saved .pth)" % currentMiou)
+					print("\t\t     -> mIoU: %.3f (saved .pth)" % current_miou)
 				else:
-					print("\t\t     -> mIoU: %.3f" % currentMiou)
+					print("\t\t     -> mIoU: %.3f" % current_miou)
 		
 			scheduler.step()
 
 		print(f"\t\tModel saved to ../weights/{name}.pt")
-		print("\t\tFinal mIoU: %.3f" % bestMiou)
+		print("\t\tFinal mIoU: %.3f" % best_miou)
