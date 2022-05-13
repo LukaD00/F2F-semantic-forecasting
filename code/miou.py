@@ -45,6 +45,7 @@ def miouModel(model : Model) -> float:
 		prediction = model.forecast(past_features, future_features)
 		ground_truth[ground_truth==255] = 19
 		miou.update(prediction, torch.from_numpy(ground_truth))
+		del past_features, future_features, ground_truth, prediction
 	return miou.compute()
 
 
