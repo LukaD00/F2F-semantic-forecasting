@@ -18,12 +18,12 @@ if __name__=="__main__":
 	
 	# list of nets to train in the format of (net, name) 	
 	nets = [
-		#(ConvF2F(layers=5), 	"ConvF2F-5"),
-		#(ConvF2F(layers=8),		"ConvF2F-8"),
-		(DeformF2F(layers=5), 	"DeformF2F-5"),
 		(DeformF2F(layers=8),	"DeformF2F-8"),
 		(DilatedF2F(layers=5), 	"DilatedF2F-5"),
-		(DilatedF2F(layers=8),	"DilatedF2F-8")
+		(DilatedF2F(layers=8),	"DilatedF2F-8"),
+		(DeformF2F(layers=5), 	"DeformF2F-5"),
+		(ConvF2F(layers=8),		"ConvF2F-8"),
+		(ConvF2F(layers=5), 	"ConvF2F-5")
 	]
 
 	for net, name in nets:
