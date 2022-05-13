@@ -8,10 +8,11 @@ from models.resnet.resnet_relu_noskip import resnet18
 # Inicijalizacija modela za semanticku segmentaciju.
 input_features = 128
 num_classes = 19
-output_features_res = (128, 256)
-output_preds_res = (512, 1024)
+output_features_res = (256, 512)
+output_preds_res = (1024, 2048)
 resnet = resnet18(pretrained=False, efficient=False)
 segm_model = ScaleInvariantModel(resnet, num_classes)
+segm_model.eval()
 segm_model.load_state_dict(torch.load("../weights/r18_halfres_semseg.pt"))
 segm_model.to("cuda")
 
@@ -40,6 +41,7 @@ for _, future_features, ground_truth in dataset:
 
 	# Azuriranje matrice zabune
 	miou.update(preds, ground_truth)
-	print(f"mIoU: {miou.compute()}") # 0.596687376499176
+
+	del future_features, logits, additional_dict, preds, ground_truth
 
 print(f"mIoU: {miou.compute()}") 
