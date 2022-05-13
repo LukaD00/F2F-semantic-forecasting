@@ -77,13 +77,7 @@ class CityscapesHalfresGroundTruthDataset(Dataset):
 		item = self.items[idx]
 		past_features = torch.from_numpy(np.vstack([np.load(os.path.join(CityscapesHalfresGroundTruthDataset.TENSOR_DIR, img)) for img in item[0:self.num_past]]))
 		future_features = future_features = torch.from_numpy(np.load(os.path.join(CityscapesHalfresGroundTruthDataset.TENSOR_DIR, item[-2])))
-		ground_truth = np.array(Image.open(os.path.join(CityscapesHalfresGroundTruthDataset.TRUTH_DIR, item[-1])).resize((1024, 512), Image.NEAREST))
-
-		# TODO: delete comments, used for debugging for now
-		#print(f"Past features loaded from {item[0]}, {item[1]}, {item[2]}, {item[3]}")
-		#print(f"Future features loaded from {item[-2]}")
-		#print(f"Ground truth loaded from {item[-1]}")
-		#print(f"Features: {item[-2]}, GT: {item[-1]}")
+		ground_truth = np.array(Image.open(os.path.join(CityscapesHalfresGroundTruthDataset.TRUTH_DIR, item[-1])))
 
 		if self.transform: 
 			past_features = self.transform(past_features)

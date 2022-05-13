@@ -50,14 +50,13 @@ def miouModel(model : Model) -> float:
 
 if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
-	print(f"Dataset contains {len(dataset)} items")
 
 	sys.stdout = open(os.devnull, 'w') # disable printing
-	models: list[Model] = [Oracle()]
+	models = [Oracle()]
 	sys.stdout = sys.__stdout__ # enable printing
 
 	for model in models:
-		print(f"Testing {model.name()}...")
+		print(f"Testing {model.getName()}...")
 		print(f"\tmIoU: {miouModel(model)}")
 		print()
 
