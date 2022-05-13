@@ -1,84 +1,46 @@
-Started training ConvF2F-5
 
-Epoch: 0, Time: 4.98 min
-	Train -> Loss: 0.702
-	Eval -> Loss: 0.614
-	     -> mIoU: 0.346
 
-Epoch: 20, Time: 91.99 min
-	Train -> Loss: 0.509
-	Eval -> Loss: 0.495
-	     -> mIoU: 0.529
+Started training DeformF2F-5
 
-Epoch: 40, Time: 179.61 min
-	Train -> Loss: 0.500
-	Eval -> Loss: 0.491
-	     -> mIoU: 0.535
+	Epoch: 0, Time: 4.94 min
+		Train -> Loss: 0.707
+		Eval -> Loss: 0.614
+		     -> mIoU: 0.410 (saved .pth)
 
-Epoch: 60, Time: 291.69 min
-	Train -> Loss: 0.496
-	Eval -> Loss: 0.491
-	     -> mIoU: 0.539
+	Epoch: 20, Time: 123.67 min
+		Train -> Loss: 0.525
+		Eval -> Loss: 0.509
+		     -> mIoU: 0.533 (saved .pth)
 
-Epoch: 80, Time: 406.92 min
-	Train -> Loss: 0.493
-	Eval -> Loss: 0.490
-	     -> mIoU: 0.538
+	Epoch: 40, Time: 264.73 min
+		Train -> Loss: 0.508
+		Eval -> Loss: 0.495
+		     -> mIoU: 0.539 (saved .pth)
 
-Epoch: 100, Time: 525.88 min
-	Train -> Loss: 0.491
-	Eval -> Loss: 0.491
-	     -> mIoU: 0.538
+	Epoch: 60, Time: 428.17 min
+		Train -> Loss: 0.504
+		Eval -> Loss: 0.494
+		     -> mIoU: 0.542 (saved .pth)
 
-Epoch: 120, Time: 619.33 min
-	Train -> Loss: 0.489
-	Eval -> Loss: 0.491
-	     -> mIoU: 0.539
+	Epoch: 80, Time: 562.32 min
+		Train -> Loss: 0.501
+		Eval -> Loss: 0.492
+		     -> mIoU: 0.547 (saved .pth)
 
-Epoch: 140, Time: 717.29 min
-	Train -> Loss: 0.488
-	Eval -> Loss: 0.491
-	     -> mIoU: 0.538
-	Model saved to ../weights/ConvF2F-5.pt
-	Final mIoU: 0.538
-Started training ConvF2F-8
+	Epoch: 100, Time: 680.91 min
+		Train -> Loss: 0.498
+		Eval -> Loss: 0.491
+		     -> mIoU: 0.547
 
-Epoch: 0, Time: 5.94 min
-	Train -> Loss: 0.677
-	Eval -> Loss: 0.598
-	     -> mIoU: 0.318
+	Epoch: 120, Time: 801.71 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.490
+		     -> mIoU: 0.547
 
-Epoch: 20, Time: 102.88 min
-	Train -> Loss: 0.500
-	Eval -> Loss: 0.489
-	     -> mIoU: 0.535
+	Epoch: 140, Time: 1017.46 min
+		Train -> Loss: 0.493
+		Eval -> Loss: 0.490
+		     -> mIoU: 0.547
 
-Epoch: 40, Time: 204.14 min
-	Train -> Loss: 0.488
-	Eval -> Loss: 0.485
-	     -> mIoU: 0.544
-
-Epoch: 60, Time: 307.76 min
-	Train -> Loss: 0.483
-	Eval -> Loss: 0.485
-	     -> mIoU: 0.541
-
-Epoch: 80, Time: 419.97 min
-	Train -> Loss: 0.479
-	Eval -> Loss: 0.485
-	     -> mIoU: 0.543
-
-Epoch: 100, Time: 535.00 min
-	Train -> Loss: 0.476
-	Eval -> Loss: 0.484
-	     -> mIoU: 0.543
-
-Epoch: 120, Time: 661.01 min
-	Train -> Loss: 0.474
-	Eval -> Loss: 0.484
-	     -> mIoU: 0.543
-
-Epoch: 140, Time: 790.08 min
-	Train -> Loss: 0.473
-	Eval -> Loss: 0.485
-	     -> mIoU: 0.544
+	Epoch: 159, Time: 1138.56 min
+		Train -> Loss: 0.492
