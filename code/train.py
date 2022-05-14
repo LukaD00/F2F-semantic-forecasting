@@ -16,17 +16,18 @@ if __name__=="__main__":
 
 	device = "cuda"
 	
-	# list of nets to train in the format of (net, name) 	
+	# list of nets to train in the format of (net, name, load)
+	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(DeformF2F(layers=8),	"DeformF2F-8"),
-		(DilatedF2F(layers=5), 	"DilatedF2F-5"),
-		(DilatedF2F(layers=8),	"DilatedF2F-8"),
-		(DeformF2F(layers=5), 	"DeformF2F-5"),
-		(ConvF2F(layers=8),		"ConvF2F-8"),
-		(ConvF2F(layers=5), 	"ConvF2F-5")
+		(DeformF2F(layers=8),	"DeformF2F-8", True),
+		(DilatedF2F(layers=5), 	"DilatedF2F-5", False),
+		(DilatedF2F(layers=8),	"DilatedF2F-8", False),
+		(DeformF2F(layers=5), 	"DeformF2F-5", False),
+		(ConvF2F(layers=8),		"ConvF2F-8", True),
+		(ConvF2F(layers=5), 	"ConvF2F-5", True)
 	]
 
-	for net, name in nets:
+	for net, name, load in nets:
 
 		trainset = CityscapesHalfresFeaturesDataset(train=True)
 		valset = CityscapesHalfresFeaturesDataset(train=False)
@@ -35,6 +36,9 @@ if __name__=="__main__":
 		valloader = torch.utils.data.DataLoader(valset, batch_size=20, shuffle=True, num_workers=2)
 
 		net = net.to(device)
+		if load:
+			net.load_state_dict(torch.load(f"../weights/{name}.pt"))
+
 		criterion = nn.MSELoss()
 		optimizer = optim.Adam(net.parameters(), lr=5e-4)
 		scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
