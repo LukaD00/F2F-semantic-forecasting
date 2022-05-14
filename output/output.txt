@@ -1,46 +1,13 @@
 
 
-Started training DeformF2F-5
+Started training DeformF2F-8
 
-	Epoch: 0, Time: 4.94 min
-		Train -> Loss: 0.707
-		Eval -> Loss: 0.614
-		     -> mIoU: 0.410 (saved .pth)
+	Epoch: 0, Time: 6.87 min
+		Train -> Loss: 0.699
+		Eval -> Loss: 0.608
+		     -> mIoU: 0.309 (saved .pth)
 
-	Epoch: 20, Time: 123.67 min
-		Train -> Loss: 0.525
-		Eval -> Loss: 0.509
-		     -> mIoU: 0.533 (saved .pth)
-
-	Epoch: 40, Time: 264.73 min
-		Train -> Loss: 0.508
-		Eval -> Loss: 0.495
-		     -> mIoU: 0.539 (saved .pth)
-
-	Epoch: 60, Time: 428.17 min
-		Train -> Loss: 0.504
-		Eval -> Loss: 0.494
-		     -> mIoU: 0.542 (saved .pth)
-
-	Epoch: 80, Time: 562.32 min
-		Train -> Loss: 0.501
-		Eval -> Loss: 0.492
-		     -> mIoU: 0.547 (saved .pth)
-
-	Epoch: 100, Time: 680.91 min
-		Train -> Loss: 0.498
+	Epoch: 20, Time: 139.08 min
+		Train -> Loss: 0.502
 		Eval -> Loss: 0.491
-		     -> mIoU: 0.547
-
-	Epoch: 120, Time: 801.71 min
-		Train -> Loss: 0.495
-		Eval -> Loss: 0.490
-		     -> mIoU: 0.547
-
-	Epoch: 140, Time: 1017.46 min
-		Train -> Loss: 0.493
-		Eval -> Loss: 0.490
-		     -> mIoU: 0.547
-
-	Epoch: 159, Time: 1138.56 min
-		Train -> Loss: 0.492
+		     -> mIoU: 0.547 (saved .pth)
