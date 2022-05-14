@@ -15,6 +15,7 @@ from miou import miou
 if __name__=="__main__":
 
 	device = "cuda"
+	print(f"Running on " + torch.cuda.get_device_name(0))
 	
 	# list of nets to train in the format of (net, name, load, epochs)
 	# if load is true, weights will be loaded from filesystem  	
