@@ -2,12 +2,5 @@
 
 Started training DeformF2F-8
 
-	Epoch: 0, Time: 6.87 min
-		Train -> Loss: 0.699
-		Eval -> Loss: 0.608
-		     -> mIoU: 0.309 (saved .pth)
-
-	Epoch: 20, Time: 139.08 min
-		Train -> Loss: 0.502
-		Eval -> Loss: 0.491
-		     -> mIoU: 0.547 (saved .pth)
+	Epoch: 0, Time: 7.57 min
+		Train -> Loss: 0.506
