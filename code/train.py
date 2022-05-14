@@ -47,9 +47,11 @@ if __name__=="__main__":
 		print(f"\n\nStarted training {name}")
 		start_time = time.time()
 
-		best_miou = 0
+		best_val_loss = 0
 		for epoch in range(epochs):
-			
+			print("\n\tEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
+
+			# TRAIN
 			net.train()
 			train_loss = 0
 			for batch_idx, (inputs, targets) in enumerate(trainloader):
@@ -61,31 +63,23 @@ if __name__=="__main__":
 				optimizer.step()
 				
 				train_loss += loss.item()
+			print("\t\tTrain -> Loss: %.3f" % (train_loss/len(trainloader)))
 
-			if (epoch % 20 == 0 or epoch == epochs-1):
-				
-				print("\n\tEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
-				print("\t\tTrain -> Loss: %.3f" % (train_loss/len(trainloader)))
-
-				net.eval()
-				test_loss = 0
-				with torch.no_grad():
-					for batch_idx, (inputs, targets) in enumerate(valloader):
-						inputs, targets = inputs.to(device), targets.to(device)
-						outputs = net(inputs)
-						loss = criterion(outputs, targets)
-						test_loss += loss.item()
-				print("\t\tEval -> Loss: %.3f" % (test_loss/(len(valloader))))
-				
-				current_miou = miou(net)
-				if (current_miou > best_miou):
-					best_miou = current_miou
-					torch.save(net.state_dict(), f"../weights/{name}.pt")
-					print("\t\t     -> mIoU: %.3f (saved .pth)" % current_miou)
-				else:
-					print("\t\t     -> mIoU: %.3f" % current_miou)
+			# VALIDATE
+			net.eval()
+			val_loss = 0
+			with torch.no_grad():
+				for batch_idx, (inputs, targets) in enumerate(valloader):
+					inputs, targets = inputs.to(device), targets.to(device)
+					outputs = net(inputs)
+					loss = criterion(outputs, targets)
+					val_loss += loss.item()
+			print("\t\tEval -> Loss: %.3f" % (val_loss/(len(valloader))))
+			
+			if (val_loss < best_test_loss):
+				best_test_loss = val_loss
+				torch.save(net.state_dict(), f"../weights/{name}.pt")
 		
 			scheduler.step()
 
 		print(f"\t\tModel saved to ../weights/{name}.pt")
-		print("\t\tFinal mIoU: %.3f" % best_miou)
