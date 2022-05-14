@@ -1,6 +1,7 @@
+Running on NVIDIA GeForce GTX 1070 Ti
 
 
 Started training DeformF2F-8
 
-	Epoch: 0, Time: 7.57 min
+	Epoch: 0, Time: 6.33 min
 		Train -> Loss: 0.506
