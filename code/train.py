@@ -76,8 +76,8 @@ if __name__=="__main__":
 					val_loss += loss.item()
 			print("\t\tEval -> Loss: %.3f" % (val_loss/(len(valloader))))
 			
-			if (val_loss < best_test_loss):
-				best_test_loss = val_loss
+			if (val_loss < best_val_loss):
+				best_val_loss = val_loss
 				torch.save(net.state_dict(), f"../weights/{name}.pt")
 		
 			scheduler.step()
