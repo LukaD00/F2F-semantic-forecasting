@@ -16,18 +16,18 @@ if __name__=="__main__":
 
 	device = "cuda"
 	
-	# list of nets to train in the format of (net, name, load)
+	# list of nets to train in the format of (net, name, load, epochs)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(DeformF2F(layers=8),	"DeformF2F-8", True),
-		(DilatedF2F(layers=5), 	"DilatedF2F-5", False),
-		(DilatedF2F(layers=8),	"DilatedF2F-8", False),
-		(DeformF2F(layers=5), 	"DeformF2F-5", False),
-		(ConvF2F(layers=8),		"ConvF2F-8", True),
-		(ConvF2F(layers=5), 	"ConvF2F-5", True)
+		(DeformF2F(layers=8),	"DeformF2F-8", True, 140),
+		(DilatedF2F(layers=5), 	"DilatedF2F-5", False, 160),
+		(DilatedF2F(layers=8),	"DilatedF2F-8", False, 160),
+		(DeformF2F(layers=5), 	"DeformF2F-5", False, 160),
+		(ConvF2F(layers=8),		"ConvF2F-8", False, 160),
+		(ConvF2F(layers=5), 	"ConvF2F-5", False, 160)
 	]
 
-	for net, name, load in nets:
+	for net, name, load, epochs in nets:
 
 		trainset = CityscapesHalfresFeaturesDataset(train=True)
 		valset = CityscapesHalfresFeaturesDataset(train=False)
@@ -46,9 +46,8 @@ if __name__=="__main__":
 		print(f"\n\nStarted training {name}")
 		start_time = time.time()
 
-		num_epochs = 160
 		best_miou = 0
-		for epoch in range(num_epochs):
+		for epoch in range(epochs):
 			
 			net.train()
 			train_loss = 0
@@ -62,7 +61,7 @@ if __name__=="__main__":
 				
 				train_loss += loss.item()
 
-			if (epoch % 20 == 0 or epoch == num_epochs-1):
+			if (epoch % 20 == 0 or epoch == epochs-1):
 				
 				print("\n\tEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
 				print("\t\tTrain -> Loss: %.3f" % (train_loss/len(trainloader)))
