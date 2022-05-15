@@ -1,4 +1,5 @@
 /cityscapes_halfres_features_r18
 /cityscapes-gt
+/cityscapes-original
 __pycache__
 /code/a.py
