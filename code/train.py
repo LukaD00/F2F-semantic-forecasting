@@ -47,7 +47,7 @@ if __name__=="__main__":
 		print(f"\n\nStarted training {name}")
 		start_time = time.time()
 
-		best_val_loss = 0
+		best_val_loss = None
 		for epoch in range(epochs):
 			print("\n\tEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
 
@@ -76,10 +76,11 @@ if __name__=="__main__":
 					val_loss += loss.item()
 			print("\t\tEval -> Loss: %.3f" % (val_loss/(len(valloader))))
 			
-			if (val_loss < best_val_loss):
+			if (best_val_loss == None or val_loss < best_val_loss):
 				best_val_loss = val_loss
 				torch.save(net.state_dict(), f"../weights/{name}.pt")
+				print(f"\t\tModel saved to ../weights/{name}.pt")
 		
 			scheduler.step()
 
-		print(f"\t\tModel saved to ../weights/{name}.pt")
+		
