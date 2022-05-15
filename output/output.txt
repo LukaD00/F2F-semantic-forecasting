@@ -3,5 +3,792 @@ Running on NVIDIA GeForce GTX 1070 Ti
 
 Started training DeformF2F-8
 
-	Epoch: 0, Time: 6.33 min
+	Epoch: 0, Time: 0.00 min
 		Train -> Loss: 0.506
+		Eval -> Loss: 0.491
+
+	Epoch: 1, Time: 6.39 min
+		Train -> Loss: 0.501
+		Eval -> Loss: 0.489
+
+	Epoch: 2, Time: 12.64 min
+		Train -> Loss: 0.501
+		Eval -> Loss: 0.489
+
+	Epoch: 3, Time: 19.09 min
+		Train -> Loss: 0.500
+		Eval -> Loss: 0.487
+
+	Epoch: 4, Time: 25.65 min
+		Train -> Loss: 0.500
+		Eval -> Loss: 0.487
+
+	Epoch: 5, Time: 32.24 min
+		Train -> Loss: 0.499
+		Eval -> Loss: 0.488
+
+	Epoch: 6, Time: 38.84 min
+		Train -> Loss: 0.498
+		Eval -> Loss: 0.486
+
+	Epoch: 7, Time: 45.70 min
+		Train -> Loss: 0.498
+		Eval -> Loss: 0.485
+
+	Epoch: 8, Time: 52.56 min
+		Train -> Loss: 0.497
+		Eval -> Loss: 0.486
+
+	Epoch: 9, Time: 59.67 min
+		Train -> Loss: 0.497
+		Eval -> Loss: 0.485
+
+	Epoch: 10, Time: 66.77 min
+		Train -> Loss: 0.497
+		Eval -> Loss: 0.486
+
+	Epoch: 11, Time: 73.89 min
+		Train -> Loss: 0.496
+		Eval -> Loss: 0.485
+
+	Epoch: 12, Time: 81.03 min
+		Train -> Loss: 0.496
+		Eval -> Loss: 0.486
+
+	Epoch: 13, Time: 87.99 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.485
+
+	Epoch: 14, Time: 95.12 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.484
+
+	Epoch: 15, Time: 102.62 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.485
+
+	Epoch: 16, Time: 110.07 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.484
+
+	Epoch: 17, Time: 117.61 min
+		Train -> Loss: 0.494
+		Eval -> Loss: 0.484
+
+	Epoch: 18, Time: 125.24 min
+		Train -> Loss: 0.494
+		Eval -> Loss: 0.485
+
+	Epoch: 19, Time: 132.94 min
+		Train -> Loss: 0.494
+		Eval -> Loss: 0.483
+
+	Epoch: 20, Time: 140.74 min
+		Train -> Loss: 0.493
+		Eval -> Loss: 0.482
+
+	Epoch: 21, Time: 148.65 min
+		Train -> Loss: 0.493
+		Eval -> Loss: 0.482
+
+	Epoch: 22, Time: 156.24 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.483
+
+	Epoch: 23, Time: 163.94 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.483
+
+	Epoch: 24, Time: 171.99 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.484
+
+	Epoch: 25, Time: 179.67 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.483
+
+	Epoch: 26, Time: 187.22 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.484
+
+	Epoch: 27, Time: 194.81 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.482
+
+	Epoch: 28, Time: 202.45 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.482
+
+	Epoch: 29, Time: 210.10 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.482
+
+	Epoch: 30, Time: 217.87 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.482
+
+	Epoch: 31, Time: 225.73 min
+		Train -> Loss: 0.490
+		Eval -> Loss: 0.482
+
+	Epoch: 32, Time: 233.56 min
+		Train -> Loss: 0.490
+		Eval -> Loss: 0.483
+
+	Epoch: 33, Time: 241.38 min
+		Train -> Loss: 0.490
+		Eval -> Loss: 0.481
+
+	Epoch: 34, Time: 249.06 min
+		Train -> Loss: 0.490
+		Eval -> Loss: 0.482
+
+	Epoch: 35, Time: 256.82 min
+		Train -> Loss: 0.489
+		Eval -> Loss: 0.481
+
+	Epoch: 36, Time: 264.48 min
+		Train -> Loss: 0.489
+		Eval -> Loss: 0.481
+
+	Epoch: 37, Time: 272.12 min
+		Train -> Loss: 0.489
+		Eval -> Loss: 0.482
+
+	Epoch: 38, Time: 279.78 min
+		Train -> Loss: 0.489
+		Eval -> Loss: 0.483
+
+	Epoch: 39, Time: 287.57 min
+		Train -> Loss: 0.489
+		Eval -> Loss: 0.481
+
+	Epoch: 40, Time: 295.23 min
+		Train -> Loss: 0.488
+		Eval -> Loss: 0.481
+
+	Epoch: 41, Time: 302.99 min
+		Train -> Loss: 0.488
+		Eval -> Loss: 0.483
+
+	Epoch: 42, Time: 310.74 min
+		Train -> Loss: 0.488
+		Eval -> Loss: 0.484
+
+	Epoch: 43, Time: 318.61 min
+		Train -> Loss: 0.487
+		Eval -> Loss: 0.480
+
+	Epoch: 44, Time: 326.28 min
+		Train -> Loss: 0.487
+		Eval -> Loss: 0.482
+
+	Epoch: 45, Time: 333.80 min
+		Train -> Loss: 0.487
+		Eval -> Loss: 0.482
+
+	Epoch: 46, Time: 341.24 min
+		Train -> Loss: 0.487
+		Eval -> Loss: 0.480
+
+	Epoch: 47, Time: 348.31 min
+		Train -> Loss: 0.487
+		Eval -> Loss: 0.481
+
+	Epoch: 48, Time: 355.51 min
+		Train -> Loss: 0.487
+		Eval -> Loss: 0.480
+
+	Epoch: 49, Time: 362.31 min
+		Train -> Loss: 0.486
+		Eval -> Loss: 0.481
+
+	Epoch: 50, Time: 368.76 min
+		Train -> Loss: 0.486
+		Eval -> Loss: 0.481
+
+	Epoch: 51, Time: 375.52 min
+		Train -> Loss: 0.486
+		Eval -> Loss: 0.481
+
+	Epoch: 52, Time: 382.00 min
+		Train -> Loss: 0.486
+		Eval -> Loss: 0.480
+
+	Epoch: 53, Time: 388.22 min
+		Train -> Loss: 0.485
+		Eval -> Loss: 0.480
+
+	Epoch: 54, Time: 394.55 min
+		Train -> Loss: 0.485
+		Eval -> Loss: 0.481
+
+	Epoch: 55, Time: 400.82 min
+		Train -> Loss: 0.485
+		Eval -> Loss: 0.481
+
+	Epoch: 56, Time: 407.00 min
+		Train -> Loss: 0.485
+		Eval -> Loss: 0.480
+
+	Epoch: 57, Time: 412.97 min
+		Train -> Loss: 0.484
+		Eval -> Loss: 0.480
+
+	Epoch: 58, Time: 419.02 min
+		Train -> Loss: 0.484
+		Eval -> Loss: 0.480
+
+	Epoch: 59, Time: 425.10 min
+		Train -> Loss: 0.484
+		Eval -> Loss: 0.480
+
+	Epoch: 60, Time: 430.95 min
+		Train -> Loss: 0.484
+		Eval -> Loss: 0.481
+
+	Epoch: 61, Time: 436.73 min
+		Train -> Loss: 0.484
+		Eval -> Loss: 0.479
+
+	Epoch: 62, Time: 442.56 min
+		Train -> Loss: 0.484
+		Eval -> Loss: 0.480
+
+	Epoch: 63, Time: 448.14 min
+		Train -> Loss: 0.483
+		Eval -> Loss: 0.480
+
+	Epoch: 64, Time: 454.47 min
+		Train -> Loss: 0.483
+		Eval -> Loss: 0.480
+
+	Epoch: 65, Time: 461.57 min
+		Train -> Loss: 0.483
+		Eval -> Loss: 0.479
+
+	Epoch: 66, Time: 468.73 min
+		Train -> Loss: 0.483
+		Eval -> Loss: 0.479
+
+	Epoch: 67, Time: 475.97 min
+		Train -> Loss: 0.483
+		Eval -> Loss: 0.479
+
+	Epoch: 68, Time: 483.47 min
+		Train -> Loss: 0.482
+		Eval -> Loss: 0.479
+
+	Epoch: 69, Time: 491.13 min
+		Train -> Loss: 0.482
+		Eval -> Loss: 0.479
+
+	Epoch: 70, Time: 498.29 min
+		Train -> Loss: 0.482
+		Eval -> Loss: 0.479
+
+	Epoch: 71, Time: 505.44 min
+		Train -> Loss: 0.482
+		Eval -> Loss: 0.482
+
+	Epoch: 72, Time: 512.76 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.479
+
+	Epoch: 73, Time: 519.79 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.480
+
+	Epoch: 74, Time: 526.59 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.481
+
+	Epoch: 75, Time: 533.00 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.481
+
+	Epoch: 76, Time: 539.02 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.478
+
+	Epoch: 77, Time: 551.78 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.478
+
+	Epoch: 78, Time: 568.63 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.479
+
+	Epoch: 79, Time: 585.13 min
+		Train -> Loss: 0.481
+		Eval -> Loss: 0.480
+
+	Epoch: 80, Time: 601.83 min
+		Train -> Loss: 0.480
+		Eval -> Loss: 0.478
+
+	Epoch: 81, Time: 618.03 min
+		Train -> Loss: 0.480
+		Eval -> Loss: 0.479
+
+	Epoch: 82, Time: 633.24 min
+		Train -> Loss: 0.480
+		Eval -> Loss: 0.478
+
+	Epoch: 83, Time: 647.53 min
+		Train -> Loss: 0.480
+		Eval -> Loss: 0.478
+
+	Epoch: 84, Time: 661.35 min
+		Train -> Loss: 0.479
+		Eval -> Loss: 0.479
+
+	Epoch: 85, Time: 675.61 min
+		Train -> Loss: 0.479
+		Eval -> Loss: 0.479
+
+	Epoch: 86, Time: 689.14 min
+		Train -> Loss: 0.479
+		Eval -> Loss: 0.478
+
+	Epoch: 87, Time: 702.63 min
+		Train -> Loss: 0.479
+		Eval -> Loss: 0.477
+
+	Epoch: 88, Time: 716.07 min
+		Train -> Loss: 0.479
+		Eval -> Loss: 0.477
+
+	Epoch: 89, Time: 728.99 min
+		Train -> Loss: 0.479
+		Eval -> Loss: 0.478
+
+	Epoch: 90, Time: 741.77 min
+		Train -> Loss: 0.478
+		Eval -> Loss: 0.479
+
+	Epoch: 91, Time: 754.59 min
+		Train -> Loss: 0.478
+		Eval -> Loss: 0.478
+
+	Epoch: 92, Time: 767.58 min
+		Train -> Loss: 0.478
+		Eval -> Loss: 0.479
+
+	Epoch: 93, Time: 779.93 min
+		Train -> Loss: 0.478
+		Eval -> Loss: 0.477
+
+	Epoch: 94, Time: 792.38 min
+		Train -> Loss: 0.478
+		Eval -> Loss: 0.477
+
+	Epoch: 95, Time: 804.93 min
+		Train -> Loss: 0.478
+		Eval -> Loss: 0.478
+
+	Epoch: 96, Time: 817.30 min
+		Train -> Loss: 0.478
+		Eval -> Loss: 0.478
+
+	Epoch: 97, Time: 829.94 min
+		Train -> Loss: 0.477
+		Eval -> Loss: 0.478
+
+	Epoch: 98, Time: 842.28 min
+		Train -> Loss: 0.477
+		Eval -> Loss: 0.477
+
+	Epoch: 99, Time: 854.69 min
+		Train -> Loss: 0.477
+		Eval -> Loss: 0.478
+
+	Epoch: 100, Time: 866.64 min
+		Train -> Loss: 0.477
+		Eval -> Loss: 0.478
+
+	Epoch: 101, Time: 878.16 min
+		Train -> Loss: 0.477
+		Eval -> Loss: 0.477
+
+	Epoch: 102, Time: 889.77 min
+		Train -> Loss: 0.476
+		Eval -> Loss: 0.478
+
+	Epoch: 103, Time: 901.27 min
+		Train -> Loss: 0.476
+		Eval -> Loss: 0.477
+
+	Epoch: 104, Time: 913.10 min
+		Train -> Loss: 0.476
+		Eval -> Loss: 0.477
+
+	Epoch: 105, Time: 924.44 min
+		Train -> Loss: 0.476
+		Eval -> Loss: 0.478
+
+	Epoch: 106, Time: 935.47 min
+		Train -> Loss: 0.476
+		Eval -> Loss: 0.477
+
+	Epoch: 107, Time: 946.82 min
+		Train -> Loss: 0.475
+		Eval -> Loss: 0.477
+
+	Epoch: 108, Time: 958.67 min
+		Train -> Loss: 0.476
+		Eval -> Loss: 0.477
+
+	Epoch: 109, Time: 972.24 min
+		Train -> Loss: 0.475
+		Eval -> Loss: 0.478
+
+	Epoch: 110, Time: 988.68 min
+		Train -> Loss: 0.475
+		Eval -> Loss: 0.477
+
+	Epoch: 111, Time: 995.05 min
+		Train -> Loss: 0.475
+		Eval -> Loss: 0.477
+
+	Epoch: 112, Time: 1001.76 min
+		Train -> Loss: 0.475
+		Eval -> Loss: 0.477
+
+	Epoch: 113, Time: 1008.75 min
+		Train -> Loss: 0.475
+		Eval -> Loss: 0.477
+
+	Epoch: 114, Time: 1016.12 min
+		Train -> Loss: 0.475
+		Eval -> Loss: 0.477
+
+	Epoch: 115, Time: 1023.70 min
+		Train -> Loss: 0.474
+		Eval -> Loss: 0.477
+
+	Epoch: 116, Time: 1031.61 min
+		Train -> Loss: 0.474
+		Eval -> Loss: 0.477
+
+	Epoch: 117, Time: 1039.66 min
+		Train -> Loss: 0.474
+		Eval -> Loss: 0.477
+
+	Epoch: 118, Time: 1047.62 min
+		Train -> Loss: 0.474
+		Eval -> Loss: 0.477
+
+	Epoch: 119, Time: 1053.83 min
+		Train -> Loss: 0.474
+		Eval -> Loss: 0.476
+
+	Epoch: 120, Time: 1059.77 min
+		Train -> Loss: 0.474
+		Eval -> Loss: 0.477
+
+	Epoch: 121, Time: 1065.97 min
+		Train -> Loss: 0.474
+		Eval -> Loss: 0.476
+
+	Epoch: 122, Time: 1072.30 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.477
+
+	Epoch: 123, Time: 1078.63 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.477
+
+	Epoch: 124, Time: 1084.93 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.477
+
+	Epoch: 125, Time: 1091.26 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.477
+
+	Epoch: 126, Time: 1097.77 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.477
+
+	Epoch: 127, Time: 1104.17 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.477
+
+	Epoch: 128, Time: 1110.80 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.476
+
+	Epoch: 129, Time: 1117.38 min
+		Train -> Loss: 0.473
+		Eval -> Loss: 0.477
+
+	Epoch: 130, Time: 1123.89 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.476
+
+	Epoch: 131, Time: 1130.51 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.477
+
+	Epoch: 132, Time: 1137.13 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.476
+
+	Epoch: 133, Time: 1143.68 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.477
+
+	Epoch: 134, Time: 1150.28 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.477
+
+	Epoch: 135, Time: 1156.97 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.476
+
+	Epoch: 136, Time: 1163.61 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.476
+
+	Epoch: 137, Time: 1170.10 min
+		Train -> Loss: 0.472
+		Eval -> Loss: 0.476
+
+	Epoch: 138, Time: 1176.53 min
+		Train -> Loss: 0.471
+		Eval -> Loss: 0.476
+
+	Epoch: 139, Time: 1182.80 min
+		Train -> Loss: 0.471
+		Eval -> Loss: 0.476
+		Model saved to ../weights/DeformF2F-8.pt
+
+
+Started training DilatedF2F-5
+
+	Epoch: 0, Time: 0.00 min
+		Train -> Loss: 0.683
+		Eval -> Loss: 0.586
+
+	Epoch: 1, Time: 6.51 min
+		Train -> Loss: 0.589
+		Eval -> Loss: 0.556
+
+	Epoch: 2, Time: 13.06 min
+		Train -> Loss: 0.565
+		Eval -> Loss: 0.540
+
+	Epoch: 3, Time: 19.39 min
+		Train -> Loss: 0.553
+		Eval -> Loss: 0.531
+
+	Epoch: 4, Time: 25.64 min
+		Train -> Loss: 0.546
+		Eval -> Loss: 0.526
+
+	Epoch: 5, Time: 32.03 min
+		Train -> Loss: 0.541
+		Eval -> Loss: 0.522
+
+	Epoch: 6, Time: 38.29 min
+		Train -> Loss: 0.537
+		Eval -> Loss: 0.518
+
+	Epoch: 7, Time: 44.81 min
+		Train -> Loss: 0.533
+		Eval -> Loss: 0.514
+
+	Epoch: 8, Time: 51.34 min
+		Train -> Loss: 0.528
+		Eval -> Loss: 0.511
+
+	Epoch: 9, Time: 58.24 min
+		Train -> Loss: 0.526
+		Eval -> Loss: 0.509
+
+	Epoch: 10, Time: 64.95 min
+		Train -> Loss: 0.524
+		Eval -> Loss: 0.507
+
+	Epoch: 11, Time: 71.66 min
+		Train -> Loss: 0.522
+		Eval -> Loss: 0.506
+
+	Epoch: 12, Time: 78.56 min
+		Train -> Loss: 0.520
+		Eval -> Loss: 0.504
+
+	Epoch: 13, Time: 85.36 min
+		Train -> Loss: 0.518
+		Eval -> Loss: 0.503
+
+	Epoch: 14, Time: 92.11 min
+		Train -> Loss: 0.515
+		Eval -> Loss: 0.499
+
+	Epoch: 15, Time: 98.88 min
+		Train -> Loss: 0.513
+		Eval -> Loss: 0.499
+
+	Epoch: 16, Time: 105.61 min
+		Train -> Loss: 0.512
+		Eval -> Loss: 0.498
+
+	Epoch: 17, Time: 112.27 min
+		Train -> Loss: 0.511
+		Eval -> Loss: 0.497
+
+	Epoch: 18, Time: 119.27 min
+		Train -> Loss: 0.510
+		Eval -> Loss: 0.497
+
+	Epoch: 19, Time: 126.23 min
+		Train -> Loss: 0.509
+		Eval -> Loss: 0.495
+
+	Epoch: 20, Time: 133.05 min
+		Train -> Loss: 0.508
+		Eval -> Loss: 0.495
+
+	Epoch: 21, Time: 139.91 min
+		Train -> Loss: 0.507
+		Eval -> Loss: 0.495
+
+	Epoch: 22, Time: 146.57 min
+		Train -> Loss: 0.506
+		Eval -> Loss: 0.494
+
+	Epoch: 23, Time: 153.45 min
+		Train -> Loss: 0.506
+		Eval -> Loss: 0.494
+
+	Epoch: 24, Time: 160.29 min
+		Train -> Loss: 0.505
+		Eval -> Loss: 0.494
+
+	Epoch: 25, Time: 167.35 min
+		Train -> Loss: 0.504
+		Eval -> Loss: 0.493
+
+	Epoch: 26, Time: 174.37 min
+		Train -> Loss: 0.504
+		Eval -> Loss: 0.493
+
+	Epoch: 27, Time: 181.52 min
+		Train -> Loss: 0.503
+		Eval -> Loss: 0.492
+
+	Epoch: 28, Time: 188.66 min
+		Train -> Loss: 0.500
+		Eval -> Loss: 0.490
+
+	Epoch: 29, Time: 195.90 min
+		Train -> Loss: 0.499
+		Eval -> Loss: 0.490
+
+	Epoch: 30, Time: 202.93 min
+		Train -> Loss: 0.498
+		Eval -> Loss: 0.491
+
+	Epoch: 31, Time: 210.22 min
+		Train -> Loss: 0.498
+		Eval -> Loss: 0.490
+
+	Epoch: 32, Time: 217.44 min
+		Train -> Loss: 0.497
+		Eval -> Loss: 0.489
+
+	Epoch: 33, Time: 224.80 min
+		Train -> Loss: 0.497
+		Eval -> Loss: 0.490
+
+	Epoch: 34, Time: 232.65 min
+		Train -> Loss: 0.497
+		Eval -> Loss: 0.489
+
+	Epoch: 35, Time: 240.75 min
+		Train -> Loss: 0.496
+		Eval -> Loss: 0.489
+
+	Epoch: 36, Time: 248.74 min
+		Train -> Loss: 0.496
+		Eval -> Loss: 0.489
+
+	Epoch: 37, Time: 256.47 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.489
+
+	Epoch: 38, Time: 264.54 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.489
+
+	Epoch: 39, Time: 272.61 min
+		Train -> Loss: 0.495
+		Eval -> Loss: 0.489
+
+	Epoch: 40, Time: 280.82 min
+		Train -> Loss: 0.494
+		Eval -> Loss: 0.489
+
+	Epoch: 41, Time: 289.10 min
+		Train -> Loss: 0.494
+		Eval -> Loss: 0.488
+
+	Epoch: 42, Time: 297.49 min
+		Train -> Loss: 0.494
+		Eval -> Loss: 0.488
+
+	Epoch: 43, Time: 305.91 min
+		Train -> Loss: 0.494
+		Eval -> Loss: 0.489
+
+	Epoch: 44, Time: 314.39 min
+		Train -> Loss: 0.493
+		Eval -> Loss: 0.488
+
+	Epoch: 45, Time: 323.09 min
+		Train -> Loss: 0.493
+		Eval -> Loss: 0.488
+
+	Epoch: 46, Time: 331.92 min
+		Train -> Loss: 0.493
+		Eval -> Loss: 0.488
+
+	Epoch: 47, Time: 341.04 min
+		Train -> Loss: 0.493
+		Eval -> Loss: 0.489
+
+	Epoch: 48, Time: 350.02 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.488
+
+	Epoch: 49, Time: 359.19 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.488
+
+	Epoch: 50, Time: 368.53 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.488
+
+	Epoch: 51, Time: 377.92 min
+		Train -> Loss: 0.492
+		Eval -> Loss: 0.489
+
+	Epoch: 52, Time: 387.27 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.489
+
+	Epoch: 53, Time: 396.74 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.489
+
+	Epoch: 54, Time: 406.24 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.488
+
+	Epoch: 55, Time: 416.04 min
+		Train -> Loss: 0.491
+		Eval -> Loss: 0.488
+
+	Epoch: 56, Time: 426.03 min
