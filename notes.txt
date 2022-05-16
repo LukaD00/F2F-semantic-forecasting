@@ -1,20 +1,14 @@
-Oracle:
-    mIoU: 0.5966874361038208
+Testing Copy-Last...
+        mIoU: 0.4986390471458435
 
-Copy-Last:
-    mIoU: 0.45875248312950134
+Testing Oracle...
+        mIoU: 0.660978376865387
 
-Conv-F2F-5:
-	mIoU: 0.538
+Testing ConvF2F-8...
+        mIoU: 0.5799136161804199
 
-Conv-F2F-8:
-    mIoU: 0.544
+Testing ConvF2F-5...
+        mIoU: 0.5699270367622375
 
-Deform-F2F-5:
-	mIoU: 0.5392488837242126
-
-Deform-F2F-8:
-	mIoU: 0.5498101711273193
-
-DilatedConvF2F-8:
-	mIoU: 0.5196095108985901
+Testing DeformF2F-8...
+        mIoU: 0.5720853209495544
