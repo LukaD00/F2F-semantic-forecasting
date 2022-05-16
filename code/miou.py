@@ -39,22 +39,26 @@ def miouModel(model : Model) -> float:
 	Returns:
 		mIoU achieved by model on dataset
 	"""
-	miou = JaccardIndex(num_classes=20, ignore_index=19)
-	for past_features, future_features, ground_truth in CityscapesHalfresGroundTruthDataset():
-		past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
-		prediction = model.forecast(past_features, future_features)
-		ground_truth[ground_truth==255] = 19
-		miou.update(prediction, torch.from_numpy(ground_truth))
-		del past_features, future_features, ground_truth, prediction
+	with torch.no_grad():
+		miou = JaccardIndex(num_classes=20, ignore_index=19)
+		for past_features, future_features, ground_truth in CityscapesHalfresGroundTruthDataset():
+			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
+			prediction = model.forecast(past_features, future_features)
+			ground_truth[ground_truth==255] = 19
+			miou.update(prediction, torch.from_numpy(ground_truth))
+			del past_features, future_features, ground_truth, prediction
 	return miou.compute().item()
 
 
 if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
 
-	sys.stdout = open(os.devnull, 'w') # disable printing
-	models = [Oracle()]
-	sys.stdout = sys.__stdout__ # enable printing
+	models = [
+		F2F(DeformF2F(), "DeformF2F-8"),
+		F2F(ConvF2F(), "ConvF2F-8"),
+		CopyLast(),
+		Oracle()
+	]
 
 	for model in models:
 		print(f"Testing {model.getName()}...")
