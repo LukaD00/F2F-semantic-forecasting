@@ -36,15 +36,19 @@ def create_cityscapes_label_colormap():
 
 if __name__ == '__main__':
 
-	city = "frankfurt_000001"
-	tag = 27325
+	folder = "val"
+	city = "frankfurt"
+	seq = "000001"
+	city_seq = city + "_" + seq
+	tag = 34047
 
-	past0_path = f"../cityscapes_halfres_features_r18/val/{city}_{str(tag-12).zfill(6)}_leftImg8bit.npy"
-	past1_path = f"../cityscapes_halfres_features_r18/val/{city}_{str(tag-9).zfill(6)}_leftImg8bit.npy"
-	past2_path = f"../cityscapes_halfres_features_r18/val/{city}_{str(tag-6).zfill(6)}_leftImg8bit.npy"
-	past3_path = f"../cityscapes_halfres_features_r18/val/{city}_{str(tag-3).zfill(6)}_leftImg8bit.npy"
-	future_path = f"../cityscapes_halfres_features_r18/val/{city}_{str(tag).zfill(6)}_leftImg8bit.npy"
-	future_gt_path = f"../cityscapes-gt/val/{city}_{str(tag).zfill(6)}_gtFine_labelTrainIds.png"
+	past0_path = f"../cityscapes_halfres_features_r18/{folder}/{city_seq}_{str(tag-12).zfill(6)}_leftImg8bit.npy"
+	past1_path = f"../cityscapes_halfres_features_r18/{folder}/{city_seq}_{str(tag-9).zfill(6)}_leftImg8bit.npy"
+	past2_path = f"../cityscapes_halfres_features_r18/{folder}/{city_seq}_{str(tag-6).zfill(6)}_leftImg8bit.npy"
+	past3_path = f"../cityscapes_halfres_features_r18/{folder}/{city_seq}_{str(tag-3).zfill(6)}_leftImg8bit.npy"
+	future_path = f"../cityscapes_halfres_features_r18/{folder}/{city_seq}_{str(tag).zfill(6)}_leftImg8bit.npy"
+	future_gt_path = f"../cityscapes-gt/{folder}/{city_seq}_{str(tag).zfill(6)}_gtFine_labelTrainIds.png"
+	original_path = f"../cityscapes-original/{folder}/{city}/{city_seq}_{str(tag).zfill(6)}_leftImg8bit.png"
 
 	past0 = np.load(past0_path)
 	past1 = np.load(past1_path)
@@ -58,21 +62,26 @@ if __name__ == '__main__':
 	models: list[Model] = [
 		Oracle(),
 		F2F(ConvF2F(layers=8), "ConvF2F-8"),
-		F2F(DilatedF2F(layers=8), "DilatedF2F-8"),
-		F2F(DeformF2F(layers=8), "DeformF2F-8")
+		F2F(DilatedF2F(layers=8), "DilatedF2F-8")#,
+		#F2F(DeformF2F(layers=8), "DeformF2F-8")
 	]
 
 	for model in models:
 		preds = model.forecast(past_features, future_features)
 		preds_colored = colormap[preds]
 		image = Image.fromarray(preds_colored)
-		path = f"../output/{city}_{str(tag).zfill(6)}_{model.getName()}.png"
+		path = f"../output/{city_seq}_{str(tag).zfill(6)}_{model.getName()}.png"
 		image.save(path)
 		print(f"{model.getName()} prediction saved to {path}")
 
-	ground_truth = np.array(Image.open(future_gt_path).resize((1024, 512), Image.NEAREST))
+	ground_truth = np.array(Image.open(future_gt_path))
 	ground_truth_colored = colormap[ground_truth]
 	image = Image.fromarray(ground_truth_colored)
-	path = f"../output/{city}_{str(tag).zfill(6)}_gt.png"
+	path = f"../output/{city_seq}_{str(tag).zfill(6)}_gt.png"
 	image.save(path)
 	print(f"Ground truth saved to {path}")
+
+	original = Image.open(original_path)
+	path = f"../output/{city_seq}_{str(tag).zfill(6)}_original.png"
+	original.save(path)
+	print(f"Original image saved to {path}")

@@ -73,7 +73,7 @@ class BasicBlock(nn.Module):
 class _Upsample(nn.Module):
     def __init__(self, num_maps_in, num_maps_out, use_bn=True, k=3):
         super(_Upsample, self).__init__()
-        print(f'Upsample layer: in = {num_maps_in}, skip = None, out = {num_maps_out}')
+        #print(f'Upsample layer: in = {num_maps_in}, skip = None, out = {num_maps_out}')
         self.blend_conv = _BNReluConv(num_maps_in, num_maps_out, k=k, batch_norm=use_bn)
 
     def forward(self, x, skip_size):
