@@ -6,7 +6,6 @@ import torch.optim as optim
 
 from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeaturesDataset
 
-from models.util import SemsegCrossEntropy
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedf2f.dilated_f2f import DilatedF2F
 from models.deformf2f.deform_f2f import DeformF2F
@@ -41,7 +40,7 @@ if __name__=="__main__":
 		if load:
 			net.load_state_dict(torch.load(f"../weights/{name}.pt"))
 
-		criterion = SemsegCrossEntropy()
+		criterion = nn.MSELoss()
 		optimizer = optim.Adam(net.parameters(), lr=5e-4)
 		scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
