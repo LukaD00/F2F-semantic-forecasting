@@ -54,10 +54,11 @@ if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
 
 	models = [
-		F2F(DeformF2F(), "DeformF2F-8"),
-		F2F(ConvF2F(), "ConvF2F-8"),
-		CopyLast(),
-		Oracle()
+		F2F(DilatedF2F(layers=5), "DilatedF2F-5")
+		#F2F(DeformF2F(), "DeformF2F-8")
+		#F2F(ConvF2F(), "ConvF2F-8"),
+		#CopyLast(),
+		#Oracle()
 	]
 
 	for model in models:

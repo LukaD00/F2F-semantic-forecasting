@@ -6,6 +6,7 @@ import torch.optim as optim
 
 from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeaturesDataset
 
+from models.util import SemsegCrossEntropy
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedf2f.dilated_f2f import DilatedF2F
 from models.deformf2f.deform_f2f import DeformF2F
@@ -20,12 +21,12 @@ if __name__=="__main__":
 	# list of nets to train in the format of (net, name, load, epochs)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(DeformF2F(layers=8),	"DeformF2F-8", True, 140),
-		(DilatedF2F(layers=5), 	"DilatedF2F-5", False, 160),
-		(DilatedF2F(layers=8),	"DilatedF2F-8", False, 160),
-		(DeformF2F(layers=5), 	"DeformF2F-5", False, 160),
-		(ConvF2F(layers=8),		"ConvF2F-8", False, 160),
-		(ConvF2F(layers=5), 	"ConvF2F-5", False, 160)
+		(ConvF2F(layers=8),		"ConvF2F-8", False, 60),
+		(DeformF2F(layers=8),	"DeformF2F-8", False, 60),
+		(DilatedF2F(layers=8),	"DilatedF2F-8", False, 60),
+		(ConvF2F(layers=5), 	"ConvF2F-5", False, 60),
+		(DeformF2F(layers=5), 	"DeformF2F-5", False, 60),
+		(DilatedF2F(layers=5), 	"DilatedF2F-5", False, 60)
 	]
 
 	for net, name, load, epochs in nets:
@@ -40,7 +41,7 @@ if __name__=="__main__":
 		if load:
 			net.load_state_dict(torch.load(f"../weights/{name}.pt"))
 
-		criterion = nn.MSELoss()
+		criterion = SemsegCrossEntropy()
 		optimizer = optim.Adam(net.parameters(), lr=5e-4)
 		scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
