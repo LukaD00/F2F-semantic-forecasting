@@ -20,12 +20,9 @@ if __name__=="__main__":
 	# list of nets to train in the format of (net, name, load, epochs)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(ConvF2F(layers=8),		"ConvF2F-8", False, 60),
-		(DeformF2F(layers=8),	"DeformF2F-8", False, 60),
-		(DilatedF2F(layers=8),	"DilatedF2F-8", False, 60),
-		(ConvF2F(layers=5), 	"ConvF2F-5", False, 60),
-		(DeformF2F(layers=5), 	"DeformF2F-5", False, 60),
-		(DilatedF2F(layers=5), 	"DilatedF2F-5", False, 60)
+		(DeformF2F(layers=8),	"DeformF2F-8", False, 130),
+		(DeformF2F(layers=5), 	"DeformF2F-5", False, 130),
+		(DilatedF2F(layers=5), 	"DilatedF2F-5", False, 160)
 	]
 
 	for net, name, load, epochs in nets:
