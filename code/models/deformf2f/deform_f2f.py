@@ -48,6 +48,6 @@ class DeformF2F(nn.Module):
 			x = self.relus[i].forward(x)
 
 		x = self.relu3.forward(self.conv3.forward(x))
-		x = self.relu4.forward(self.conv4.forward(x))
+		x = self.conv4.forward(x)
 
 		return x
