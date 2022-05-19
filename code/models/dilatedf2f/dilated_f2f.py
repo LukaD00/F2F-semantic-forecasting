@@ -16,9 +16,11 @@ class DilatedF2F(nn.Module):
 		self.layers.append(nn.Conv2d(in_channels=output_channels, out_channels=output_channels, kernel_size=3, dilation=2, padding=2))
 		self.layers.append(nn.ReLU())
 
-		for i in range(layers-3):		
+		for i in range(layers-4):		
 			self.layers.append(nn.Conv2d(in_channels=output_channels, out_channels=output_channels, kernel_size=3, padding=1))
 			self.layers.append(nn.ReLU())
+
+		self.layers.append(nn.Conv2d(in_channels=output_channels, out_channels=output_channels, kernel_size=3, padding=1))
 
 		self.reset_parameters()
 

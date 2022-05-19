@@ -26,7 +26,6 @@ class DeformF2F(nn.Module):
 		self.relu3 = nn.ReLU()
 
 		self.conv4 = nn.Conv2d(in_channels=output_channels, out_channels=output_channels, kernel_size=3, padding=1)  
-		self.relu4 = nn.ReLU()
 
 		self.reset_parameters()
 
