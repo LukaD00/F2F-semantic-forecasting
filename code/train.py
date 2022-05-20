@@ -46,7 +46,7 @@ if __name__=="__main__":
 		start_time = time.time()
 
 		best_val_loss = None
-		for epoch in range(epochs):
+		for epoch in range(160-epochs, 160):
 			print("\n\tEpoch: %d, Time elapsed: %.2f min, Datetime: %s" % (epoch, (time.time() - start_time)/60, datetime.today()))
 
 			# TRAIN
