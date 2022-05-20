@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 import torch
 import torch.nn as nn
@@ -20,7 +21,7 @@ if __name__=="__main__":
 	# list of nets to train in the format of (net, name, load, epochs)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(DeformF2F(layers=8),	"DeformF2F-8", False, 160),
+		(DeformF2F(layers=8),	"DeformF2F-8", True, 106),
 		(ConvF2F(layers=8), 	"ConvF2F-8", False, 160),
 		(DilatedF2F(layers=8), 	"DilatedF2F-8", False, 160)
 	]
@@ -46,7 +47,7 @@ if __name__=="__main__":
 
 		best_val_loss = None
 		for epoch in range(epochs):
-			print("\n\tEpoch: %d, Time: %.2f min" % (epoch, (time.time() - start_time)/60))
+			print("\n\tEpoch: %d, Time elapsed: %.2f min, Datetime: %s" % (epoch, (time.time() - start_time)/60, datetime.today()))
 
 			# TRAIN
 			net.train()
