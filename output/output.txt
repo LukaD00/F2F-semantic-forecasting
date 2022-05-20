@@ -4,383 +4,253 @@ Running on NVIDIA GeForce GTX 1070 Ti
 Started training DeformF2F-8
 
 	Epoch: 0, Time: 0.00 min
-		Train -> Loss: 0.586
-		Eval -> Loss: 0.545
+		Train -> Loss: 0.383
+		Eval -> Loss: 0.297
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 1, Time: 12.82 min
-		Train -> Loss: 0.554
-		Eval -> Loss: 0.528
+	Epoch: 1, Time: 16.06 min
+		Train -> Loss: 0.270
+		Eval -> Loss: 0.255
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 2, Time: 25.64 min
-		Train -> Loss: 0.540
-		Eval -> Loss: 0.518
+	Epoch: 2, Time: 31.74 min
+		Train -> Loss: 0.237
+		Eval -> Loss: 0.230
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 3, Time: 38.49 min
-		Train -> Loss: 0.530
-		Eval -> Loss: 0.510
+	Epoch: 3, Time: 47.67 min
+		Train -> Loss: 0.217
+		Eval -> Loss: 0.214
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 4, Time: 51.41 min
-		Train -> Loss: 0.523
-		Eval -> Loss: 0.504
+	Epoch: 4, Time: 64.63 min
+		Train -> Loss: 0.204
+		Eval -> Loss: 0.203
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 5, Time: 64.53 min
-		Train -> Loss: 0.518
-		Eval -> Loss: 0.503
+	Epoch: 5, Time: 80.73 min
+		Train -> Loss: 0.194
+		Eval -> Loss: 0.198
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 6, Time: 77.34 min
-		Train -> Loss: 0.514
-		Eval -> Loss: 0.497
+	Epoch: 6, Time: 96.88 min
+		Train -> Loss: 0.186
+		Eval -> Loss: 0.188
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 7, Time: 90.47 min
-		Train -> Loss: 0.511
-		Eval -> Loss: 0.496
+	Epoch: 7, Time: 112.87 min
+		Train -> Loss: 0.179
+		Eval -> Loss: 0.183
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 8, Time: 103.01 min
-		Train -> Loss: 0.509
-		Eval -> Loss: 0.493
+	Epoch: 8, Time: 128.98 min
+		Train -> Loss: 0.175
+		Eval -> Loss: 0.178
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 9, Time: 115.56 min
-		Train -> Loss: 0.507
-		Eval -> Loss: 0.493
+	Epoch: 9, Time: 145.24 min
+		Train -> Loss: 0.170
+		Eval -> Loss: 0.176
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 10, Time: 128.64 min
-		Train -> Loss: 0.505
-		Eval -> Loss: 0.490
+	Epoch: 10, Time: 161.89 min
+		Train -> Loss: 0.167
+		Eval -> Loss: 0.174
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 11, Time: 141.82 min
-		Train -> Loss: 0.504
-		Eval -> Loss: 0.490
+	Epoch: 11, Time: 177.92 min
+		Train -> Loss: 0.165
+		Eval -> Loss: 0.172
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 12, Time: 155.10 min
-		Train -> Loss: 0.502
-		Eval -> Loss: 0.489
+	Epoch: 12, Time: 192.08 min
+		Train -> Loss: 0.162
+		Eval -> Loss: 0.170
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 13, Time: 168.38 min
-		Train -> Loss: 0.501
-		Eval -> Loss: 0.487
+	Epoch: 13, Time: 205.49 min
+		Train -> Loss: 0.159
+		Eval -> Loss: 0.173
+
+	Epoch: 14, Time: 219.75 min
+		Train -> Loss: 0.157
+		Eval -> Loss: 0.168
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 14, Time: 181.65 min
-		Train -> Loss: 0.500
-		Eval -> Loss: 0.487
-
-	Epoch: 15, Time: 195.12 min
-		Train -> Loss: 0.499
-		Eval -> Loss: 0.485
+	Epoch: 15, Time: 234.91 min
+		Train -> Loss: 0.156
+		Eval -> Loss: 0.167
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 16, Time: 208.79 min
-		Train -> Loss: 0.498
-		Eval -> Loss: 0.486
-
-	Epoch: 17, Time: 222.33 min
-		Train -> Loss: 0.497
-		Eval -> Loss: 0.486
-
-	Epoch: 18, Time: 235.44 min
-		Train -> Loss: 0.496
-		Eval -> Loss: 0.483
+	Epoch: 16, Time: 250.90 min
+		Train -> Loss: 0.154
+		Eval -> Loss: 0.165
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 19, Time: 248.96 min
-		Train -> Loss: 0.496
-		Eval -> Loss: 0.487
-
-	Epoch: 20, Time: 262.84 min
-		Train -> Loss: 0.495
-		Eval -> Loss: 0.485
-
-	Epoch: 21, Time: 276.34 min
-		Train -> Loss: 0.495
-		Eval -> Loss: 0.485
-
-	Epoch: 22, Time: 289.48 min
-		Train -> Loss: 0.494
-		Eval -> Loss: 0.484
-
-	Epoch: 23, Time: 303.47 min
-		Train -> Loss: 0.494
-		Eval -> Loss: 0.482
+	Epoch: 17, Time: 267.62 min
+		Train -> Loss: 0.153
+		Eval -> Loss: 0.164
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 24, Time: 317.52 min
-		Train -> Loss: 0.493
-		Eval -> Loss: 0.484
-
-	Epoch: 25, Time: 331.34 min
-		Train -> Loss: 0.493
-		Eval -> Loss: 0.483
-
-	Epoch: 26, Time: 344.63 min
-		Train -> Loss: 0.492
-		Eval -> Loss: 0.481
+	Epoch: 18, Time: 283.86 min
+		Train -> Loss: 0.151
+		Eval -> Loss: 0.164
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 27, Time: 357.99 min
-		Train -> Loss: 0.492
-		Eval -> Loss: 0.482
+	Epoch: 19, Time: 300.51 min
+		Train -> Loss: 0.150
+		Eval -> Loss: 0.165
 
-	Epoch: 28, Time: 370.79 min
-		Train -> Loss: 0.491
-		Eval -> Loss: 0.481
+	Epoch: 20, Time: 317.13 min
+		Train -> Loss: 0.148
+		Eval -> Loss: 0.160
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 29, Time: 383.02 min
-		Train -> Loss: 0.491
-		Eval -> Loss: 0.482
-
-	Epoch: 30, Time: 394.92 min
-		Train -> Loss: 0.490
-		Eval -> Loss: 0.483
-
-	Epoch: 31, Time: 407.40 min
-		Train -> Loss: 0.490
-		Eval -> Loss: 0.481
-
-	Epoch: 32, Time: 419.66 min
-		Train -> Loss: 0.490
-		Eval -> Loss: 0.481
-
-	Epoch: 33, Time: 431.78 min
-		Train -> Loss: 0.489
-		Eval -> Loss: 0.480
+	Epoch: 21, Time: 333.25 min
+		Train -> Loss: 0.147
+		Eval -> Loss: 0.159
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 34, Time: 443.87 min
-		Train -> Loss: 0.489
-		Eval -> Loss: 0.482
-
-	Epoch: 35, Time: 461.92 min
-		Train -> Loss: 0.489
-		Eval -> Loss: 0.481
-
-	Epoch: 36, Time: 485.52 min
-		Train -> Loss: 0.488
-		Eval -> Loss: 0.483
-
-	Epoch: 37, Time: 507.63 min
-		Train -> Loss: 0.488
-		Eval -> Loss: 0.481
-
-	Epoch: 38, Time: 528.15 min
-		Train -> Loss: 0.488
-		Eval -> Loss: 0.480
-
-	Epoch: 39, Time: 548.73 min
-		Train -> Loss: 0.487
-		Eval -> Loss: 0.480
-
-	Epoch: 40, Time: 569.25 min
-		Train -> Loss: 0.487
-		Eval -> Loss: 0.480
-
-	Epoch: 41, Time: 589.25 min
-		Train -> Loss: 0.487
-		Eval -> Loss: 0.479
+	Epoch: 22, Time: 350.11 min
+		Train -> Loss: 0.147
+		Eval -> Loss: 0.158
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 42, Time: 607.55 min
-		Train -> Loss: 0.487
-		Eval -> Loss: 0.480
+	Epoch: 23, Time: 366.15 min
+		Train -> Loss: 0.145
+		Eval -> Loss: 0.158
 
-	Epoch: 43, Time: 625.85 min
-		Train -> Loss: 0.486
-		Eval -> Loss: 0.480
+	Epoch: 24, Time: 382.00 min
+		Train -> Loss: 0.144
+		Eval -> Loss: 0.162
 
-	Epoch: 44, Time: 644.52 min
-		Train -> Loss: 0.486
-		Eval -> Loss: 0.479
-
-	Epoch: 45, Time: 662.48 min
-		Train -> Loss: 0.485
-		Eval -> Loss: 0.479
-
-	Epoch: 46, Time: 680.10 min
-		Train -> Loss: 0.486
-		Eval -> Loss: 0.483
-
-	Epoch: 47, Time: 697.19 min
-		Train -> Loss: 0.485
-		Eval -> Loss: 0.479
+	Epoch: 25, Time: 397.90 min
+		Train -> Loss: 0.144
+		Eval -> Loss: 0.157
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 48, Time: 714.10 min
-		Train -> Loss: 0.485
-		Eval -> Loss: 0.478
+	Epoch: 26, Time: 412.35 min
+		Train -> Loss: 0.142
+		Eval -> Loss: 0.157
+
+	Epoch: 27, Time: 427.63 min
+		Train -> Loss: 0.141
+		Eval -> Loss: 0.155
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 49, Time: 729.78 min
-		Train -> Loss: 0.484
-		Eval -> Loss: 0.482
+	Epoch: 28, Time: 446.97 min
+		Train -> Loss: 0.140
+		Eval -> Loss: 0.156
 
-	Epoch: 50, Time: 745.87 min
-		Train -> Loss: 0.485
-		Eval -> Loss: 0.479
+	Epoch: 29, Time: 474.11 min
+		Train -> Loss: 0.140
+		Eval -> Loss: 0.156
 
-	Epoch: 51, Time: 761.90 min
-		Train -> Loss: 0.484
-		Eval -> Loss: 0.480
-
-	Epoch: 52, Time: 777.76 min
-		Train -> Loss: 0.484
-		Eval -> Loss: 0.479
-
-	Epoch: 53, Time: 793.53 min
-		Train -> Loss: 0.484
-		Eval -> Loss: 0.479
-
-	Epoch: 54, Time: 809.38 min
-		Train -> Loss: 0.484
-		Eval -> Loss: 0.479
-
-	Epoch: 55, Time: 825.82 min
-		Train -> Loss: 0.483
-		Eval -> Loss: 0.479
-
-	Epoch: 56, Time: 846.26 min
-		Train -> Loss: 0.483
-		Eval -> Loss: 0.480
-
-	Epoch: 57, Time: 872.44 min
-		Train -> Loss: 0.483
-		Eval -> Loss: 0.479
-
-	Epoch: 58, Time: 892.74 min
-		Train -> Loss: 0.483
-		Eval -> Loss: 0.480
-
-	Epoch: 59, Time: 915.17 min
-		Train -> Loss: 0.482
-		Eval -> Loss: 0.479
-
-	Epoch: 60, Time: 933.71 min
-		Train -> Loss: 0.482
-		Eval -> Loss: 0.479
-
-	Epoch: 61, Time: 949.30 min
-		Train -> Loss: 0.482
-		Eval -> Loss: 0.479
-
-	Epoch: 62, Time: 967.67 min
-		Train -> Loss: 0.482
-		Eval -> Loss: 0.479
-
-	Epoch: 63, Time: 989.14 min
-		Train -> Loss: 0.481
-		Eval -> Loss: 0.478
+	Epoch: 30, Time: 500.46 min
+		Train -> Loss: 0.140
+		Eval -> Loss: 0.155
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 64, Time: 1012.97 min
-		Train -> Loss: 0.481
-		Eval -> Loss: 0.479
-
-	Epoch: 65, Time: 1036.22 min
-		Train -> Loss: 0.481
-		Eval -> Loss: 0.478
-
-	Epoch: 66, Time: 1059.20 min
-		Train -> Loss: 0.481
-		Eval -> Loss: 0.479
-
-	Epoch: 67, Time: 1081.87 min
-		Train -> Loss: 0.481
-		Eval -> Loss: 0.478
-
-	Epoch: 68, Time: 1105.14 min
-		Train -> Loss: 0.480
-		Eval -> Loss: 0.480
-
-	Epoch: 69, Time: 1129.13 min
-		Train -> Loss: 0.480
-		Eval -> Loss: 0.478
-
-	Epoch: 70, Time: 1153.75 min
-		Train -> Loss: 0.480
-		Eval -> Loss: 0.478
+	Epoch: 31, Time: 524.69 min
+		Train -> Loss: 0.138
+		Eval -> Loss: 0.153
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 71, Time: 1178.66 min
-		Train -> Loss: 0.480
-		Eval -> Loss: 0.478
+	Epoch: 32, Time: 550.35 min
+		Train -> Loss: 0.138
+		Eval -> Loss: 0.153
+
+	Epoch: 33, Time: 572.47 min
+		Train -> Loss: 0.137
+		Eval -> Loss: 0.153
+
+	Epoch: 34, Time: 593.07 min
+		Train -> Loss: 0.137
+		Eval -> Loss: 0.156
+
+	Epoch: 35, Time: 613.50 min
+		Train -> Loss: 0.136
+		Eval -> Loss: 0.153
+
+	Epoch: 36, Time: 632.83 min
+		Train -> Loss: 0.136
+		Eval -> Loss: 0.151
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 72, Time: 1204.12 min
-		Train -> Loss: 0.480
-		Eval -> Loss: 0.479
+	Epoch: 37, Time: 652.33 min
+		Train -> Loss: 0.134
+		Eval -> Loss: 0.152
 
-	Epoch: 73, Time: 1229.61 min
-		Train -> Loss: 0.480
-		Eval -> Loss: 0.478
+	Epoch: 38, Time: 672.38 min
+		Train -> Loss: 0.134
+		Eval -> Loss: 0.152
 
-	Epoch: 74, Time: 1252.07 min
-		Train -> Loss: 0.479
-		Eval -> Loss: 0.478
+	Epoch: 39, Time: 693.67 min
+		Train -> Loss: 0.133
+		Eval -> Loss: 0.152
 
-	Epoch: 75, Time: 1264.21 min
-		Train -> Loss: 0.479
-		Eval -> Loss: 0.478
+	Epoch: 40, Time: 714.63 min
+		Train -> Loss: 0.134
+		Eval -> Loss: 0.152
 
-	Epoch: 76, Time: 1276.16 min
-		Train -> Loss: 0.479
-		Eval -> Loss: 0.478
+	Epoch: 41, Time: 735.53 min
+		Train -> Loss: 0.132
+		Eval -> Loss: 0.152
 
-	Epoch: 77, Time: 1288.47 min
-		Train -> Loss: 0.479
-		Eval -> Loss: 0.478
+	Epoch: 42, Time: 756.16 min
+		Train -> Loss: 0.132
+		Eval -> Loss: 0.154
 
-	Epoch: 78, Time: 1300.55 min
-		Train -> Loss: 0.478
-		Eval -> Loss: 0.478
+	Epoch: 43, Time: 776.11 min
+		Train -> Loss: 0.131
+		Eval -> Loss: 0.152
 
-	Epoch: 79, Time: 1312.97 min
-		Train -> Loss: 0.478
-		Eval -> Loss: 0.478
+	Epoch: 44, Time: 795.55 min
+		Train -> Loss: 0.131
+		Eval -> Loss: 0.152
 
-	Epoch: 80, Time: 1325.64 min
-		Train -> Loss: 0.478
-		Eval -> Loss: 0.478
-
-	Epoch: 81, Time: 1338.64 min
-		Train -> Loss: 0.478
-		Eval -> Loss: 0.477
+	Epoch: 45, Time: 814.15 min
+		Train -> Loss: 0.130
+		Eval -> Loss: 0.150
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 82, Time: 1351.95 min
-		Train -> Loss: 0.478
-		Eval -> Loss: 0.477
+	Epoch: 46, Time: 832.13 min
+		Train -> Loss: 0.130
+		Eval -> Loss: 0.150
+
+	Epoch: 47, Time: 850.48 min
+		Train -> Loss: 0.130
+		Eval -> Loss: 0.150
+
+	Epoch: 48, Time: 868.38 min
+		Train -> Loss: 0.129
+		Eval -> Loss: 0.150
+
+	Epoch: 49, Time: 885.60 min
+		Train -> Loss: 0.129
+		Eval -> Loss: 0.150
+
+	Epoch: 50, Time: 903.85 min
+		Train -> Loss: 0.128
+		Eval -> Loss: 0.153
+
+	Epoch: 51, Time: 923.00 min
+		Train -> Loss: 0.127
+		Eval -> Loss: 0.150
+
+	Epoch: 52, Time: 944.40 min
+		Train -> Loss: 0.127
+		Eval -> Loss: 0.150
 		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 83, Time: 1365.25 min
-		Train -> Loss: 0.477
-		Eval -> Loss: 0.478
+	Epoch: 53, Time: 969.39 min
+		Train -> Loss: 0.127
+		Eval -> Loss: 0.149
+		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 84, Time: 1378.93 min
-		Train -> Loss: 0.477
-		Eval -> Loss: 0.478
+	Epoch: 54, Time: 995.89 min
+		Train -> Loss: 0.127
+		Eval -> Loss: 0.149
+		Model saved to ../weights/DeformF2F-8.pt
 
-	Epoch: 85, Time: 1392.77 min
-		Train -> Loss: 0.477
-		Eval -> Loss: 0.478
-
-	Epoch: 86, Time: 1407.25 min
-		Train -> Loss: 0.477
-		Eval -> Loss: 0.478
-
-	Epoch: 87, Time: 1421.94 min
-		Train -> Loss: 0.477
-		Eval -> Loss: 0.477
-
-	Epoch: 88, Time: 1437.01 min
+	Epoch: 55, Time: 1023.32 min
