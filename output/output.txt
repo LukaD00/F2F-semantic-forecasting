@@ -354,3 +354,345 @@ Started training DeformF2F-8
 		Eval -> Loss: 0.145
 
 	Epoch: 138, Time elapsed: 1377.94 min, Datetime: 2022-05-21 17:51:18.752806
+		Train -> Loss: 0.107
+		Eval -> Loss: 0.145
+		Model saved to ../weights/DeformF2F-8.pt
+
+	Epoch: 139, Time elapsed: 1397.70 min, Datetime: 2022-05-21 18:11:04.170405
+		Train -> Loss: 0.107
+		Eval -> Loss: 0.146
+
+	Epoch: 140, Time elapsed: 1417.14 min, Datetime: 2022-05-21 18:30:30.863505
+		Train -> Loss: 0.107
+		Eval -> Loss: 0.145
+
+	Epoch: 141, Time elapsed: 1436.39 min, Datetime: 2022-05-21 18:49:45.720468
+		Train -> Loss: 0.107
+		Eval -> Loss: 0.144
+		Model saved to ../weights/DeformF2F-8.pt
+
+	Epoch: 142, Time elapsed: 1455.81 min, Datetime: 2022-05-21 19:09:11.296737
+		Train -> Loss: 0.107
+		Eval -> Loss: 0.145
+
+	Epoch: 143, Time elapsed: 1475.31 min, Datetime: 2022-05-21 19:28:40.985478
+		Train -> Loss: 0.107
+		Eval -> Loss: 0.145
+
+	Epoch: 144, Time elapsed: 1494.90 min, Datetime: 2022-05-21 19:48:16.672808
+		Train -> Loss: 0.106
+		Eval -> Loss: 0.146
+
+	Epoch: 145, Time elapsed: 1514.48 min, Datetime: 2022-05-21 20:07:51.251304
+		Train -> Loss: 0.106
+		Eval -> Loss: 0.143
+		Model saved to ../weights/DeformF2F-8.pt
+
+	Epoch: 146, Time elapsed: 1534.03 min, Datetime: 2022-05-21 20:27:23.965708
+		Train -> Loss: 0.105
+		Eval -> Loss: 0.145
+
+	Epoch: 147, Time elapsed: 1553.59 min, Datetime: 2022-05-21 20:46:58.057977
+		Train -> Loss: 0.106
+		Eval -> Loss: 0.146
+
+	Epoch: 148, Time elapsed: 1573.16 min, Datetime: 2022-05-21 21:06:31.916584
+		Train -> Loss: 0.105
+		Eval -> Loss: 0.144
+
+	Epoch: 149, Time elapsed: 1592.62 min, Datetime: 2022-05-21 21:25:59.675620
+		Train -> Loss: 0.105
+		Eval -> Loss: 0.144
+
+	Epoch: 150, Time elapsed: 1612.36 min, Datetime: 2022-05-21 21:45:43.842751
+		Train -> Loss: 0.105
+		Eval -> Loss: 0.144
+
+	Epoch: 151, Time elapsed: 1632.13 min, Datetime: 2022-05-21 22:05:30.293820
+		Train -> Loss: 0.105
+		Eval -> Loss: 0.144
+
+	Epoch: 152, Time elapsed: 1651.81 min, Datetime: 2022-05-21 22:25:11.051715
+		Train -> Loss: 0.104
+		Eval -> Loss: 0.145
+
+	Epoch: 153, Time elapsed: 1671.45 min, Datetime: 2022-05-21 22:44:49.592998
+		Train -> Loss: 0.104
+		Eval -> Loss: 0.144
+
+	Epoch: 154, Time elapsed: 1691.28 min, Datetime: 2022-05-21 23:04:39.467929
+		Train -> Loss: 0.104
+		Eval -> Loss: 0.145
+
+	Epoch: 155, Time elapsed: 1710.95 min, Datetime: 2022-05-21 23:24:19.273043
+		Train -> Loss: 0.104
+		Eval -> Loss: 0.145
+
+	Epoch: 156, Time elapsed: 1730.78 min, Datetime: 2022-05-21 23:44:09.342293
+		Train -> Loss: 0.103
+		Eval -> Loss: 0.144
+
+	Epoch: 157, Time elapsed: 1750.71 min, Datetime: 2022-05-22 00:04:04.902812
+		Train -> Loss: 0.103
+		Eval -> Loss: 0.144
+
+	Epoch: 158, Time elapsed: 1770.00 min, Datetime: 2022-05-22 00:23:22.724782
+		Train -> Loss: 0.103
+		Eval -> Loss: 0.145
+
+	Epoch: 159, Time elapsed: 1788.07 min, Datetime: 2022-05-22 00:41:26.614349
+		Train -> Loss: 0.103
+		Eval -> Loss: 0.144
+
+
+Started training ConvF2F-8
+
+	Epoch: 0, Time elapsed: 0.00 min, Datetime: 2022-05-22 00:58:31.031714
+		Train -> Loss: 0.428
+		Eval -> Loss: 0.325
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 1, Time elapsed: 16.44 min, Datetime: 2022-05-22 01:14:57.304278
+		Train -> Loss: 0.305
+		Eval -> Loss: 0.287
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 2, Time elapsed: 32.63 min, Datetime: 2022-05-22 01:31:08.702631
+		Train -> Loss: 0.272
+		Eval -> Loss: 0.261
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 3, Time elapsed: 48.01 min, Datetime: 2022-05-22 01:46:31.645267
+		Train -> Loss: 0.249
+		Eval -> Loss: 0.245
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 4, Time elapsed: 63.00 min, Datetime: 2022-05-22 02:01:31.001158
+		Train -> Loss: 0.234
+		Eval -> Loss: 0.233
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 5, Time elapsed: 78.82 min, Datetime: 2022-05-22 02:17:20.137961
+		Train -> Loss: 0.222
+		Eval -> Loss: 0.222
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 6, Time elapsed: 93.18 min, Datetime: 2022-05-22 02:31:41.625651
+		Train -> Loss: 0.212
+		Eval -> Loss: 0.216
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 7, Time elapsed: 106.84 min, Datetime: 2022-05-22 02:45:21.632490
+		Train -> Loss: 0.205
+		Eval -> Loss: 0.207
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 8, Time elapsed: 120.26 min, Datetime: 2022-05-22 02:58:46.844611
+		Train -> Loss: 0.198
+		Eval -> Loss: 0.201
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 9, Time elapsed: 133.84 min, Datetime: 2022-05-22 03:12:21.635149
+		Train -> Loss: 0.192
+		Eval -> Loss: 0.198
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 10, Time elapsed: 149.01 min, Datetime: 2022-05-22 03:27:31.630330
+		Train -> Loss: 0.187
+		Eval -> Loss: 0.194
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 11, Time elapsed: 164.10 min, Datetime: 2022-05-22 03:42:37.092797
+		Train -> Loss: 0.183
+		Eval -> Loss: 0.188
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 12, Time elapsed: 178.75 min, Datetime: 2022-05-22 03:57:15.907387
+		Train -> Loss: 0.180
+		Eval -> Loss: 0.187
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 13, Time elapsed: 193.98 min, Datetime: 2022-05-22 04:12:29.776098
+		Train -> Loss: 0.177
+		Eval -> Loss: 0.183
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 14, Time elapsed: 208.56 min, Datetime: 2022-05-22 04:27:04.540398
+		Train -> Loss: 0.174
+		Eval -> Loss: 0.181
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 15, Time elapsed: 222.31 min, Datetime: 2022-05-22 04:40:49.708401
+		Train -> Loss: 0.171
+		Eval -> Loss: 0.180
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 16, Time elapsed: 236.59 min, Datetime: 2022-05-22 04:55:06.483183
+		Train -> Loss: 0.169
+		Eval -> Loss: 0.178
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 17, Time elapsed: 251.10 min, Datetime: 2022-05-22 05:09:36.942767
+		Train -> Loss: 0.167
+		Eval -> Loss: 0.176
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 18, Time elapsed: 265.43 min, Datetime: 2022-05-22 05:23:56.938000
+		Train -> Loss: 0.165
+		Eval -> Loss: 0.173
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 19, Time elapsed: 280.10 min, Datetime: 2022-05-22 05:38:36.748503
+		Train -> Loss: 0.163
+		Eval -> Loss: 0.174
+
+	Epoch: 20, Time elapsed: 294.37 min, Datetime: 2022-05-22 05:52:53.077881
+		Train -> Loss: 0.161
+		Eval -> Loss: 0.173
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 21, Time elapsed: 308.82 min, Datetime: 2022-05-22 06:07:20.299114
+		Train -> Loss: 0.160
+		Eval -> Loss: 0.173
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 22, Time elapsed: 323.18 min, Datetime: 2022-05-22 06:21:41.784854
+		Train -> Loss: 0.158
+		Eval -> Loss: 0.171
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 23, Time elapsed: 337.88 min, Datetime: 2022-05-22 06:36:23.764113
+		Train -> Loss: 0.156
+		Eval -> Loss: 0.171
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 24, Time elapsed: 352.31 min, Datetime: 2022-05-22 06:50:49.552171
+		Train -> Loss: 0.155
+		Eval -> Loss: 0.172
+
+	Epoch: 25, Time elapsed: 366.81 min, Datetime: 2022-05-22 07:05:19.796995
+		Train -> Loss: 0.154
+		Eval -> Loss: 0.169
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 26, Time elapsed: 381.17 min, Datetime: 2022-05-22 07:19:41.094057
+		Train -> Loss: 0.152
+		Eval -> Loss: 0.169
+
+	Epoch: 27, Time elapsed: 395.76 min, Datetime: 2022-05-22 07:34:16.460476
+		Train -> Loss: 0.152
+		Eval -> Loss: 0.168
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 28, Time elapsed: 410.29 min, Datetime: 2022-05-22 07:48:48.513978
+		Train -> Loss: 0.151
+		Eval -> Loss: 0.168
+
+	Epoch: 29, Time elapsed: 424.81 min, Datetime: 2022-05-22 08:03:19.622048
+		Train -> Loss: 0.149
+		Eval -> Loss: 0.166
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 30, Time elapsed: 439.30 min, Datetime: 2022-05-22 08:17:49.144249
+		Train -> Loss: 0.148
+		Eval -> Loss: 0.169
+
+	Epoch: 31, Time elapsed: 453.60 min, Datetime: 2022-05-22 08:32:06.875879
+		Train -> Loss: 0.147
+		Eval -> Loss: 0.168
+
+	Epoch: 32, Time elapsed: 467.88 min, Datetime: 2022-05-22 08:46:23.953622
+		Train -> Loss: 0.146
+		Eval -> Loss: 0.166
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 33, Time elapsed: 482.36 min, Datetime: 2022-05-22 09:00:52.752102
+		Train -> Loss: 0.145
+		Eval -> Loss: 0.166
+
+	Epoch: 34, Time elapsed: 496.91 min, Datetime: 2022-05-22 09:15:25.812681
+		Train -> Loss: 0.144
+		Eval -> Loss: 0.165
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 35, Time elapsed: 511.47 min, Datetime: 2022-05-22 09:29:59.458489
+		Train -> Loss: 0.143
+		Eval -> Loss: 0.166
+
+	Epoch: 36, Time elapsed: 525.90 min, Datetime: 2022-05-22 09:44:25.197872
+		Train -> Loss: 0.142
+		Eval -> Loss: 0.164
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 37, Time elapsed: 543.99 min, Datetime: 2022-05-22 10:02:30.354961
+		Train -> Loss: 0.142
+		Eval -> Loss: 0.164
+
+	Epoch: 38, Time elapsed: 559.59 min, Datetime: 2022-05-22 10:18:06.485358
+		Train -> Loss: 0.141
+		Eval -> Loss: 0.165
+
+	Epoch: 39, Time elapsed: 575.99 min, Datetime: 2022-05-22 10:34:30.369025
+		Train -> Loss: 0.140
+		Eval -> Loss: 0.163
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 40, Time elapsed: 593.51 min, Datetime: 2022-05-22 10:52:01.538569
+		Train -> Loss: 0.139
+		Eval -> Loss: 0.166
+
+	Epoch: 41, Time elapsed: 609.98 min, Datetime: 2022-05-22 11:08:29.795893
+		Train -> Loss: 0.139
+		Eval -> Loss: 0.165
+
+	Epoch: 42, Time elapsed: 626.45 min, Datetime: 2022-05-22 11:24:58.163362
+		Train -> Loss: 0.138
+		Eval -> Loss: 0.162
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 43, Time elapsed: 643.29 min, Datetime: 2022-05-22 11:41:48.354569
+		Train -> Loss: 0.137
+		Eval -> Loss: 0.165
+
+	Epoch: 44, Time elapsed: 661.00 min, Datetime: 2022-05-22 11:59:31.170842
+		Train -> Loss: 0.137
+		Eval -> Loss: 0.164
+
+	Epoch: 45, Time elapsed: 679.16 min, Datetime: 2022-05-22 12:17:40.913752
+		Train -> Loss: 0.136
+		Eval -> Loss: 0.163
+
+	Epoch: 46, Time elapsed: 696.90 min, Datetime: 2022-05-22 12:35:25.267513
+		Train -> Loss: 0.136
+		Eval -> Loss: 0.163
+
+	Epoch: 47, Time elapsed: 714.60 min, Datetime: 2022-05-22 12:53:07.053997
+		Train -> Loss: 0.135
+		Eval -> Loss: 0.163
+
+	Epoch: 48, Time elapsed: 732.87 min, Datetime: 2022-05-22 13:11:22.953012
+		Train -> Loss: 0.134
+		Eval -> Loss: 0.163
+
+	Epoch: 49, Time elapsed: 750.92 min, Datetime: 2022-05-22 13:29:25.938257
+		Train -> Loss: 0.134
+		Eval -> Loss: 0.162
+
+	Epoch: 50, Time elapsed: 768.66 min, Datetime: 2022-05-22 13:47:10.654279
+		Train -> Loss: 0.133
+		Eval -> Loss: 0.163
+
+	Epoch: 51, Time elapsed: 786.82 min, Datetime: 2022-05-22 14:05:20.291236
+		Train -> Loss: 0.133
+		Eval -> Loss: 0.161
+		Model saved to ../weights/ConvF2F-8.pt
+
+	Epoch: 52, Time elapsed: 805.09 min, Datetime: 2022-05-22 14:23:36.366941
+		Train -> Loss: 0.132
+		Eval -> Loss: 0.163
+
+	Epoch: 53, Time elapsed: 822.04 min, Datetime: 2022-05-22 14:40:33.442162
+		Train -> Loss: 0.132
+		Eval -> Loss: 0.162
+
+	Epoch: 54, Time elapsed: 836.28 min, Datetime: 2022-05-22 14:54:47.878468
