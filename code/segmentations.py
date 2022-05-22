@@ -41,15 +41,15 @@ if __name__ == '__main__':
 	city = "frankfurt"
 	seq = "000000"
 	city_seq = city + "_" + seq
-	tag = 8451
+	tag = 294
 	num_past = 4
 
 	colormap = create_cityscapes_label_colormap()
 	models: list[Model] = [
 		Oracle(),
-		F2F(ConvF2F(layers=8), "ConvF2F-8"),
-		F2F(DilatedF2F(layers=8), "DilatedF2F-8"),
-		#F2F(DeformF2F(layers=8), "DeformF2F-8")
+		#2F(ConvF2F(layers=8), "ConvF2F-8"),
+		#F2F(DilatedF2F(layers=8), "DilatedF2F-8"),
+		F2F(DeformF2F(layers=8), "DeformF2F-8")
 	]
 
 	future_tag = str(tag).zfill(6)

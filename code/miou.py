@@ -50,8 +50,36 @@ def miouModel(model : Model) -> float:
 	return miou.compute().item()
 
 
+def miouModelMO(model : Model) -> float:
+	"""
+	Tests the given Model on Cityscapes Dataset.
+
+	Arguments:
+		model (Model) - forecasting net wrapped in Model object
+
+	Returns:
+		mIoU-MO achieved by model on dataset
+	"""
+	moving_objects_classes = [11,12,13,14,15,16,17,18]
+
+	with torch.no_grad():
+		miou = JaccardIndex(num_classes=9, ignore_index=8)
+		for past_features, future_features, ground_truth in CityscapesHalfresGroundTruthDataset():
+			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
+			prediction = model.forecast(past_features, future_features)
+
+			ground_truth[ground_truth<=10] = 8
+			ground_truth[ground_truth==255] = 8
+			for mo in moving_objects_classes:
+				ground_truth[ground_truth==mo] = mo-11
+			
+			miou.update(prediction, torch.from_numpy(ground_truth))
+			del past_features, future_features, ground_truth, prediction
+	return miou.compute().item()
+
 if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
+	moving_objects_classes = [12,13,14,15,16,17,18,19]
 
 	models = [
 		#F2F(DilatedF2F(layers=5), "DilatedF2F-5")
@@ -65,6 +93,7 @@ if __name__ == '__main__':
 	for model in models:
 		print(f"Testing {model.getName()}...")
 		print(f"\tmIoU: {miouModel(model)}")
+		print(f"\tmIoU - MO: {miouModelMO(model)}")
 		print()
 
 

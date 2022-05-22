@@ -18,11 +18,10 @@ if __name__=="__main__":
 	device = "cuda"
 	print(f"Running on " + torch.cuda.get_device_name(0))
 	
-	# list of nets to train in the format of (net, name, load, epochs)
+	# list of nets to train in the format of (net, name, load, last_epoch)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(DeformF2F(layers=8),	"DeformF2F-8", True, 106),
-		(ConvF2F(layers=8), 	"ConvF2F-8", False, 160),
+		(ConvF2F(layers=8), 	"ConvF2F-8", True, 51),
 		(DilatedF2F(layers=8), 	"DilatedF2F-8", False, 160)
 	]
 
@@ -46,7 +45,7 @@ if __name__=="__main__":
 		start_time = time.time()
 
 		best_val_loss = None
-		for epoch in range(160-epochs, 160):
+		for epoch in range(epochs+1, 160):
 			print("\n\tEpoch: %d, Time elapsed: %.2f min, Datetime: %s" % (epoch, (time.time() - start_time)/60, datetime.today()))
 
 			# TRAIN
