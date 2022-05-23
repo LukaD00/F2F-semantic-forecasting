@@ -45,6 +45,7 @@ def miouModel(model : Model) -> float:
 			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
 			prediction = model.forecast(past_features, future_features)
 			ground_truth[ground_truth==255] = 19
+			print(ground_truth.shape, prediction.shape)
 			miou.update(prediction, torch.from_numpy(ground_truth))
 			del past_features, future_features, ground_truth, prediction
 	return miou.compute().item()
@@ -83,8 +84,8 @@ if __name__ == '__main__':
 
 	models = [
 		#F2F(DilatedF2F(layers=5), "DilatedF2F-5")
-		#F2F(DeformF2F(), "DeformF2F-8")
-		F2F(DeformF2F(layers=5), "DeformF2F-5")
+		F2F(DeformF2F(), "DeformF2F-8")
+		#F2F(DeformF2F(layers=5), "DeformF2F-5")
 		#F2F(ConvF2F(), "ConvF2F-8"),
 		#CopyLast(),
 		#Oracle()

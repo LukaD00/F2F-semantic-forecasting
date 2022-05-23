@@ -27,7 +27,7 @@ if __name__ == '__main__':
 	]
 
 	future_tag = str(tag).zfill(6)
-	save_path = f"../output/{city}_{seq}_{future_tag}/"
+	save_path = f"../output/segmentations/{city}_{seq}_{future_tag}/"
 	if (not os.path.exists(save_path)): os.mkdir(save_path)
 
 	# LOAD FUTURE FEATURES

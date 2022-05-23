@@ -100,5 +100,13 @@ class F2F(Model):
 		preds = torch.argmax(logits, 1).squeeze().cpu()
 		return preds
 
+	def forecastLogits(self, past_features : torch.Tensor, future_features : torch.Tensor) -> torch.tensor:
+		past_features = past_features.to("cuda")
+		future_features = future_features.to("cuda")
+		predicted_future_features = self.f2f.forward(past_features.unsqueeze(0))
+		predicted_future_features_denormalized = predicted_future_features  * self.std + self.mean
+		logits, additional_dict = self.segm_model.forward_up(predicted_future_features_denormalized, self.output_features_res, self.output_preds_res)
+		return logits.cpu()
+
 	def getName(self) -> str:
 		return self.name
