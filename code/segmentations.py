@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
 	colormap = create_cityscapes_label_colormap()
 	models: list[Model] = [
-		Oracle(),
+		#Oracle(),
 		#2F(ConvF2F(layers=8), "ConvF2F-8"),
 		#F2F(DilatedF2F(layers=8), "DilatedF2F-8"),
 		F2F(DeformF2F(layers=8), "DeformF2F-8")

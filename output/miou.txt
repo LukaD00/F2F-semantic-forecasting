@@ -1,17 +1,19 @@
 Testing Copy-Last...
-        mIoU: 0.4986390471458435
+        mIoU: 		0.4986390471458435
 
 Testing Oracle...
-        mIoU: 0.660978376865387
+        mIoU: 		0.660978376865387
+		mIoU - MO: 	0.5296613574028015
 
 Testing ConvF2F-8...
-        mIoU: 0.5799136161804199
+        mIoU: 		0.5799136161804199
 
 Testing ConvF2F-5...
-        mIoU: 0.5699270367622375
+        mIoU: 		0.5699270367622375
 
 Testing DilatedF2F-5...
-        mIoU: 0.5621838569641113
+        mIoU: 		0.5621838569641113
 
 Testing DeformF2F-8...
-        mIoU: 0.5916826128959656
+        mIoU: 		0.5921292304992676
+		mIoU - MO: 	0.46558088064193726
