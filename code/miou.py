@@ -92,7 +92,7 @@ if __name__ == '__main__':
 
 	for model in models:
 		print(f"Testing {model.getName()}...")
-		#print(f"\tmIoU: {miouModel(model)}")
+		print(f"\tmIoU: {miouModel(model)}")
 		print(f"\tmIoU - MO: {miouModelMO(model)}")
 		print()
 
