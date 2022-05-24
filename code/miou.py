@@ -74,8 +74,32 @@ def miouModelMO(model : Model) -> float:
 	intersection = torch.diag(confmat)
 	union = confmat.sum(0) + confmat.sum(1) - intersection
 	scores = intersection.float() / union.float()
+	print(scores)
 	scores[union == 0] = 0
 	return torch.mean(scores[11:19])
+
+def print_miou(model : Model) -> None :
+	ignore_index = 19
+	with torch.no_grad():
+		miou = JaccardIndex(num_classes=20, ignore_index=ignore_index)
+		for past_features, future_features, ground_truth in CityscapesHalfresGroundTruthDataset():
+			past_features, future_features = past_features.to("cuda"), future_features.to("cuda")
+			prediction = model.forecast(past_features, future_features)
+			ground_truth[ground_truth==255] = 19
+			miou.update(prediction, torch.from_numpy(ground_truth))
+			del past_features, future_features, ground_truth, prediction
+	confmat = miou.confmat
+	confmat[ignore_index] = 0.0
+	intersection = torch.diag(confmat)
+	union = confmat.sum(0) + confmat.sum(1) - intersection
+	scores = intersection.float() / union.float()
+	scores[union == 0] = 0
+	
+	miou = torch.mean(scores[0:19])
+	miouMO = torch.mean(scores[11:19])
+
+	print(f"\tmIoU: {miou}")
+	print(f"\tmIoU - MO: {miouMO}")
 
 if __name__ == '__main__':
 	dataset = CityscapesHalfresGroundTruthDataset(num_past=4)
@@ -83,17 +107,16 @@ if __name__ == '__main__':
 
 	models = [
 		#F2F(DilatedF2F(layers=5), "DilatedF2F-5")
-		#F2F(DeformF2F(), "DeformF2F-8")
+		#F2F(DeformF2F(), "DeformF2F-8"),
 		#F2F(DeformF2F(layers=5), "DeformF2F-5")
 		F2F(ConvF2F(), "ConvF2F-8")
-		#CopyLast(),
+		#CopyLast()
 		#Oracle()
 	]
 
 	for model in models:
 		print(f"Testing {model.getName()}...")
-		print(f"\tmIoU: {miouModel(model)}")
-		print(f"\tmIoU - MO: {miouModelMO(model)}")
+		print_miou(model)
 		print()
 
 
