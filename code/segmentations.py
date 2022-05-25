@@ -15,12 +15,12 @@ if __name__ == '__main__':
 	city = "frankfurt"
 	seq = "000000"
 	city_seq = city + "_" + seq
-	tag = 294
+	tag = 10351
 	num_past = 4
 
 	
 	models: list[Model] = [
-		#Oracle(),
+		Oracle(),
 		#2F(ConvF2F(layers=8), "ConvF2F-8"),
 		#F2F(DilatedF2F(layers=8), "DilatedF2F-8"),
 		F2F(DeformF2F(layers=8), "DeformF2F-8")

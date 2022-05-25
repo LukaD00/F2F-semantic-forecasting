@@ -17,21 +17,17 @@ class CityscapesHalfresGroundTruthDataset(Dataset):
 	TENSOR_DIR = "../cityscapes_halfres_features_r18/val"
 	TRUTH_DIR = "../cityscapes-gt/val"
 
-	def __init__(self, num_past = 4, transform = None, target_transform = None):
+	def __init__(self, num_past = 4):
 		"""
 		Initializes the dataset by loading the file names and grouping them appropriately 
 		(num_past past tensors with one corresponding ground truth set of labels).
 
 		Args:
 			num_past (int): How many past sets of features (images) will be provided for every set of features.
-			transform (Transform): Transform that will be applied to the past features tensor.
-			target_transform (Transform): Transform that will be applied to the target future features tensor.
 		"""
 		super().__init__()
 		
 		self.num_past = num_past
-		self.transform = transform
-		self.target_transform = target_transform
 		
 		self.items = [] # array that stores groups of (past tensors, future tensor, ground truth labels)
 		tensor_files = os.listdir(CityscapesHalfresGroundTruthDataset.TENSOR_DIR)
@@ -79,10 +75,4 @@ class CityscapesHalfresGroundTruthDataset(Dataset):
 		future_features = future_features = torch.from_numpy(np.load(os.path.join(CityscapesHalfresGroundTruthDataset.TENSOR_DIR, item[-2])))
 		ground_truth = np.array(Image.open(os.path.join(CityscapesHalfresGroundTruthDataset.TRUTH_DIR, item[-1])))
 
-		if self.transform: 
-			past_features = self.transform(past_features)
-
-		if self.target_transform:
-			future_features = self.target_transform(future_features)
-		
 		return past_features, future_features, ground_truth

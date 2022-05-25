@@ -14,7 +14,7 @@ class CityscapesHalfresFeaturesDataset(Dataset):
 	TRAIN_DIR = "../cityscapes_halfres_features_r18/train"
 	VAL_DIR = "../cityscapes_halfres_features_r18/val"
 
-	def __init__(self, train = True, num_past = 4, transform = None, target_transform = None):
+	def __init__(self, train = True, num_past = 4):
 		"""
 		Initializes the dataset by loading the file names and grouping them appropriately 
 		(num_past past images with one corresponding future image).
@@ -22,14 +22,10 @@ class CityscapesHalfresFeaturesDataset(Dataset):
 		Args:
 			train (bool): If true, training dataset will be loaded. If false, validation dataset will be loaded.
 			num_past (int): How many past sets of features (images) will be provided for every set of features.
-			transform (Transform): Transform that will be applied to the past features tensor.
-			target_transform (Transform): Transform that will be applied to the target future features tensor.
 		"""
 		super().__init__()
 		
 		self.num_past = num_past
-		self.transform = transform
-		self.target_transform = target_transform
 
 		self.file_dir = CityscapesHalfresFeaturesDataset.TRAIN_DIR if train else CityscapesHalfresFeaturesDataset.VAL_DIR
 		
@@ -71,11 +67,5 @@ class CityscapesHalfresFeaturesDataset(Dataset):
 		feature_group = self.feature_groups[idx]
 		past_features = torch.from_numpy(np.vstack([np.load(os.path.join(self.file_dir, img)) for img in feature_group[0:self.num_past]])) 
 		future_features = torch.from_numpy(np.load(os.path.join(self.file_dir, feature_group[-1])))
-
-		if self.transform: 
-			past_features = self.transform(past_features)
-
-		if self.target_transform:
-			future_features = self.target_transform(future_features)
 		
 		return past_features, future_features
