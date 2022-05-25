@@ -29,11 +29,11 @@ if __name__=="__main__":
 
 	for net, name, load, epochs in nets:
 
-		trainset = CityscapesHalfresFeaturesDataset(train=True)
-		valset = CityscapesHalfresFeaturesDataset(train=False)
+		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False)
+		valset = CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)
 
-		trainloader = torch.utils.data.DataLoader(trainset, batch_size=24, shuffle=True, num_workers=2)
-		valloader = torch.utils.data.DataLoader(valset, batch_size=20, shuffle=True, num_workers=2)
+		trainloader = torch.utils.data.DataLoader(trainset, batch_size=12, shuffle=True, num_workers=2)
+		valloader = torch.utils.data.DataLoader(valset, batch_size=10, shuffle=True, num_workers=2)
 
 		net = net.to(device)
 		if load:
