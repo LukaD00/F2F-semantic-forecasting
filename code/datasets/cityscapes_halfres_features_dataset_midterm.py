@@ -67,5 +67,8 @@ class CityscapesHalfresFeaturesDatasetMidterm(Dataset):
 		feature_group = self.feature_groups[idx]
 		past_features = torch.from_numpy(np.vstack([np.load(os.path.join(self.file_dir, img)) for img in feature_group[0:self.num_past]])) 
 		future_features = torch.from_numpy(np.load(os.path.join(self.file_dir, feature_group[-1])))
+
+		#print(f"Past: {feature_group[0]}., {feature_group[1]}, {feature_group[2]}, {feature_group[3]}")
+		#print(f"Future: {feature_group[-1]}")
 		
 		return past_features, future_features
