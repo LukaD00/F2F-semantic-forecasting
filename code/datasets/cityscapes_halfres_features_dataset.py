@@ -71,11 +71,13 @@ class CityscapesHalfresFeaturesDataset(Dataset):
 		past_features = torch.from_numpy(np.vstack([np.load(os.path.join(self.file_dir, img)) for img in feature_group[0:self.num_past]])) 
 		future_features = torch.from_numpy(np.load(os.path.join(self.file_dir, feature_group[-1])))
 		
+
 		if (self.print_files):
 			print("Past: ")
 			for i in range(self.num_past):
 				print("\t" + feature_group[i])
 			print("Future: ")
 			print("\t" + feature_group[-1])		
+
 
 		return past_features, future_features
