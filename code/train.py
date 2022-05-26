@@ -10,8 +10,6 @@ from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeatur
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedf2f.dilated_f2f import DilatedF2F
 from models.deformf2f.deform_f2f import DeformF2F
-from miou import miou
-
 
 if __name__=="__main__":
 
@@ -21,6 +19,8 @@ if __name__=="__main__":
 	# list of nets to train in the format of (net, name, load, last_epoch)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
+		(DeformF2F(layers=8), "DeformF2F-8", False, 0),
+		(ConvF2F(layers=8), "ConvF2F-8", False, 0),
 		(DilatedF2F(layers=8), 	"DilatedF2F-8", False, 0),
 		(DeformF2F(layers=5), "DeformF2F-5", False, 0),
 		(ConvF2F(layers=5), "ConvF2F-5", False, 0),
@@ -29,8 +29,8 @@ if __name__=="__main__":
 
 	for net, name, load, epochs in nets:
 
-		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=3, print_files=False)
-		valset = CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=3, print_files=False)
+		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False)
+		valset = CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)
 
 		trainloader = torch.utils.data.DataLoader(trainset, batch_size=12, shuffle=True, num_workers=2)
 		valloader = torch.utils.data.DataLoader(valset, batch_size=10, shuffle=True, num_workers=2)
