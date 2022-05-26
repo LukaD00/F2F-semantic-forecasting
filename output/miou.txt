@@ -15,7 +15,9 @@ Testing DeformF2F-8-3...
         mIoU: 		0.5921292304992676
 	mIoU - MO: 	0.46558088064193726
 
-
+Testing DeformF2F-8...
+        mIoU: 0.5757387280464172
+        mIoU - MO: 0.5483987927436829
 
 MIDTERM
 Testing Copy-Last...
