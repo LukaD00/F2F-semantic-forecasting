@@ -1,22 +1,43 @@
+SHORTTERM
 Testing Copy-Last...
         mIoU: 		0.4986390471458435
-		mIoU - MO: 	0.4562332034111023
+	mIoU - MO: 	0.4562332034111023
 
 Testing Oracle...
         mIoU: 		0.660978376865387
-		mIoU - MO: 	0.6422792077064514
+	mIoU - MO: 	0.6422792077064514
 
-Testing DeformF2F-8...
-        mIoU: 		0.5921292304992676
-		mIoU - MO: 	0.46558088064193726
-
-Testing ConvF2F-8...
+Testing ConvF2F-8-3...
         mIoU:		0.5807282328605652
-		mIoU - MO: 	0.548682451248169
+	mIoU - MO: 	0.548682451248169
 
-Testing ConvF2F-5...
-        mIoU: 		0.5699270367622375
+Testing DeformF2F-8-3...
+        mIoU: 		0.5921292304992676
+	mIoU - MO: 	0.46558088064193726
 
-Testing DilatedF2F-5...
-        mIoU: 		0.5621838569641113
 
+
+MIDTERM
+Testing Copy-Last...
+        mIoU: 0.37232348322868347
+        mIoU - MO: 0.283038467168808
+
+Testing Oracle...
+        mIoU: 0.660978376865387
+        mIoU - MO: 0.6422792077064514
+
+Testing ConvF2F-5-M...
+        mIoU: 0.4075673818588257
+        mIoU - MO: 0.3250083327293396
+
+Testing ConvF2F-8-M...
+        mIoU: 0.3956223428249359
+        mIoU - MO: 0.3071604073047638
+
+Testing DilatedF2F-5-M...
+        mIoU: 0.3973974287509918
+        mIoU - MO: 0.3087194561958313
+
+Testing DilatedF2F-8-M...
+        mIoU: 0.38604599237442017
+        mIoU - MO: 0.29543519020080566
