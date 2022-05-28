@@ -19,7 +19,7 @@ if __name__=="__main__":
 	# list of nets to train in the format of (net, name, load, last_epoch)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(DeformF2F(layers=8), "DeformF2F-8-3", False, 0),
+		(DeformF2F(layers=8), "DeformF2F-8-3", True, 83),
 		(ConvF2F(layers=8), "ConvF2F-8-3", False, 0),
 		(DilatedF2F(layers=8), 	"DilatedF2F-8-3", False, 0),
 		(DeformF2F(layers=5), "DeformF2F-5-3", False, 0),

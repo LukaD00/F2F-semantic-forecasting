@@ -7,13 +7,37 @@ Testing Oracle...
         mIoU: 		0.660978376865387
 	mIoU - MO: 	0.6422792077064514
 
+Testing ConvF2F-5-3...
+        mIoU: 0.5771028399467468
+        mIoU - MO: 0.5417890548706055
+
 Testing ConvF2F-8-3...
+        mIoU: 0.5817404985427856
+        mIoU - MO: 0.5509142875671387
+
+Testing ConvF2F-8-3-24...
         mIoU:		0.5807282328605652
 	mIoU - MO: 	0.548682451248169
 
+Testing DilatedF2F-5-3...
+        mIoU: 0.5699117183685303
+        mIoU - MO: 0.5330871343612671
+
+Testing DilatedF2F-8-3...
+        mIoU: 0.5753664970397949
+        mIoU - MO: 0.5423073768615723
+
+Testing DeformF2F-5-3...
+        mIoU: 0.5825402736663818
+        mIoU - MO: 0.5552049875259399
+
 Testing DeformF2F-8-3...
+        mIoU: 0.588692307472229
+        mIoU - MO: 0.5642503499984741
+
+Testing DeformF2F-8-3-24...
         mIoU: 		0.5921292304992676
-	mIoU - MO: 	0.46558088064193726
+	mIoU - MO: 	
 
 Testing DeformF2F-8...
         mIoU: 0.5757387280464172
