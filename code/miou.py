@@ -87,13 +87,24 @@ if __name__ == '__main__':
 	]
 	"""
 
+	""" shortterm with three training examples per sequence, and 24 batch size
+	models_shortterm_3_24 = [
+		F2F(ConvF2F(layers=8), "ConvF2F-8-3-24"),
+		F2F(ConvF2F(layers=5), "ConvF2F-5-3-24"),
+		F2F(DilatedF2F(layers=8), 	"DilatedF2F-8-3-24"),
+		F2F(DilatedF2F(layers=5), "DilatedF2F-5-3-24"),
+		F2F(DeformF2F(layers=8), "DeformF2F-8-3-24"),
+		F2F(DeformF2F(layers=5), "DeformF2F-5-3-24")
+	]
+	"""
+
 	models = [
-		F2F(ConvF2F(layers=5), "ConvF2F-5-3"),
-		F2F(ConvF2F(layers=8), "ConvF2F-8-3"),
-		F2F(DilatedF2F(layers=5), "DilatedF2F-5-3"),
-		F2F(DilatedF2F(layers=8), "DilatedF2F-8-3"),
-		F2F(DeformF2F(layers=5), "DeformF2F-5-3"),
-		F2F(DeformF2F(layers=8), "DeformF2F-8-3")
+		F2F(ConvF2F(layers=5), "ConvF2F-5"),
+		F2F(ConvF2F(layers=8), "ConvF2F-8"),
+		F2F(DilatedF2F(layers=5), "DilatedF2F-5"),
+		F2F(DilatedF2F(layers=8), "DilatedF2F-8"),
+		F2F(DeformF2F(layers=5), "DeformF2F-5"),
+		F2F(DeformF2F(layers=8), "DeformF2F-8")
 	]
 
 	for model in models:
