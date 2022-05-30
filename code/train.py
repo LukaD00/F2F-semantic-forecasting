@@ -19,17 +19,17 @@ if __name__=="__main__":
 	# list of nets to train in the format of (net, name, load, last_epoch)
 	# if load is true, weights will be loaded from filesystem  	
 	nets = [
-		(DeformF2F(layers=8), "DeformF2F-8-3-24", False, 0),
-		(ConvF2F(layers=8), "ConvF2F-8-3-24", False, 0),
-		(DilatedF2F(layers=8), 	"DilatedF2F-8-3-24", False, 0),
-		(DeformF2F(layers=5), "DeformF2F-5-3-24", False, 0),
-		(ConvF2F(layers=5), "ConvF2F-5-3-24", False, 0),
-		(DilatedF2F(layers=5), "DilatedF2F-5-3-24", False, 0)
+		(ConvF2F(layers=5), "ConvF2F-5-24", False, 0),
+		(ConvF2F(layers=8), "ConvF2F-8-24", False, 0),
+		(DilatedF2F(layers=5), "DilatedF2F-5-24", False, 0),
+		(DilatedF2F(layers=8), 	"DilatedF2F-8-24", False, 0),
+		(DeformF2F(layers=5), "DeformF2F-5-24", False, 0),
+		(DeformF2F(layers=8), "DeformF2F-8-24", False, 0)		
 	]
 
 	for net, name, load, epochs in nets:
 
-		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=3, print_files=False)
+		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False)
 		valset = CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)
 
 		trainloader = torch.utils.data.DataLoader(trainset, batch_size=24, shuffle=True, num_workers=2)

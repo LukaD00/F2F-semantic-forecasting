@@ -45,7 +45,6 @@ def print_miou(model : Model, dataset : CityscapesHalfresGroundTruthDataset) -> 
 	return miou, miouMO
 
 if __name__ == '__main__':
-	dataset = CityscapesHalfresGroundTruthDataset(num_past=4, future_distance=3)
 
 	""" baseline
 	baseline = [
@@ -99,13 +98,15 @@ if __name__ == '__main__':
 	"""
 
 	models = [
-		F2F(ConvF2F(layers=5), "ConvF2F-5"),
-		F2F(ConvF2F(layers=8), "ConvF2F-8"),
-		F2F(DilatedF2F(layers=5), "DilatedF2F-5"),
-		F2F(DilatedF2F(layers=8), "DilatedF2F-8"),
-		F2F(DeformF2F(layers=5), "DeformF2F-5"),
-		F2F(DeformF2F(layers=8), "DeformF2F-8")
+		F2F(ConvF2F(layers=5), "ConvF2F-5-24"),
+		F2F(ConvF2F(layers=8), "ConvF2F-8-24"),
+		F2F(DilatedF2F(layers=5), "DilatedF2F-5-24"),
+		F2F(DilatedF2F(layers=8), "DilatedF2F-8-24"),
+		F2F(DeformF2F(layers=5), "DeformF2F-5-24"),
+		F2F(DeformF2F(layers=8), "DeformF2F-8-24")
 	]
+
+	dataset = CityscapesHalfresGroundTruthDataset(num_past=4, future_distance=3)
 
 	for model in models:
 		print(f"Testing {model.getName()}...")
