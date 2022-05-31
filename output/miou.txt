@@ -11,6 +11,10 @@ Testing ConvF2F-5...
         mIoU:           0.5632876753807068
         mIoU - MO:      0.521343469619751
 
+Testing ConvF2F-5-24...
+        mIoU: 0.5631211996078491
+        mIoU - MO: 0.5252916216850281
+
 Testing ConvF2F-5-3...
         mIoU:           0.5771028399467468
         mIoU - MO:      0.5417890548706055
@@ -22,6 +26,10 @@ Testing ConvF2F-5-3-24...
 Testing ConvF2F-8...
         mIoU:           0.5504326224327087
         mIoU - MO:      0.49900907278060913
+
+Testing ConvF2F-8-24...
+        mIoU: 0.5580011606216431
+        mIoU - MO: 0.5183941721916199
 
 Testing ConvF2F-8-3...
         mIoU:           0.5817404985427856
@@ -39,6 +47,10 @@ Testing DilatedF2F-5...
         mIoU:           0.5517602562904358
         mIoU - MO:      0.5071709156036377
 
+Testing DilatedF2F-5-24...
+        mIoU: 0.5544421076774597
+        mIoU - MO: 0.51090407371521
+
 Testing DilatedF2F-5-3...
         mIoU:           0.5699117183685303
         mIoU - MO:      0.5330871343612671
@@ -50,6 +62,10 @@ Testing DilatedF2F-5-3-24...
 Testing DilatedF2F-8...
         mIoU:           0.5468432307243347
         mIoU - MO:      0.499943345785141
+
+Testing DilatedF2F-8-24...
+        mIoU: 0.5499160885810852
+        mIoU - MO: 0.506712019443512
 
 Testing DilatedF2F-8-3...
         mIoU:           0.5753664970397949
@@ -63,6 +79,10 @@ Testing DeformF2F-5...
         mIoU:           0.5731629729270935
         mIoU - MO:      0.5446415543556213
 
+Testing DeformF2F-5-24...
+        mIoU: 0.5738906860351562
+        mIoU - MO: 0.5425838232040405
+
 Testing DeformF2F-5-3...
         mIoU:           0.5825402736663818
         mIoU - MO:      0.5552049875259399
@@ -71,21 +91,29 @@ Testing DeformF2F-5-3-24...
         mIoU:           0.5845828056335449
         mIoU - MO:      0.5586540699005127
 
+Testing DeformF2F-8...
+        mIoU:           0.5757387280464172
+        mIoU - MO:      0.5483987927436829
+
+Testing DeformF2F-8-24...
+        mIoU: 0.5782625079154968
+        mIoU - MO: 0.5456746220588684
+
 Testing DeformF2F-8-3...
         mIoU:           0.588692307472229
         mIoU - MO:      0.5642503499984741
+
+Testing DeformF2F-8-3-24...
+        mIoU:           0.5967288017272949
+        mIoU - MO:      0.5743541121482849
 
 Testing DeformF2F-8-3-24-RIG...
         mIoU: 			0.5921292304992676
 		mIoU - MO: 	
 
-Testing DeformF2F-8...
-        mIoU:           0.5757387280464172
-        mIoU - MO:      0.5483987927436829
 
-Testing DeformF2F-8-3-24...
-        mIoU:           0.5967288017272949
-        mIoU - MO:      0.5743541121482849
+
+
 
 
 
