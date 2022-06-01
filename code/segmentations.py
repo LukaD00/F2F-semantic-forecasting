@@ -17,7 +17,8 @@ if __name__ == '__main__':
 		("val", "frankfurt", "000000", 294, 4),
 		("val", "frankfurt", "000000", 10351, 4),
 		("val", "frankfurt", "000001", 25921, 4),
-		("val", "frankfurt", "000001", 25713, 4)
+		("val", "frankfurt", "000001", 25713, 4),
+		("val", "frankfurt", "000001", 32556, 4)
 	]
 	
 	models: list[Model] = [
