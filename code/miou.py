@@ -97,6 +97,7 @@ if __name__ == '__main__':
 	]
 	"""
 
+	""" shortterm, one training example per sequence, 24 batch size 
 	models = [
 		F2F(ConvF2F(layers=5), "ConvF2F-5-24"),
 		F2F(ConvF2F(layers=8), "ConvF2F-8-24"),
@@ -105,8 +106,13 @@ if __name__ == '__main__':
 		F2F(DeformF2F(layers=5), "DeformF2F-5-24"),
 		F2F(DeformF2F(layers=8), "DeformF2F-8-24")
 	]
+	"""
 
-	dataset = CityscapesHalfresGroundTruthDataset(num_past=4, future_distance=3)
+	models = [
+		F2F(DeformF2F(layers=8, num_past=3), "DeformF2F-8-3-24-3past")
+	]
+
+	dataset = CityscapesHalfresGroundTruthDataset(num_past=3, future_distance=3)
 
 	for model in models:
 		print(f"Testing {model.getName()}...")
