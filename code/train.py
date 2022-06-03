@@ -16,25 +16,33 @@ if __name__=="__main__":
 	device = "cuda"
 	print(f"Running on " + torch.cuda.get_device_name(0))
 	
-	# list of nets to train in the format of (net, name, load, last_epoch)
-	# if load is true, weights will be loaded from filesystem  	
+	# list of nets to train in the format of (net, name, load, last_epoch, trainset, valset)
+	# name is used as name of weights file to be saved (or loaded)
+	# if load is true, weights will be loaded from filesystem, and training will resume from last_epoch
+	# if trainset and valset are None, a default set defined in the loop below will be used
 	nets = [
-		#(ConvF2F(layers=5), "ConvF2F-5-24", False, 0),
-		#(ConvF2F(layers=8), "ConvF2F-8-24", False, 0),
-		#(DilatedF2F(layers=5), "DilatedF2F-5-24", False, 0),
-		#(DilatedF2F(layers=8), 	"DilatedF2F-8-24", False, 0),
-		#(DeformF2F(layers=5), "DeformF2F-5-24", False, 0),
-		#(DeformF2F(layers=8, num_past=3), "DeformF2F-8-3-24-3past", False, 0)
-		(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-2past", False, 0)				
+		(DeformF2F(layers=8, num_past=3), "DeformF2F-8-M-24-3past", False, 0, 24,
+			CityscapesHalfresFeaturesDataset(train=True, num_past=3, future_distance=9, num_sequence=1, print_files=False), 
+			CityscapesHalfresFeaturesDataset(train=False, num_past=3, future_distance=9, num_sequence=1, print_files=False)),
+		
+		(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-24-2past", False, 0, 24,
+			CityscapesHalfresFeaturesDataset(train=True, num_past=2, future_distance=9, num_sequence=1, print_files=False), 
+			CityscapesHalfresFeaturesDataset(train=False, num_past=2, future_distance=9, num_sequence=1, print_files=False)),
+		
+		(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-24-1past", False, 0, 24,
+			CityscapesHalfresFeaturesDataset(train=True, num_past=1, future_distance=9, num_sequence=1, print_files=False), 
+			CityscapesHalfresFeaturesDataset(train=False, num_past=1, future_distance=9, num_sequence=1, print_files=False))						
 	]
 
-	for net, name, load, epochs in nets:
+	for net, name, load, epochs, batch_size, trainset, valset in nets:
 
-		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=2, future_distance=9, num_sequence=1, print_files=False)
-		valset = CityscapesHalfresFeaturesDataset(train=False, num_past=2, future_distance=9, num_sequence=1, print_files=False)
+		if trainset == None:
+			trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=2, future_distance=9, num_sequence=1, print_files=False)
+		if valset == None:
+			valset = CityscapesHalfresFeaturesDataset(train=False, num_past=2, future_distance=9, num_sequence=1, print_files=False)
 
-		trainloader = torch.utils.data.DataLoader(trainset, batch_size=12, shuffle=True, num_workers=2)
-		valloader = torch.utils.data.DataLoader(valset, batch_size=10, shuffle=True, num_workers=2)
+		trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=2)
+		valloader = torch.utils.data.DataLoader(valset, batch_size=batch_size//2, shuffle=True, num_workers=2)
 
 		net = net.to(device)
 		if load:

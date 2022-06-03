@@ -14,7 +14,7 @@ from datasets.cityscapes_halfres_ground_truth_dataset import CityscapesHalfresGr
 
 
 
-def print_miou(model : Model, dataset : CityscapesHalfresGroundTruthDataset) -> None :
+def get_mious(model : Model, dataset : CityscapesHalfresGroundTruthDataset) -> None :
 	"""
 	Tests the given model on CityscapesHalfresGroundTruthDataset.
 
@@ -109,14 +109,23 @@ if __name__ == '__main__':
 	"""
 
 	models = [
-		F2F(DeformF2F(layers=8, num_past=3), "DeformF2F-8-3-24-3past")
+		(F2F(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-24-3past"), 
+			CityscapesHalfresGroundTruthDataset(num_past=3, future_distance=9)),
+
+		(F2F(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-24-3past"), 
+			CityscapesHalfresGroundTruthDataset(num_past=3, future_distance=9)),
+
+		(F2F(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-24-3past"), 
+			CityscapesHalfresGroundTruthDataset(num_past=3, future_distance=9))
 	]
 
-	dataset = CityscapesHalfresGroundTruthDataset(num_past=3, future_distance=3)
+	for model, dataset in models:
 
-	for model in models:
+		if dataset == None:
+			dataset = CityscapesHalfresGroundTruthDataset(num_past=2, future_distance=9)
+
 		print(f"Testing {model.getName()}...")
-		miou, miouMO = print_miou(model, dataset)
+		miou, miouMO = get_mious(model, dataset)
 		print(f"\tmIoU: {miou}")
 		print(f"\tmIoU - MO: {miouMO}")
 		print()

@@ -182,6 +182,14 @@ Testing DeformF2F-8-M...
         mIoU: 0.45186322927474976
         mIoU - MO: 0.3943101465702057
 
+Testing DeformF2F-8-M-3past...
+        mIoU: 0.44179168343544006
+        mIoU - MO: 0.3788546323776245
+
+Testing DeformF2F-8-M-2past...
+        mIoU: 0.4469875991344452
+        mIoU - MO: 0.3919309973716736
+
 Testing DeformF2F-8-M-24...
         mIoU: 0.44817689061164856
         mIoU - MO: 0.39743632078170776
