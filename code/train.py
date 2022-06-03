@@ -25,13 +25,13 @@ if __name__=="__main__":
 		#(DilatedF2F(layers=8), 	"DilatedF2F-8-24", False, 0),
 		#(DeformF2F(layers=5), "DeformF2F-5-24", False, 0),
 		#(DeformF2F(layers=8, num_past=3), "DeformF2F-8-3-24-3past", False, 0)
-		(DeformF2F(layers=8, num_past=3), "DeformF2F-8-M-3past", False, 0)				
+		(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-2past", False, 0)				
 	]
 
 	for net, name, load, epochs in nets:
 
-		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=3, future_distance=9, num_sequence=1, print_files=False)
-		valset = CityscapesHalfresFeaturesDataset(train=False, num_past=3, future_distance=9, num_sequence=1, print_files=False)
+		trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=2, future_distance=9, num_sequence=1, print_files=False)
+		valset = CityscapesHalfresFeaturesDataset(train=False, num_past=2, future_distance=9, num_sequence=1, print_files=False)
 
 		trainloader = torch.utils.data.DataLoader(trainset, batch_size=12, shuffle=True, num_workers=2)
 		valloader = torch.utils.data.DataLoader(valset, batch_size=10, shuffle=True, num_workers=2)
