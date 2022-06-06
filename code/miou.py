@@ -109,14 +109,14 @@ if __name__ == '__main__':
 	"""
 
 	models = [
-		(F2F(DeformF2F(layers=8, num_past=3), "DeformF2F-8-M-24-3past"), 
-			CityscapesHalfresGroundTruthDataset(num_past=3, future_distance=9)),
+		#(F2F(DeformF2F(layers=8, num_past=3), "DeformF2F-8-M-24-3past"), 
+		#	CityscapesHalfresGroundTruthDataset(num_past=3, future_distance=9)),
 
-		(F2F(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-24-2past"), 
-			CityscapesHalfresGroundTruthDataset(num_past=2, future_distance=9))
+		#(F2F(DeformF2F(layers=8, num_past=2), "DeformF2F-8-M-24-2past"), 
+		#	CityscapesHalfresGroundTruthDataset(num_past=2, future_distance=9))
 
-		#(F2F(DeformF2F(layers=8, num_past=1), "DeformF2F-8-M-24-1past"), 
-		#	CityscapesHalfresGroundTruthDataset(num_past=1, future_distance=9))
+		(F2F(DeformF2F(layers=8, num_past=1), "DeformF2F-8-M-24-1past"), 
+			CityscapesHalfresGroundTruthDataset(num_past=1, future_distance=9))
 	]
 
 	for model, dataset in models:
