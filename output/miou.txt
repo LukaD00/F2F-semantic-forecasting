@@ -123,7 +123,17 @@ Testing DeformF2F-8-3-24-RIG...
         mIoU: 			0.5921292304992676
 		mIoU - MO: 	
 
+Testing AfterAttDeformF2F-8-3-24...
+        mIoU: 0.5839558839797974
+        mIoU - MO: 0.5563703775405884
 
+Testing AfterAttDeformF2F-8-3-24...
+        mIoU: 0.5839558839797974
+        mIoU - MO: 0.5563703775405884
+
+Testing AfterAttDeformF2F-8-24...
+        mIoU: 0.5709115862846375
+        mIoU - MO: 0.5398526787757874
 
 
 
