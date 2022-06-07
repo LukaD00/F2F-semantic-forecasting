@@ -7,6 +7,8 @@ class AttDeformF2F(nn.Module):
 	def __init__(self, output_channels=128, num_past=4, layers=8):
 		super(AttDeformF2F, self).__init__()
 		
+		self.att = nn.MultiheadAttention(embed_dim=512, num_heads=8, batch_first=True)
+
 		self.conv1 = nn.Conv2d(in_channels = num_past*output_channels, out_channels=2*output_channels, kernel_size=1, padding=0)
 		self.relu1 = nn.ReLU()
 
@@ -27,8 +29,6 @@ class AttDeformF2F(nn.Module):
 		self.relu3 = nn.ReLU()
 
 		self.conv4 = nn.Conv2d(in_channels=output_channels, out_channels=output_channels, kernel_size=3, padding=1)  
-
-		self.att = nn.MultiheadAttention(embed_dim=128, num_heads=4, batch_first=True)
 
 		self.reset_parameters()
 
@@ -54,6 +54,12 @@ class AttDeformF2F(nn.Module):
 		return x
 
 	def forward(self, x):
+
+		_, _, h, w = x.shape
+		x = self.vectorise(x)
+		x = self.att.forward(x,x,x,  need_weights=False)[0]
+		x = self.devectorise(x, h, w)
+
 		x = self.relu1.forward(self.conv1.forward(x))
 		x = self.relu2.forward(self.conv2.forward(x))
 
@@ -64,10 +70,5 @@ class AttDeformF2F(nn.Module):
 
 		x = self.relu3.forward(self.conv3.forward(x))
 		x = self.conv4.forward(x)
-
-		_, _, h, w = x.shape
-		x = self.vectorise(x)
-		x = self.att.forward(x,x,x,  need_weights=False)[0]
-		x = self.devectorise(x, h, w)
 
 		return x

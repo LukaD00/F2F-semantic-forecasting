@@ -135,6 +135,14 @@ Testing AfterAttDeformF2F-8-24...
         mIoU: 0.5709115862846375
         mIoU - MO: 0.5398526787757874
 
+Testing BeforeAttDeformF2F-8-3-24...
+        mIoU: 0.5898488163948059
+        mIoU - MO: 0.562157392501831
+
+Testing BeforeDeformF2F-8-24...
+        mIoU: 0.5785176753997803
+        mIoU - MO: 0.5476913452148438
+
 
 
 
@@ -215,3 +223,7 @@ Testing DeformF2F-8-M-24-2past...
 Testing DeformF2F-8-M-24-1past...
         mIoU: 0.3820396661758423
         mIoU - MO: 0.304716557264328
+
+Testing BeforeAttDeformF2F-8-M-24...
+        mIoU: 0.44008901715278625
+        mIoU - MO: 0.3698666989803314

@@ -22,7 +22,7 @@ if __name__=="__main__":
 	# if load is true, weights will be loaded from filesystem, and training will resume from last_epoch
 	# if trainset and valset are None, a default set defined in the loop below will be used
 	nets = [
-		(AttDeformF2F(layers=8, num_past=4), "AttDeformF2F-8-3-24", False, 0, 24,
+		(AttDeformF2F(layers=8 , num_past=4), "AttDeformF2F-8-3-24", False, 0, 24,
 			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=3, print_files=False), 
 			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=3, print_files=False)),					
 	
