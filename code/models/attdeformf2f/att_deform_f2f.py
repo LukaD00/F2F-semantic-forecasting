@@ -43,14 +43,12 @@ class AttDeformF2F(nn.Module):
 
 	def vectorise(self, x):
 		n, c, _, _ = x.shape
-		x = torch.permute(x, (0,2,3,1))
-		x = x.view(n, -1, c)
+		x = x.view(n, c, -1)
 		return x
 
 	def devectorise(self, x, h, w):
-		n, _, c = x.shape
-		x = x.view(n, h, w, c)
-		x = torch.permute(x, (0,3,1,2))
+		n, c, _ = x.shape
+		x = x.view(n, c, h, w)
 		return x
 
 	def forward(self, x):
