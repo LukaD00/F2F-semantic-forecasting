@@ -22,25 +22,27 @@ if __name__=="__main__":
 	# if load is true, weights will be loaded from filesystem, and training will resume from last_epoch
 	# if trainset and valset are None, a default set defined in the loop below will be used
 	nets = [
-		(AttDeformF2F(layers=8 , num_past=4), "AttDeformF2F-8-3-24", False, 0, 24,
-			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=3, print_files=False), 
-			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=3, print_files=False)),					
-	
-		(AttDeformF2F(layers=8, num_past=4), "AttDeformF2F-8-24", False, 0, 24,
-			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False), 
-			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)),
-
-		(AttDeformF2F(layers=8, num_past=4), "AttDeformF2F-8-M-24", False, 0, 24,
+		
+		(DeformF2F(layers=8), "DeformF2F-8-M-24", False, 0, 24,
 			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=1, print_files=False), 
 			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=1, print_files=False)),		
+		
+		(DeformF2F(layers=8), "DeformF2F-8-24", False, 0, 24,
+			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=1, print_files=False), 
+			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=1, print_files=False)),		
+	
+		(DeformF2F(layers=8), "DeformF2F-8-3-24", False, 0, 24,
+			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=3, print_files=False), 
+			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=3, print_files=False)),		
+	
 	]
 
 	for net, name, load, epochs, batch_size, trainset, valset in nets:
 
 		if trainset == None:
-			trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=2, future_distance=9, num_sequence=1, print_files=False)
+			trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False)
 		if valset == None:
-			valset = CityscapesHalfresFeaturesDataset(train=False, num_past=2, future_distance=9, num_sequence=1, print_files=False)
+			valset = CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)
 
 		trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=2)
 		valloader = torch.utils.data.DataLoader(valset, batch_size=batch_size//2, shuffle=True, num_workers=2)
