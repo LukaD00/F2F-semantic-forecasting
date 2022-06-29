@@ -19,45 +19,6 @@ def get_n_params(parameters):
         pp += nn
     return pp
 
-class DeformConv2d(nn.Module):
-	def __init__(
-        self,
-        in_channels: int,
-        out_channels: int,
-        kernel_size: int,
-        stride: int = 1,
-        padding: int = 0,
-        dilation: int = 1,
-        groups: int = 1,
-        bias: bool = True,
-    ) -> None:
-
-		super(DeformConv2d, self).__init__()
-		self.deform_conv = ops.DeformConv2d(
-			in_channels=in_channels, 
-			out_channels=out_channels, 
-			kernel_size=kernel_size, 
-			stride=stride, 
-			padding=padding,
-			dilation=dilation,
-			groups=groups,
-			bias=bias)
-		self.offset_conv = nn.Conv2d(
-			in_channels=in_channels,
-			out_channels=2*kernel_size*kernel_size,
-			kernel_size=kernel_size,
-			stride=stride,
-			padding=padding,
-			groups=groups,
-			bias=bias
-		)
-		nn.init.constant_(self.offset_conv.weight, 0)
-		nn.init.constant_(self.offset_conv.bias, 0)
-	
-	def forward(self, input: torch.Tensor) -> torch.Tensor:
-		offsets = self.offset_conv.forward(input)
-		return self.deform_conv(input, offsets)
-
 class _BNReluConv(nn.Sequential):
     def __init__(self, num_maps_in, num_maps_out, k=3, batch_norm=True, bn_momentum=0.1, bias=False, dilation=1):
         super(_BNReluConv, self).__init__()
