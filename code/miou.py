@@ -8,7 +8,6 @@ import numpy as np
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedf2f.dilated_f2f import DilatedF2F
 from models.deformf2f.deform_f2f import DeformF2F
-from models.attdeformf2f.att_deform_f2f import AttDeformF2F
 from models.model import Model, Oracle, CopyLast, F2F
 
 from datasets.cityscapes_halfres_ground_truth_dataset import CityscapesHalfresGroundTruthDataset
