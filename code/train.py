@@ -22,21 +22,23 @@ if __name__=="__main__":
 	# if trainset and valset are None, a default set defined in the loop below will be used
 	nets = [
 		
-		(DeformF2F(layers=8), "DeformF2F-8-M-24", False, 0, 24,
+		(DeformF2F(layers=8), "DeformF2F-8-M-24", False, 0,
 			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=1, print_files=False), 
 			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=1, print_files=False)),		
 		
-		(DeformF2F(layers=8), "DeformF2F-8-24", False, 0, 24,
+		(DeformF2F(layers=8), "DeformF2F-8-24", False, 0,
 			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False), 
 			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)),		
 	
-		(DeformF2F(layers=8), "DeformF2F-8-3-24", False, 0, 24,
+		(DeformF2F(layers=8), "DeformF2F-8-3-24", False, 0,
 			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=3, print_files=False), 
 			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=3, print_files=False)),		
 	
 	]
 
-	for net, name, load, epochs, batch_size, trainset, valset in nets:
+	for net, name, load, epochs, trainset, valset in nets:
+
+		batch_size = 24
 
 		if trainset == None:
 			trainset = CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False)
