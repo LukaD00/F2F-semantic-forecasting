@@ -6,7 +6,7 @@ class DeformF2F(nn.Module):
 	def __init__(self, output_channels=128, num_past=4, layers=8):
 		super(DeformF2F, self).__init__()
 		
-		self.conv1 = nn.Conv2d(in_channels = num_past*output_channels, out_channels=2*output_channels, kernel_size=1, padding=0)
+		self.conv1 = nn.Conv2d(in_channels=num_past*output_channels, out_channels=2*output_channels, kernel_size=1, padding=0)
 		self.relu1 = nn.ReLU()
 
 		self.conv2 = nn.Conv2d(in_channels=2*output_channels, out_channels=output_channels, kernel_size=3, padding=1)
