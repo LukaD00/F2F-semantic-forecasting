@@ -22,17 +22,17 @@ if __name__=="__main__":
 	# if trainset and valset are None, a default set defined in the loop below will be used
 	nets = [
 		
-		(DeformF2F(layers=8), "DeformF2F-8-M-24", False, 0,
+		(DeformF2F(layers=8), "DeformF2F-8-M", False, 0,
 			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=1, print_files=False), 
 			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=1, print_files=False)),		
 		
-		(DeformF2F(layers=8), "DeformF2F-8-24", False, 0,
+		(DeformF2F(layers=8), "DeformF2F-8", False, 0,
 			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False), 
 			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)),		
 	
-		(DeformF2F(layers=8), "DeformF2F-8-3-24", False, 0,
-			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=3, print_files=False), 
-			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=3, print_files=False)),		
+		(DeformF2F(layers=8), "DeformF2F-8-3", False, 0,
+			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=3, print_files=False), 
+			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=3, print_files=False)),		
 	
 	]
 

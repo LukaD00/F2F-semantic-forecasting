@@ -47,11 +47,11 @@ def get_mious(model : Model, dataset : CityscapesHalfresGroundTruthDataset) -> N
 if __name__ == '__main__':
 
 	models = [
-		(F2F(DeformF2F(layers=8), "DeformF2F-8-M-24"), 
+		(F2F(DeformF2F(layers=8), "DeformF2F-8-M"), 
 			CityscapesHalfresGroundTruthDataset(num_past=4, future_distance=9)),
-		(F2F(DeformF2F(layers=8), "DeformF2F-8-24"), 
+		(F2F(DeformF2F(layers=8), "DeformF2F-8"), 
 			CityscapesHalfresGroundTruthDataset(num_past=4, future_distance=3)),
-		(F2F(DeformF2F(layers=8), "DeformF2F-8-24"), 
+		(F2F(DeformF2F(layers=8), "DeformF2F-8-3"), 
 			CityscapesHalfresGroundTruthDataset(num_past=4, future_distance=3))
 	]
 
