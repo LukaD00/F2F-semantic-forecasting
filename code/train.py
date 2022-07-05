@@ -10,6 +10,7 @@ from datasets.cityscapes_halfres_features_dataset import CityscapesHalfresFeatur
 from models.convf2f.conv_f2f import ConvF2F
 from models.dilatedf2f.dilated_f2f import DilatedF2F
 from models.deformf2f.deform_f2f import DeformF2F
+from models.attdeformf2f.att_deform_parallel_f2f import AttDeformParallelF2F
 
 if __name__=="__main__":
 
@@ -21,18 +22,10 @@ if __name__=="__main__":
 	# if load is true, weights will be loaded from filesystem, and training will resume from last_epoch
 	# if trainset and valset are None, a default set defined in the loop below will be used
 	nets = [
-		
-		(DeformF2F(layers=8), "DeformF2F-8-M", False, 0,
-			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=9, num_sequence=1, print_files=False), 
-			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=9, num_sequence=1, print_files=False)),		
-		
-		(DeformF2F(layers=8), "DeformF2F-8", False, 0,
-			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=1, print_files=False), 
-			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=1, print_files=False)),		
-	
-		(DeformF2F(layers=8), "DeformF2F-8-3", False, 0,
-			CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=3, print_files=False), 
-			CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=3, print_files=False)),		
+
+		 (AttDeformParallelF2F(layers=5), "AttDeformParallelF2F-5-3", False, 16,
+		 	CityscapesHalfresFeaturesDataset(train=True, num_past=4, future_distance=3, num_sequence=3, print_files=False), 
+		 	CityscapesHalfresFeaturesDataset(train=False, num_past=4, future_distance=3, num_sequence=3, print_files=False)),		
 	
 	]
 
