@@ -29,7 +29,7 @@ class AttDeformParallelF2F(nn.Module):
 		self.conv4 = nn.Conv2d(in_channels=output_channels, out_channels=output_channels, kernel_size=3, padding=1)  
 
 
-		self.pre_mha_conv = nn.Conv2d(in_channels=num_past*output_channels, output_channels=output_channels, kernel_size=1)
+		self.pre_mha_conv = nn.Conv2d(in_channels=num_past*output_channels, out_channels=output_channels, kernel_size=1)
 
 		self.pos_embedding = nn.Parameter(torch.randn(1, width*height, output_channels))
 		
